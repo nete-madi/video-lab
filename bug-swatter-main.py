@@ -2,11 +2,18 @@ import wx
 
 
 # TODO: Change frames https://stackoverflow.com/questions/38313244/wxpython-change-frame-onbuttonpress
+# https://www.blog.pythonlibrary.org/2018/10/19/wxpython-how-to-open-a-second-window-frame/
 
 class MainFrame(wx.Frame):
     def __init__(self):
         wx.Frame.__init__(self, None, title='BugSwatter v. 0.1')
         panel = WelcomePanel(self)
+        self.Show()
+
+
+class SubFrame(wx.Frame):
+    def __init__(self, title, parent=None):
+        wx.Frame.__init__(self, parent=parent, title=title)
         self.Show()
 
 
@@ -24,7 +31,7 @@ class WelcomePanel(wx.Panel):
         self.result.SetForegroundColour(wx.RED)
         self.button_yes = wx.Button(self.panel, label="Yes, take me to recording")
         self.button_no = wx.Button(self.panel, label="No, show me a tour")
-        self.title = wx.StaticText(self.panel, label="Have you used BugSwatter before?", style=wx.ALIGN_CENTER)
+        self.title = wx.StaticText(self.panel, label="Have you used BugSwatter before?", style=wx.TEXT_ALIGNMENT_CENTER)
         self.title.SetFont(font)
 
         # Set sizer for the frame, so we can change frame size to match widgets
@@ -49,12 +56,17 @@ class WelcomePanel(wx.Panel):
         # Set event handlers
         self.button_yes.Bind(wx.EVT_BUTTON, self.on_button_yes)
         self.button_no.Bind(wx.EVT_BUTTON, self.on_button_no)
+        self.frame_number = 1
 
     def on_button_yes(self, e):
-        self.result.SetLabel("Ok. Taking you to your requested page...")
+        title = 'SubFrame {}'.format(self.frame_number)
+        frame = SubFrame(title="Recording")
+        self.frame_number += 1
 
     def on_button_no(self, e):
-        self.result.SetLabel("You need more practice")
+        title = 'SubFrame {}'.format(self.frame_number)
+        frame = SubFrame(title="BugSwatter Directions")
+        self.frame_number += 1
 
 
 if __name__ == '__main__':
