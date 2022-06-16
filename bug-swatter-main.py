@@ -1,11 +1,14 @@
 import wx
-class ExampleFrame(wx.Frame):
+
+
+class HomeScreen(wx.Frame):
+
     def __init__(self, parent):
         wx.Frame.__init__(self, parent, title='BugSwatter v. 0.1')
 
         # font settings
-        font = wx.Font(12, family = wx.FONTFAMILY_DECORATIVE, style = 0, weight = 90,
-                      underline = False, faceName ="", encoding = wx.FONTENCODING_DEFAULT)
+        font = wx.Font(12, family=wx.FONTFAMILY_DECORATIVE, style=0, weight=90, underline=False, faceName="",
+                       encoding=wx.FONTENCODING_DEFAULT)
 
         self.panel = wx.Panel(self)
         self.result = wx.StaticText(self.panel, label="")
@@ -35,16 +38,18 @@ class ExampleFrame(wx.Frame):
         self.SetSizerAndFit(self.windowSizer)
 
         # Set event handlers
-        self.button_yes.Bind(wx.EVT_BUTTON, self.OnButtonYes)
-        self.button_no.Bind(wx.EVT_BUTTON, self.OnButtonNo)
+        self.button_yes.Bind(wx.EVT_BUTTON, self.on_button_yes)
+        self.button_no.Bind(wx.EVT_BUTTON, self.on_button_no)
 
-    def OnButtonYes(self, e):
+    def on_button_yes(self, e):
         self.result.SetLabel("Ok. Taking you to your requested page...")
 
-    def OnButtonNo(self, e):
+    def on_button_no(self, e):
         self.result.SetLabel("You need more practice")
 
+
 app = wx.App(False)
-frame = ExampleFrame(None)
+
+frame = HomeScreen(None)
 frame.Show()
 app.MainLoop()
