@@ -14,7 +14,12 @@ class MainFrame(wx.Frame):
 class SubFrame(wx.Frame):
     def __init__(self, title, parent=None):
         wx.Frame.__init__(self, parent=parent, title=title)
+        panel = RecordingPanel(self)
+        self.Bind(wx.EVT_CLOSE, self.on_close)
         self.Show()
+
+    def on_close(self, e):
+        self.Destroy()
 
 
 class WelcomePanel(wx.Panel):
@@ -67,6 +72,37 @@ class WelcomePanel(wx.Panel):
         title = 'SubFrame {}'.format(self.frame_number)
         frame = SubFrame(title="BugSwatter Directions")
         self.frame_number += 1
+
+
+class RecordingPanel(wx.Panel):
+    def __init__(self, parent):
+        wx.Panel.__init__(self, parent)
+
+        # font settings
+        font = wx.Font(12, family=wx.FONTFAMILY_DECORATIVE, style=0, weight=90, underline=False, faceName="",
+                       encoding=wx.FONTENCODING_DEFAULT)
+
+        self.panel = wx.Panel(self)
+        self.button_back = wx.Button(self.panel, label="Take me back")
+
+        # Set sizer for the frame, so we can change frame size to match widgets
+        self.windowSizer = wx.BoxSizer()
+        self.windowSizer.Add(self.panel, 1, wx.ALL | wx.EXPAND)
+
+        # Set sizer for the panel content
+        self.sizer = wx.GridBagSizer(6, 6)
+        self.sizer.Add(self.button_back, (0, 0), flag=wx.CENTER)
+
+        # Set simple sizer for a nice border
+        self.border = wx.BoxSizer()
+        self.border.Add(self.sizer, 1, wx.ALL | wx.EXPAND, 5)
+
+        # Use the sizers
+        self.panel.SetSizerAndFit(self.border)
+        self.SetSizerAndFit(self.windowSizer)
+
+        # Set event handlers
+        self.frame_number = 1
 
 
 if __name__ == '__main__':
