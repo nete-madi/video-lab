@@ -1,10 +1,19 @@
 import wx
 
 
-class HomeScreen(wx.Frame):
+# TODO: Change frames https://stackoverflow.com/questions/38313244/wxpython-change-frame-onbuttonpress
+
+class MainFrame(wx.Frame):
+    def __init__(self):
+        wx.Frame.__init__(self, None, title='BugSwatter v. 0.1')
+        panel = WelcomePanel(self)
+        self.Show()
+
+
+class WelcomePanel(wx.Panel):
 
     def __init__(self, parent):
-        wx.Frame.__init__(self, parent, title='BugSwatter v. 0.1')
+        wx.Panel.__init__(self, parent)
 
         # font settings
         font = wx.Font(12, family=wx.FONTFAMILY_DECORATIVE, style=0, weight=90, underline=False, faceName="",
@@ -48,8 +57,8 @@ class HomeScreen(wx.Frame):
         self.result.SetLabel("You need more practice")
 
 
-app = wx.App(False)
-
-frame = HomeScreen(None)
-frame.Show()
-app.MainLoop()
+if __name__ == '__main__':
+    app = wx.App(False)
+    frame = MainFrame()
+    frame.Show()
+    app.MainLoop()
