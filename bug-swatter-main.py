@@ -1,7 +1,8 @@
 import wx
 
 
-# TODO: Change frames https://stackoverflow.com/questions/38313244/wxpython-change-frame-onbuttonpress
+# MoviePy: https://pypi.org/project/moviepy/
+# Change frames https://stackoverflow.com/questions/38313244/wxpython-change-frame-onbuttonpress
 # https://www.blog.pythonlibrary.org/2018/10/19/wxpython-how-to-open-a-second-window-frame/
 
 class MainFrame(wx.Frame):
