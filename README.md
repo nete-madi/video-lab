@@ -4,5 +4,5 @@ This is a project for my master's thesis. Learn to create better videos to attac
 
 Dependencies:
 
-- wxpython: https://wxpython.org/
+- Flask: https://flask.palletsprojects.com/en/2.1.x/
 - MoviePy: https://pypi.org/project/moviepy/
