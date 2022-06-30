@@ -5,9 +5,13 @@ app = Flask(__name__)  # name for flask app
 
 # welcome screen
 @app.route("/", methods=['GET', 'POST', 'PUT'])
-def home():  # route handler
+def index():  # route handler
     # return a response
     return render_template('index.html')
+
+@app.route("/goals_and_guidelines", methods=['GET', 'POST', 'PUT'])
+def goals():
+    return render_template('tutorial.html')
 
 
 app.run(debug=True)  # runs the app with server, toggle debug on and off
