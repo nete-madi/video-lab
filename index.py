@@ -9,9 +9,11 @@ def index():  # route handler
     # return a response
     return render_template('index.html')
 
+
 @app.route("/goals_and_guidelines", methods=['GET', 'POST', 'PUT'])
 def goals():
     return render_template('tutorial.html')
+
 
 @app.route("/recording_step_1", methods=['GET', 'POST', 'PUT'])
 def rec1():
