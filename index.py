@@ -13,5 +13,9 @@ def index():  # route handler
 def goals():
     return render_template('tutorial.html')
 
+@app.route("/recording_step_1", methods=['GET', 'POST', 'PUT'])
+def rec1():
+    return render_template('recording.html')
+
 
 app.run(debug=True)  # runs the app with server, toggle debug on and off
