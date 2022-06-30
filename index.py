@@ -20,4 +20,5 @@ def rec1():
     return render_template('recording.html')
 
 
-app.run(debug=True)  # runs the app with server, toggle debug on and off
+if __name__ == "__main__":
+    app.run(debug=True)  # runs the app with server, toggle debug on and off
