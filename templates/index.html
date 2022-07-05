@@ -17,6 +17,10 @@
         .version-header {
             border-bottom: 2px solid black;
         }
+        .app-select {
+            align:center;
+            text-align:center;
+        }
     </style>
 </head>
 <body>
@@ -27,16 +31,24 @@
     <div class ="container">
         <h3 align="center">Welcome to BugSwatter</h3>
         <p align="center">Finding bugs is hard. Reporting bugs is even harder. We're here to make that easy.</p>
-        <br><br><br>
-        <h1 align ="center">Is this your first time using BugSwatter?</h1>
+        <br>
+        <div class="row-lg-4" align="center"><a href="{{ url_for('goals') }}" class="btn btn-warning">New to BugSwatter? Take a tour!</a></div>
         <br><br>
-        <div class ="row justify-content-center">
-            <div class="col-lg-2">
-                <a href="{{ url_for('goals') }}" class="btn btn-success">Yes, give me a tour</a>
-            </div>
-            <div class="col-lg-2">
-                 <a href="{{ url_for('rec1') }}" class="btn btn-warning">No, take me to recording</a>
-            </div>
+        <div class="app-select">
+            <h3>Select an app to record:</h3>
+            <br>
+            <select>
+                <option value="1"> App 1</option>
+                <option value="2"> App 2</option>
+                <option value="3"> App 3</option>
+                <option value="4"> App 4</option>
+                <option value="5"> App 5</option>
+            </select>
+            <br>
+            <br>
+            <a href="{{ url_for('edit_video') }}" class="btn btn-danger">Start Recording</a>
+        <br>
+        <br>
         </div>
     </div>
 

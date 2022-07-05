@@ -1,23 +1,23 @@
 from flask import Flask, render_template
+import subprocess
 
 app = Flask(__name__)  # name for flask app
 
 
 # welcome screen
 @app.route("/", methods=['GET', 'POST', 'PUT'])
-def index():  # route handler
-    # return a response
-    return render_template('index.html')
+def index():
+    return render_template('index.html',)
 
 
-@app.route("/goals_and_guidelines", methods=['GET', 'POST', 'PUT'])
+@app.route("/goals_and_guidelines")
 def goals():
     return render_template('tutorial.html')
 
 
-@app.route("/recording_step_1", methods=['GET', 'POST', 'PUT'])
-def rec1():
-    return render_template('recording.html')
+@app.route("/editing", methods=['POST', 'GET'])
+def edit_video():
+    return render_template('editing.html')
 
 
 if __name__ == "__main__":

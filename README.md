@@ -12,7 +12,7 @@ Usage:
 
 - On Windows CLI, execute the following two lines: 
 
-`$env:FLASK_APP-"bug-swatter-main.py`
+`$env:FLASK_APP="index.py"`
 
 `python -m flask run`
 
