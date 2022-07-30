@@ -1,17 +1,17 @@
 from flask import Flask, request, render_template, send_file
 import os
 
+# TODO: fix the broken media upload route
 
 # Change this to change the saved file path
 video_save_path = "clips/"
-
 app = Flask(__name__)  # name for flask app
 
 
 # welcome screen
 @app.route("/", methods=['GET', 'POST', 'PUT'])
 def index():
-    return render_template('index.html', )
+    return render_template('index.html')
 
 
 @app.route("/goals_and_guidelines")
@@ -29,6 +29,7 @@ def render_clip(filename):
     return send_file(video_save_path + filename)
 
 
+# This route is returning ERROR and causing media upload to fail. Figure out why it's failing.
 @app.route("/editing/upload", methods=['POST'])
 def upload_video():
     # check if video save path exists
