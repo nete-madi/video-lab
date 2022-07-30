@@ -85,7 +85,7 @@
 						</div>
 						<br>
 						<div class="col-sm-4">
-							<button class="btn btn-primary" onclick="uploadVideoFile">
+							<button class="btn btn-primary" v-on:click="uploadVideoFile">
 								 Upload
 							</button>
 						</div>
@@ -258,7 +258,7 @@
 			  		return;
 			  	}
 			  	if(clipname == ""){
-			  		toastr.warning("Clip name is required!");
+			  		toastr.warning("Please enter a clip name.");
 			  		return;
 			  	}
 
@@ -274,7 +274,7 @@
 			  	let data = new FormData()
 			  	data.append('videofile', filedata);
 
-			  	axios.post('/upload_video', data, config)
+			  	axios.post('/editing/upload', data, config)
 			    	.then(res => {
 			    		console.log(res);
 

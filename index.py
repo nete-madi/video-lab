@@ -31,7 +31,7 @@ def render_clip(filename):
 
 @app.route("/editing/upload", methods=['POST'])
 def upload_video():
-    # check if video savepath exists
+    # check if video save path exists
     if not os.path.isdir("./clips"):
         os.mkdir("./clips")
     try:
