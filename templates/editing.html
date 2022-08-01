@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Welcome to BugSwatter</title>
+    <title>Step 2: Editing -- BugSwatter</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
@@ -78,7 +78,7 @@
 							<label for="fileinput">Add Video Clip:</label>
 							<input type="file" id="fileinput" accept="video/*">
 							<div class="col-sm-4" style="padding-left: 0"> <br>
-								<input type="text" class="form-control" placeholder="Clip Name"
+								<input type="text" class="form-control" placeholder="Clip Name -- cannot be blank!"
 								id="clipname">
 							</div>
 
@@ -101,12 +101,18 @@
 					</div>
 
 					<div class="row videodiv" v-for="(video,index) in videos" :key="index">
-						<h3><u>[[video.name]]</u> </h3>
-						<button v-on:click="setRenderVideo(index)" class="btn btn-success">Render/Preview</button>
-						<button v-on:click="removeVideo(index)" class="btn btn-danger">Remove</button>
-						<button class="btn btn-dark" v-on:click="reloadOriginalVideo(index)">
-							Reload Original Video
-						 </button>
+						<h3><u>[[video.name]]</u></h3>
+						<br><br>
+							<div class="col-sm-4" align="center">
+								<button v-on:click="setRenderVideo(index)" class="btn btn-success">Render Clip</button>
+							</div>
+							<div class="col-sm-4">
+								<button v-on:click="removeVideo(index)" class="btn btn-danger">Delete Clip</button>
+							</div>
+							<div class="col-sm-3">
+								<button class="btn btn-dark" v-on:click="reloadOriginalVideo(index)">Reload Original Video</button>
+							</div>
+						<br><br><br><br>
 						<div align="center">
 
 							<h4>Video Effects</h4>
@@ -118,7 +124,7 @@
 									value="0">
 								</div>
 								<div class="col-sm-4">
-									<label for="end">End:</label>
+									<label for="end">End: </label>
 									<input min="0" max="120" type="number" :id="`trim_end`+index"
 									value="0">
 								</div>
