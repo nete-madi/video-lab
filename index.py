@@ -4,7 +4,7 @@ import os
 # TODO: fix the broken media upload route
 
 # Change this to change the saved file path
-video_save_path = "clips/"
+video_save_path = "/clips/"
 app = Flask(__name__)  # name for flask app
 
 
@@ -26,7 +26,7 @@ def edit_video():
 
 @app.route("/editing/clips/<filename>")
 def render_clip(filename):
-    return send_file(video_save_path + filename)
+    return send_file(".//" + video_save_path + filename)
 
 
 # This route is returning ERROR and causing media upload to fail. Figure out why it's failing.
@@ -36,11 +36,11 @@ def upload_video():
     if not os.path.isdir("./clips"):
         os.mkdir("./clips")
     try:
-        video_file = request.files['video_file']
+        video_file = request.files['videofile']
         filepath = video_save_path + video_file.filename
         video_file.save(filepath)
-    except:
-        return "ERROR"
+    except Exception as e:
+        print(e)
 
     return str(filepath)
 
