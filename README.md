@@ -5,7 +5,7 @@ This is a project for my master's thesis. Learn to create better videos to attac
 Dependencies:
 
 - Flask: https://flask.palletsprojects.com/en/2.1.x/
-- MoviePy: https://pypi.org/project/moviepy/
+- MoviePy: https://github.com/Zulko/moviepy
 - Bootstrap 5: https://getbootstrap.com/docs/5.0/getting-started/introduction/
 
 Usage:
