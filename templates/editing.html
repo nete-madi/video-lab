@@ -82,7 +82,7 @@
                         <label for="fileinput">Add Video Clip:</label>
                         <input type="file" id="fileinput" accept="video/*">
                         <div class="col-sm-4" style="padding-left: 0"><br>
-                            <input type="text" class="form-control" placeholder="Clip Name -- cannot be blank!"
+                            <input type="text" class="form-control" placeholder="Clip Name"
                                    id="clipname">
                         </div>
 
@@ -325,6 +325,9 @@
 			uploadVideoFile: function() {
 				updateProgressBar(0);
 			  	let clipname = $("#clipname").val();
+			  	if (clipname == "") {
+			  	    clipname = "newClip";
+			  	}
 			  	let filedata = document.getElementById('fileinput').files[0];
 			  	if(!filedata){
 			  		toastr.warning("File is empty!");
