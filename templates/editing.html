@@ -116,8 +116,10 @@
 						<div align="center">
 
 							<h4>Video Effects</h4>
-							<b>Trim</b>
-							<div class="form-group">
+							<div class="row">
+								<div class="col-sm-4">
+								<b>Trim</b>
+								<div class="form-group">
 								<div class="col-sm-4">
 									<label for="start">Start:</label>
 									<input min="0" max="120" type="number" :id="`trim_start`+index"
@@ -128,10 +130,30 @@
 									<input min="0" max="120" type="number" :id="`trim_end`+index"
 									value="0">
 								</div>
-								<div class="col-sm-3">
+								<br>
+								<div class="col-sm-4">
 									<button class="btn btn-warning" v-on:click="editVideoSubmit(index,'trim')">Trim</button>
 								</div>
 							</div>
+
+							</div>
+								<div class="col-sm-4">
+								<b>Add Text</b>
+								<div class="form-group">
+								<div class="col-sm-4">
+									<label for="startstamp">Starting timestamp:</label>
+								</div>
+									<div class="col-sm-4">
+									<label for="duration">Duration:</label>
+								</div>
+									<div class="col-sm-4">
+									<label for="Position">Position:</label>
+								</div>
+							</div>
+							</div>
+							</div>
+
+
 						</div>
 					</div>
 					<br> <br>
@@ -256,15 +278,10 @@
 
 			uploadVideoFile: function() {
 				updateProgressBar(0);
-
-				let clipname = $("#clipname").val();
+			  	let clipname = $("#clipname").val();
 			  	let filedata = document.getElementById('fileinput').files[0];
 			  	if(!filedata){
 			  		toastr.warning("File is empty!");
-			  		return;
-			  	}
-			  	if(clipname == ""){
-			  		toastr.warning("Please enter a clip name.");
 			  		return;
 			  	}
 

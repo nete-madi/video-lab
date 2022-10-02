@@ -16,4 +16,6 @@ Usage:
 
 `python -m flask run`
 
+To set debug mode: `$env:FLASK_ENV="development"`
+
 Adapted from [kernelshreyak](https://github.com/kernelshreyak)'s project [videoeditor_online, an online video editor using Flask and MoviePy.](https://github.com/kernelshreyak/videoeditor_online)
