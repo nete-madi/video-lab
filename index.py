@@ -4,7 +4,6 @@ import os
 
 # TODO: Attempt to overlay a title card onto your clip.
 # TODO: Align text with form control boxes.
-# TODO: Allow a clip to upload with its filename if no name is specified.
 
 # https://stackoverflow.com/questions/72914568/overlay-image-on-video-using-moviepy
 # First: implement frontend for the functionality.
