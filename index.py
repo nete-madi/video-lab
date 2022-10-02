@@ -2,7 +2,11 @@ from flask import Flask, request, render_template, send_file
 from video_utils import *
 import os
 
-# TODO: fix video trimming (duplicate video_utils.py)
+# TODO: Attempt to overlay a title card onto your clip.
+# https://stackoverflow.com/questions/72914568/overlay-image-on-video-using-moviepy
+# First: implement frontend for the functionality.
+# Next: implement the functionality itself in video_utils.py
+# Last: Connect both ends
 
 # Change this to change the saved file path
 video_save_path = "/clips/"
