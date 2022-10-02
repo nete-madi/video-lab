@@ -84,11 +84,20 @@
 
 						</div>
 						<br>
-						<div class="col-sm-4">
+						<div class="row">
+							<div class="col-sm-4">
 							<button class="btn btn-primary" v-on:click="uploadVideoFile">
 								 Upload
 							</button>
+							</div>
+							<div class="col-sm-6">
+								<div v-if="videos.length > 0" class="col-sm-3">
+						<button class="btn btn-success" v-on:click="finalrender">Merge Clips</button>
+					</div>
+							</div>
 						</div>
+
+
 					</div>
 					<div class="col-sm-12" style="padding: 50px;">
 						 <div class="progress">
@@ -183,9 +192,7 @@
 						</div>
 					</div>
 					<br> <br>
-					<div v-if="videos.length > 0" class="col-sm-3">
-						<button class="btn btn-success" v-on:click="finalrender">Merge Clips</button>
-					</div>
+
 				</div>
 			</div>
 
