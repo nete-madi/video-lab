@@ -4,6 +4,8 @@ import os
 
 # TODO: Attempt to overlay a title card onto your clip.
 # TODO: Allow a clip to upload with its filename if no name is specified.
+# TODO: Move the "merge clips" button next to upload so it is more visible
+
 # https://stackoverflow.com/questions/72914568/overlay-image-on-video-using-moviepy
 # First: implement frontend for the functionality.
 # Next: implement the functionality itself in video_utils.py

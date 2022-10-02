@@ -141,30 +141,33 @@
 								<b>Add Image</b>
 								<div class="form-group">
 									<div class="col-sm-4">
-									<label for="startstamp">Choose Image:</label>
-									<input type="file" id="imginput" accept="image/*">
+										<label for="imginput">Choose Image:</label>
+										<input type="file" id="imginput" accept="image/*" name="Choose Image: ">
 										<!--Use img input in your JS function. Refer to the other functions below-->
-								</div>
-								<div class="col-sm-4">
-									<label for="startstamp">Starting timestamp:</label>
-									<input min="0" max="120" type="number" :id="`trim_end`+index"
-									value="0">
-								</div>
+									</div>
 									<div class="col-sm-4">
-									<label for="duration">Duration:</label>
+										<label for="startstamp">Starting timestamp:</label>
 										<input min="0" max="120" type="number" :id="`trim_end`+index"
-									value="0">
-								</div>
+										value="0">
+									</div>
 									<div class="col-sm-4">
-									<label for="Position">Position:</label>
-										<div class="col-sm-2">
+										<label for="duration">Duration:</label>
+										<input min="0" max="120" type="number" :id="`trim_end`+index"
+										value="0">
+									</div>
+									<div class="col-sm-4">
+										<label for="Position">Position:</label>
+										</div>
+										<div class="col-sm-4">
 											<label for="x-val">x:</label>
 											<input min="0" max="120" type="number" :id="`trim_end`+index"
-									value="0"></div>
-										<div class="col-sm-2">
+											value="0">
+										</div>
+										<div class="col-sm-4">
 											<label for="y-val">y:</label>
 											<input min="0" max="120" type="number" :id="`trim_end`+index"
-									value="0"></div>
+											value="0">
+										</div>
 
 								</div>
 									<br>
