@@ -117,7 +117,7 @@
 
 							<h4>Video Effects</h4>
 							<div class="row">
-								<div class="col-sm-4">
+								<div class="col-lg-6">
 								<b>Trim</b>
 								<div class="form-group">
 								<div class="col-sm-4">
@@ -137,17 +137,40 @@
 							</div>
 
 							</div>
-								<div class="col-sm-4">
-								<b>Add Text</b>
+								<div class="col-lg-6">
+								<b>Add Image</b>
 								<div class="form-group">
+									<div class="col-sm-4">
+									<label for="startstamp">Choose Image:</label>
+									<input type="file" id="imginput" accept="image/*">
+										<!--Use img input in your JS function. Refer to the other functions below-->
+								</div>
 								<div class="col-sm-4">
 									<label for="startstamp">Starting timestamp:</label>
+									<input min="0" max="120" type="number" :id="`trim_end`+index"
+									value="0">
 								</div>
 									<div class="col-sm-4">
 									<label for="duration">Duration:</label>
+										<input min="0" max="120" type="number" :id="`trim_end`+index"
+									value="0">
 								</div>
 									<div class="col-sm-4">
 									<label for="Position">Position:</label>
+										<div class="col-sm-2">
+											<label for="x-val">x:</label>
+											<input min="0" max="120" type="number" :id="`trim_end`+index"
+									value="0"></div>
+										<div class="col-sm-2">
+											<label for="y-val">y:</label>
+											<input min="0" max="120" type="number" :id="`trim_end`+index"
+									value="0"></div>
+
+								</div>
+									<br>
+									<div class="col-sm-6">
+									<button class="btn btn-warning">Add Image</button>
+										<!--Make sure to add a vue function to this div once you've written it-->
 								</div>
 							</div>
 							</div>
