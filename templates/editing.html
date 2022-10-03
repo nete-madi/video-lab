@@ -167,12 +167,12 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <label for="startstamp">Starting timestamp:</label>
-                                        <input min="0" max="120" type="number" :id="`trim_end`+index"
+                                        <input min="0" max="120" type="number" :id="`start_stamp`+index"
                                                value="0">
                                     </div>
                                     <div class="col-sm-4">
                                         <label for="duration">Duration:</label>
-                                        <input min="0" max="120" type="number" :id="`trim_end`+index"
+                                        <input min="0" max="120" type="number" :id="`duration`+index"
                                                value="0">
                                     </div>
                                     <div class="col-sm-4">
@@ -180,12 +180,12 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <label for="x-val">x:</label>
-                                        <input min="0" max="120" type="number" :id="`trim_end`+index"
+                                        <input min="0" max="120" type="number" :id="`x_pos`+index"
                                                value="0">
                                     </div>
                                     <div class="col-sm-4">
                                         <label for="y-val">y:</label>
-                                        <input min="0" max="120" type="number" :id="`trim_end`+index"
+                                        <input min="0" max="120" type="number" :id="`y_pos`+index"
                                                value="0">
                                     </div>
 
@@ -193,7 +193,7 @@
                                 <br>
                                 <div class="col-sm-6">
                                     <button class="btn btn-warning">Add Image</button>
-                                    <!--Make sure to add a vue function to this div once you've written it-->
+                                    <!--Make sure to add a vue function v-on to this div once you've written it-->
                                 </div>
                             </div>
                         </div>
@@ -309,7 +309,7 @@
 				editor_payload.videofile = video;
 				console.log("editor_payload",editor_payload);
 				// send edit request to backend and render the preview returned by server
-				$.post("/edit_video/" + actiontype,editor_payload,function(res){
+				$.post("editing/edit_video/" + actiontype,editor_payload,function(res){
 					// console.log("Editor Response",res);
 					setLoader(false);
 					if(res.status == "success"){

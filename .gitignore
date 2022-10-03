@@ -2,4 +2,5 @@
 /.idea/
 /*.mp4
 /__pycache__
-/clips
+/clips/*.mp4
+/video.js

@@ -2,8 +2,10 @@ from flask import Flask, request, render_template, send_file
 from video_utils import *
 import os
 
+# TODO: Trimming the video will not render it. Fix this
 # TODO: Attempt to overlay a title card onto your clip.
 # TODO: Align text with form control boxes.
+# TODO: Figure out how to use the toastr error messages
 
 # https://stackoverflow.com/questions/72914568/overlay-image-on-video-using-moviepy
 # First: implement frontend for the functionality.
@@ -36,7 +38,6 @@ def render_clip(filename):
     return send_file(".//" + video_save_path + filename)
 
 
-# This route is returning ERROR and causing media upload to fail. Figure out why it's failing.
 @app.route("/editing/upload", methods=['POST'])
 def upload_video():
     # check if video save path exists
