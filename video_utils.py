@@ -2,6 +2,9 @@ from moviepy.editor import VideoFileClip, clips_array, vfx, concatenate_videocli
 import time
 
 video_savepath = "clips/"
+# code is stuck in /templates/ and you need to change directory
+# you can try moving the clip around and seeing what happens
+# how is the code accessing this directory?
 
 def trimVideo(videofile: str, start_time: int, end_time: int):
     clip = VideoFileClip(videofile)
@@ -21,4 +24,3 @@ def mergeVideos(videoclip_filenames):
     finalpath = "clips/finalrender_" + str(int(time.time())) + ".mp4"
     final_clip.write_videofile(finalpath)
     return finalpath
-

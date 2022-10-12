@@ -234,8 +234,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
         integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-<!-- <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script> -->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script> -->
 
 <script type="text/javascript">
 
@@ -293,7 +293,7 @@
 				let video = this.videos[videoID].file;
 
 				if(video === undefined){
-					toastr.warning("Video is empty!");
+					console.log("Video is empty!");
 					return;
 				}
 
@@ -315,10 +315,12 @@
 					if(res.status == "success"){
 						app.videos[videoID].file = res.edited_videopath;
 						app.setRenderVideo(videoID);
-						toastr.success(res.message);
+						console.log(res.message);
+						// toastr.success(res.message);
 					}
 					else{
-						toastr.error(res.message);
+						// toastr.error(res.message);
+						console.log(res.message);
 					}
 				});
 			},
@@ -331,7 +333,7 @@
 			  	}
 			  	let filedata = document.getElementById('fileinput').files[0];
 			  	if(!filedata){
-			  		toastr.warning("File is empty!");
+			  		console.log("File is empty!");
 			  		return;
 			  	}
 
@@ -354,7 +356,7 @@
 			    		this.originalvideos.push({name:clipname,file:res.data});
 						this.videos.push({name:clipname,file:res.data});
 	    		 		console.log("videos",this.videos);
-			    		toastr.success('Video uploaded!');
+			    		console.log('Video uploaded!');
 
 			    		app.setRenderVideo(this.videos.length - 1);
 
@@ -376,11 +378,11 @@
 					console.log(res);
 
 					if(res.status == "success"){
-						toastr.success("Final render success!");
+						console.log("Final render success!");
 						$("#render").attr('src',window.location.href + res.finalrender_videopath);
 					}
 					else{
-						toastr.error("Final render ERROR: " + res.message);
+						console.log("Final render ERROR: " + res.message);
 					}
 
 					setLoader(false);

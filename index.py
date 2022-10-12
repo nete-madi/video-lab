@@ -2,10 +2,10 @@ from flask import Flask, request, render_template, send_file
 from video_utils import *
 import os
 
-# TODO: Trimming the video will not render it. Fix this
-# TODO: Attempt to overlay a title card onto your clip.
-# TODO: Align text with form control boxes.
-# TODO: Figure out how to use the toastr error messages
+# TODO: Fix the trimming not working.
+# TODO: In editing.html: Configure the payload for image overlay.
+# TODO: In index.py: Configure the route for "image" actiontype.
+# TODO: In video_utils: Write the image overlay function.
 
 # https://stackoverflow.com/questions/72914568/overlay-image-on-video-using-moviepy
 # First: implement frontend for the functionality.
@@ -13,7 +13,7 @@ import os
 # Last: Connect both ends
 
 # Change this to change the saved file path
-video_save_path = "/clips/"
+video_save_path = "\clips\\"
 app = Flask(__name__)  # name for flask app
 
 
@@ -35,7 +35,10 @@ def edit_video():
 
 @app.route("/editing/clips/<filename>")
 def render_clip(filename):
-    return send_file(".//" + video_save_path + filename)
+    import os
+    path = os.getcwd() + video_save_path + filename
+    print(path)
+    return send_file(path)
 
 
 @app.route("/editing/upload", methods=['POST'])
@@ -46,6 +49,8 @@ def upload_video():
     try:
         video_file = request.files['videofile']
         filepath = video_save_path + video_file.filename
+        print("*** Your filepath is: " + filepath + "***")
+        # This line is giving you trouble!
         video_file.save(filepath)
     except Exception as e:
         print(e)
@@ -70,6 +75,8 @@ def editVideo(actiontype):
                 "status": "error",
                 "message": "video edit failure: " + str(e),
             }
+    elif actiontype == "image":
+        print("image!")
 
 
 @app.route('/editing/merged_render', methods=['POST'])
