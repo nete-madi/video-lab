@@ -349,7 +349,7 @@
 			  	let data = new FormData()
 			  	data.append('videofile', filedata);
 
-			  	axios.post('/editing/upload', data, config)
+			  	axios.post('/upload', data, config)
 			    	.then(res => {
 			    		console.log(res);
 
