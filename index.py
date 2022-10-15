@@ -3,6 +3,11 @@ from video_utils import *
 import os
 
 # TODO: Fix the trimming not working.
+# Uploading the video requires the full file path.
+# The route /editing/clips/ needs the sliced file path in order for the page to load properly.
+# MoviePy also requires the full file path.
+# How can we get all three to work?
+# https://stackoverflow.com/questions/31725032/can-multiple-webpages-be-implemented-using-a-single-flask-app
 # TODO: In editing.html: Configure the payload for image overlay.
 # TODO: In index.py: Configure the route for "image" actiontype.
 # TODO: In video_utils: Write the image overlay function.
@@ -18,7 +23,7 @@ app = Flask(__name__)  # name for flask app
 
 
 # welcome screen
-@app.route("/", methods=['GET', 'POST', 'PUT'])
+@app.route("/", methods=['GET'])
 def index():
     return render_template('index.html')
 
@@ -28,7 +33,7 @@ def goals():
     return render_template('tutorial.html')
 
 
-@app.route("/editing", methods=['POST', 'GET'])
+@app.route("/editing", methods=['GET'])
 def edit_video():
     return render_template('editing.html')
 
@@ -48,14 +53,14 @@ def upload_video():
         os.mkdir("./clips")
     try:
         video_file = request.files['videofile']
-        filepath = video_save_path + video_file.filename
+        filepath = os.getcwd() + video_save_path + video_file.filename
         print("*** Your filepath is: " + filepath + "***")
-        # This line is giving you trouble!
         video_file.save(filepath)
     except Exception as e:
         print(e)
 
-    return str(filepath)
+    # Slice off the beginning of the filepath (os.getcwd())
+    return str(filepath[26:])
 
 
 # Main video editing pipeline

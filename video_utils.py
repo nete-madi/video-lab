@@ -1,7 +1,9 @@
+import os
+
 from moviepy.editor import VideoFileClip, clips_array, vfx, concatenate_videoclips
 import time
 
-video_savepath = "clips/"
+video_savepath = os.getcwd() + "/clips/"
 # code is stuck in /templates/ and you need to change directory
 # you can try moving the clip around and seeing what happens
 # how is the code accessing this directory?
