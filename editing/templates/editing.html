@@ -309,7 +309,7 @@
 				editor_payload.videofile = video;
 				console.log("editor_payload",editor_payload);
 				// send edit request to backend and render the preview returned by server
-				$.post("editing/edit_video/" + actiontype,editor_payload,function(res){
+				$.post(window.location.href + "/edit_video/" + actiontype,editor_payload,function(res){
 					// console.log("Editor Response",res);
 					setLoader(false);
 					if(res.status == "success"){
