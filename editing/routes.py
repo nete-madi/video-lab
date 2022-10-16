@@ -3,7 +3,6 @@ from editing.video_utils import *
 import os
 
 editing = Blueprint('editing', __name__, template_folder='templates')
-video_save_path = "\\clips\\"
 
 
 @editing.route("/", methods=['GET'])
@@ -14,26 +13,29 @@ def edit_video():
 @editing.route("/clips/<filename>")
 def render_clip(filename):
     import os
-    path = os.getcwd() + video_save_path + filename
+    path = os.getcwd() + "\\editing\\clips\\" + filename
     print(path)
     return send_file(path)
 
 
+# TODO: The full file path is required for MoviePy to find the file, but the short path is required for the page to
+#  render correctly.
+
 @editing.route("/upload", methods=['POST'])
 def upload_video():
     # check if video save path exists
-    if not os.path.isdir("./clips"):
-        os.mkdir("./clips")
+    if not os.path.isdir("./editing/clips"):
+        os.mkdir("./editing/clips")
     try:
         video_file = request.files['videofile']
-        filepath = os.getcwd() + video_save_path + video_file.filename
+        longfilepath = os.getcwd() + "\\editing\\clips\\" + video_file.filename
+        filepath = longfilepath[35:]
         print("*** Your filepath is: " + filepath + "***")
-        video_file.save(filepath)
+        video_file.save(longfilepath)
     except Exception as e:
         print(e)
 
-    # Slice off the beginning of the filepath (os.getcwd())
-    return str(filepath[26:])
+    return str(longfilepath)
 
 
 # Main video editing pipeline

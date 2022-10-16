@@ -3,10 +3,7 @@ import os
 from moviepy.editor import VideoFileClip, clips_array, vfx, concatenate_videoclips
 import time
 
-video_savepath = os.getcwd() + "/clips/"
-# code is stuck in /templates/ and you need to change directory
-# you can try moving the clip around and seeing what happens
-# how is the code accessing this directory?
+video_savepath = ".\\editing\\clips\\"
 
 def trimVideo(videofile: str, start_time: int, end_time: int):
     clip = VideoFileClip(videofile)
