@@ -35,7 +35,7 @@ def upload_video():
     except Exception as e:
         print(e)
 
-    return str(longfilepath)
+    return str(filepath)
 
 
 # Main video editing pipeline
@@ -43,12 +43,14 @@ def upload_video():
 def editVideo(actiontype):
     if actiontype == "trim":
         try:
-            edited_videopath = trimVideo(request.form['videofile'], int(request.form['trim_start']),
+            video_file =  request.form['videofile']
+            path = os.getcwd() + "\\editing\\" + video_file
+            edited_videopath = trimVideo(path, int(request.form['trim_start']),
                                          int(request.form['trim_end']))
             return {
                 "status": "success",
                 "message": "video edit success",
-                "edited_videopath": edited_videopath
+                "edited_videopath": edited_videopath[35:]
             }
         except Exception as e:
             return {

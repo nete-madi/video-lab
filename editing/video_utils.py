@@ -3,7 +3,7 @@ import os
 from moviepy.editor import VideoFileClip, clips_array, vfx, concatenate_videoclips
 import time
 
-video_savepath = ".\\editing\\clips\\"
+video_savepath = os.getcwd() + "\\editing\\clips\\";
 
 def trimVideo(videofile: str, start_time: int, end_time: int):
     clip = VideoFileClip(videofile)
