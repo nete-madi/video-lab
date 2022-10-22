@@ -161,7 +161,7 @@
                                 <div class="form-group">
                                     <div class="col-sm-4">
                                         <label for="imginput">Choose Image:</label>
-                                        <input type="file" id="imginput" accept="image/*" name="Choose Image: ">
+                                        <input type="file" accept="image/*" name="Choose Image: ">
                                         <!--Use img input in your JS function. Refer to the other functions below-->
                                     </div>
                                     <div class="col-sm-4">
@@ -304,10 +304,10 @@
 					}
 				}
 
-				if(actiontype == "image"){
+				else if(actiontype == "image"){
 					editor_payload = {
-						img_src: $("#imginput"+videoID).val(),
-						start_time: $("#start_stamp"+videoID).val()
+						img_src: $("#imginput").val(),
+						start_time: $("#start_stamp"+videoID).val(),
 						duration: $("#duration"+videoID).val()
 					}
 				}
