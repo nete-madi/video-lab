@@ -1,5 +1,5 @@
 import os
-from moviepy.editor import VideoFileClip, clips_array, vfx, concatenate_videoclips, ImageClip
+from moviepy.editor import VideoFileClip, clips_array, vfx, concatenate_videoclips, ImageClip, CompositeVideoClip
 import time
 
 video_save_path = os.getcwd() + "\\editing\\clips\\";
@@ -14,16 +14,13 @@ def trim_video(videofile: str, start_time: int, end_time: int):
     return trim_path
 
 
-def img_overlay(videofile: str, start_time:int, duration: int, img:str):
-    clip = VideoFileClip(videofile);
-    img = ImageClip(img)
-    '''video = VideoFileClip("base_video.mp4")
-
-    title = ImageClip("title.png").set_start(3).set_duration(7).set_pos(("center", "center"))
-    # .resize(height=50) # if you need to resize...
-
-    final = CompositeVideoClip([video, title])
-    final.write_videofile("test.mp4")'''
+def img_overlay(videofile: str, start_time: int, duration: int, img: str):
+    clip = VideoFileClip(videofile)
+    img = ImageClip(img).set_start(start_time).set_duration(duration).set_pos(("center", "center"))
+    edited_path = video_save_path + "edited_" + str(int(time.time())) + videofile
+    final = CompositeVideoClip([clip, img])
+    final.write_videofile(edited_path)
+    return edited_path
 
 
 def merge_videos(video_clip_filenames):
