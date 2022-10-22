@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, send_file, Blueprint
+from flask import Flask, render_template
 import editing.routes
 
 # TODO: In editing.html: Configure the payload for image overlay.

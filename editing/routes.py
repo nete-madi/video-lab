@@ -37,7 +37,7 @@ def upload_video():
 
 # Main video editing pipeline
 @editing.route('/edit_video/<actiontype>', methods=['POST'])
-def editVideo(actiontype):
+def editor(actiontype):
     if actiontype == "trim":
         try:
             video_file = request.form['videofile']
