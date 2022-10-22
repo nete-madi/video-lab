@@ -54,7 +54,21 @@ def editor(actiontype):
                 "message": "video edit failure: " + str(e),
             }
     elif actiontype == "image":
-        print("image!")
+        try:
+            video_file = request.form['videofile']
+            path = os.getcwd() + "\\editing\\" + video_file
+            edited_video_path = img_overlay(path, int(request.form['start_time']),
+                                            int(request.form['duration']), str(request.form['img_src']))
+            return {
+                "status": "success",
+                "message": "video edit success",
+                "edited_video_path": edited_video_path[35:]
+            }
+        except Exception as e:
+            return {
+                "status": "error",
+                "message": "video edit failure: " + str(e),
+            }
 
 
 @editing.route('/merged_render', methods=['POST'])

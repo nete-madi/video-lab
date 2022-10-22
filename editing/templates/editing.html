@@ -191,8 +191,7 @@
                                 </div>
                                 <br>
                                 <div class="col-sm-6">
-                                    <button class="btn btn-warning">Add Image</button>
-                                    <!--Make sure to add a vue function v-on to this div once you've written it-->
+                                    <button class="btn btn-warning" v-on:click="editVideoSubmit(index,'image')">Add Image</button>
                                 </div>
                             </div>
                         </div>
@@ -304,6 +303,15 @@
 						trim_end: $("#trim_end"+videoID).val()
 					}
 				}
+
+				if(actiontype == "image"){
+					editor_payload = {
+						img_src: $("#imginput"+videoID).val(),
+						start_time: $("#start_stamp"+videoID).val()
+						duration: $("#duration"+videoID).val()
+					}
+				}
+
 
 				editor_payload.videofile = video;
 				console.log("editor_payload",editor_payload);

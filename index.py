@@ -3,7 +3,6 @@ import editing.routes
 
 # TODO: In editing.html: Configure the payload for image overlay.
 # TODO: In index.py: Configure the route for "image" actiontype.
-# TODO: In video_utils: Write the image overlay function.
 # TODO: merged_render editing route is not working
 
 # https://stackoverflow.com/questions/72914568/overlay-image-on-video-using-moviepy
