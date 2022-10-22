@@ -18,9 +18,6 @@ def render_clip(filename):
     return send_file(path)
 
 
-# TODO: The full file path is required for MoviePy to find the file, but the short path is required for the page to
-#  render correctly.
-
 @editing.route("/upload", methods=['POST'])
 def upload_video():
     # check if video save path exists
@@ -45,7 +42,7 @@ def editVideo(actiontype):
         try:
             video_file =  request.form['videofile']
             path = os.getcwd() + "\\editing\\" + video_file
-            edited_videopath = trimVideo(path, int(request.form['trim_start']),
+            edited_videopath = trim_video(path, int(request.form['trim_start']),
                                          int(request.form['trim_end']))
             return {
                 "status": "success",
@@ -70,11 +67,11 @@ def mergedRender():
             for i in range(videoscount):
                 videoclip_filenames.append(request.form['video' + str(i)])
 
-            finalrender_videopath = mergeVideos(videoclip_filenames)
+            final_render_video_path = merge_videos(videoclip_filenames)
             return {
                 "status": "success",
                 "message": "merged render success",
-                "finalrender_videopath": finalrender_videopath
+                "final_render_video_path": final_render_video_path
             }
         else:
             return {
