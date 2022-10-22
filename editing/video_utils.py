@@ -1,5 +1,5 @@
 import os
-from moviepy.editor import VideoFileClip, clips_array, vfx, concatenate_videoclips, ImageClip, CompositeVideoClip
+from moviepy.editor import VideoFileClip, concatenate_videoclips, ImageClip, CompositeVideoClip
 import time
 
 video_save_path = os.getcwd() + "\\editing\\clips\\"

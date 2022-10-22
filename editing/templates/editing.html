@@ -312,7 +312,7 @@
 					// console.log("Editor Response",res);
 					setLoader(false);
 					if(res.status == "success"){
-						app.videos[videoID].file = res.edited_videopath;
+						app.videos[videoID].file = res.edited_video_path;
 						app.setRenderVideo(videoID);
 						console.log(res.message);
 						// toastr.success(res.message);
@@ -373,12 +373,12 @@
 
 				console.log("requestobj",requestobj);
 
-				$.post("/merged_render",requestobj,function(res){
+				$.post(window.location.href + "/merged_render",requestobj,function(res){
 					console.log(res);
 
 					if(res.status == "success"){
 						console.log("Final render success!");
-						$("#render").attr('src',window.location.href + res.finalrender_videopath);
+						$("#render").attr('src',window.location.href + res.final_render_video_path);
 					}
 					else{
 						console.log("Final render ERROR: " + res.message);

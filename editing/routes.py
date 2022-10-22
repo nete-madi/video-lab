@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, send_file, Blueprint
+from flask import request, render_template, send_file, Blueprint
 from editing.video_utils import *
 import os
 
@@ -40,14 +40,13 @@ def upload_video():
 def editVideo(actiontype):
     if actiontype == "trim":
         try:
-            video_file =  request.form['videofile']
+            video_file = request.form['videofile']
             path = os.getcwd() + "\\editing\\" + video_file
-            edited_videopath = trim_video(path, int(request.form['trim_start']),
-                                         int(request.form['trim_end']))
+            edited_video_path = trim_video(path, int(request.form['trim_start']), int(request.form['trim_end']))
             return {
                 "status": "success",
                 "message": "video edit success",
-                "edited_videopath": edited_videopath[35:]
+                "edited_video_path": edited_video_path[35:]
             }
         except Exception as e:
             return {
@@ -59,7 +58,7 @@ def editVideo(actiontype):
 
 
 @editing.route('/merged_render', methods=['POST'])
-def mergedRender():
+def merged_render():
     try:
         videoscount = int(request.form['videoscount'])
         if videoscount > 0:
