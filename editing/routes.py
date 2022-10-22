@@ -63,11 +63,11 @@ def mergedRender():
     try:
         videoscount = int(request.form['videoscount'])
         if videoscount > 0:
-            videoclip_filenames = []
+            video_clip_filenames = []
             for i in range(videoscount):
-                videoclip_filenames.append(request.form['video' + str(i)])
+                video_clip_filenames.append(request.form['video' + str(i)])
 
-            final_render_video_path = merge_videos(videoclip_filenames)
+            final_render_video_path = merge_videos(video_clip_filenames)
             return {
                 "status": "success",
                 "message": "merged render success",
