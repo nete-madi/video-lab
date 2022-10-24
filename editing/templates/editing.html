@@ -161,30 +161,30 @@
                                 <div class="form-group">
                                     <div class="col-sm-4">
                                         <label for="imginput">Choose Image:</label>
-                                        <input type="file" accept="image/*" name="Choose Image: ">
+                                        <input type="file" accept="image/*" name="Choose Image: " id="imginput">
                                         <!--Use img input in your JS function. Refer to the other functions below-->
                                     </div>
                                     <div class="col-sm-4">
                                         <label for="startstamp">Starting timestamp:</label>
-                                        <input min="0" max="120" type="number" :id="`start_stamp`+index"
+                                        <input id="startstamp" min="0" max="120" type="number" :id="`start_stamp`+index"
                                                value="0">
                                     </div>
                                     <div class="col-sm-4">
                                         <label for="duration">Duration:</label>
-                                        <input min="0" max="120" type="number" :id="`duration`+index"
+                                        <input id="duration" min="0" max="120" type="number" :id="`duration`+index"
                                                value="0">
                                     </div>
                                     <div class="col-sm-4">
-                                        <label for="Position">Position:</label>
+                                        <label>Position:</label>
                                     </div>
                                     <div class="col-sm-4">
                                         <label for="x-val">x:</label>
-                                        <input min="0" max="120" type="number" :id="`x_pos`+index"
+                                        <input id="x-val" min="0" max="120" type="number" :id="`x_pos`+index"
                                                value="0">
                                     </div>
                                     <div class="col-sm-4">
                                         <label for="y-val">y:</label>
-                                        <input min="0" max="120" type="number" :id="`y_pos`+index"
+                                        <input id="y-val" min="0" max="120" type="number" :id="`y_pos`+index"
                                                value="0">
                                     </div>
 
@@ -306,7 +306,7 @@
 
 				else if(actiontype == "image"){
 					editor_payload = {
-						img_src: $("#imginput").val(),
+						img_src: document.getElementById("imginput").value,
 						start_time: $("#start_stamp"+videoID).val(),
 						duration: $("#duration"+videoID).val()
 					}

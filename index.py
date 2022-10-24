@@ -3,9 +3,8 @@ import editing.routes
 
 # TODO: In editing.html: Configure the payload for image overlay. Here is the payload and console output:
 # editor_payload
-# Object { img_src: undefined, start_time: "0", duration: "10", videofile: "clips\\sample-mp4-file.mp4" }
-# editing:317:13
-# video edit failure: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+# Object { img_src: "C:\\fakepath\\img.jpg", start_time: "0", duration: "10", videofile: "clips\\sample-mp4-file.mp4" }
+# video edit failure: No such file: 'C:\fakepath\img.jpg'
 # TODO: merged_render editing route is not working
 
 # https://stackoverflow.com/questions/72914568/overlay-image-on-video-using-moviepy
