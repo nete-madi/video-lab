@@ -71,7 +71,7 @@ def editor(actiontype):
             video_file = request.form['videofile']
             path = os.getcwd() + "\\editing\\" + video_file
             edited_video_path = img_overlay(path, int(request.form['start_time']),
-                                            int(request.form['duration']), str(request.form['img_src']))
+                                            int(request.form['duration']), str(request.form['imgfile']))
             return {
                 "status": "success",
                 "message": "video edit success",
