@@ -5,10 +5,7 @@ import editing.routes
 # editor_payload
 # Object { img_src: "C:\\fakepath\\img.jpg", start_time: "0", duration: "10", videofile: "clips\\sample-mp4-file.mp4" }
 # video edit failure: No such file: 'C:\fakepath\img.jpg'
-# TODO: merged_render editing route is not working
-
 # Try employing the same logic as video upload for image upload
-
 # https://stackoverflow.com/questions/72914568/overlay-image-on-video-using-moviepy
 
 app = Flask(__name__)  # name for flask app

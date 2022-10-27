@@ -30,7 +30,6 @@ def upload_video():
         video_file.save(longfilepath)
     except Exception as e:
         print(e)
-
     return str(longfilepath[35:])
 
 
