@@ -26,13 +26,12 @@ def upload_video():
     try:
         video_file = request.files['videofile']
         longfilepath = os.getcwd() + "\\editing\\clips\\" + video_file.filename
-        filepath = longfilepath[35:]
-        print("*** Your filepath is: " + filepath + "***")
+        # filepath = longfilepath[35:]
         video_file.save(longfilepath)
     except Exception as e:
         print(e)
 
-    return str(filepath)
+    return str(longfilepath[35:])
 
 
 # Main video editing pipeline
@@ -78,9 +77,10 @@ def merged_render():
         if videoscount > 0:
             video_clip_filenames = []
             for i in range(videoscount):
-                video_clip_filenames.append(request.form['video' + str(i)])
-
-            final_render_video_path = merge_videos(video_clip_filenames)
+                path = os.getcwd() + "\\editing\\" + request.form['video' + str(i)]
+                video_clip_filenames.append(path)
+            final_render_video_path = merge_videos(video_clip_filenames)[35:]
+            print("final path is " + final_render_video_path)
             return {
                 "status": "success",
                 "message": "merged render success",

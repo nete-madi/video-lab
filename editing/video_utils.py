@@ -25,10 +25,10 @@ def img_overlay(videofile: str, start_time: int, duration: int, img: str):
 
 def merge_videos(video_clip_filenames):
     video_clips = []
+    # The video clip filenames are the short path. You need the long path
     for filename in video_clip_filenames:
         video_clips.append(VideoFileClip(filename))
-
     final_clip = concatenate_videoclips(video_clips, method="compose")
-    final_path = "clips/finalrender_" + str(int(time.time())) + ".mp4"
+    final_path = os.getcwd() + "\\editing\\clips\\finalrender_" + str(int(time.time())) + ".mp4"
     final_clip.write_videofile(final_path)
     return final_path
