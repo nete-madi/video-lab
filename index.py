@@ -8,6 +8,8 @@ import editing.routes
 # Try employing the same logic as video upload for image upload
 # https://stackoverflow.com/questions/72914568/overlay-image-on-video-using-moviepy
 
+# TODO: Add a global var for the use of os.getcwd in editing routes
+
 app = Flask(__name__)  # name for flask app
 app.register_blueprint(editing.routes.editing, url_prefix='/editing')
 

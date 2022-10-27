@@ -162,6 +162,7 @@
                                     <div class="col-sm-4">
                                         <label for="imginput">Choose Image:</label>
                                         <input type="file" accept="image/*" name="Choose Image: " id="imginput">
+                                        <button class="btn btn-primary" v-on:click="uploadImageFile">Upload Image</button>
                                         <!--Use img input in your JS function. Refer to the other functions below-->
                                     </div>
                                     <div class="col-sm-4">
@@ -257,6 +258,7 @@
 	      el: '#app',
 	      data: {
 	        originalvideos: [],  //original video clips added by user
+	        images: [], // images uploaded by user for editing purposes
 			videos: [],  //current clips being edited
 	      },
 	      delimiters: ['[[',']]'],
@@ -306,7 +308,6 @@
 
 				else if(actiontype == "image"){
 					editor_payload = {
-						img_src: document.getElementById("imginput").value,
 						start_time: $("#start_stamp"+videoID).val(),
 						duration: $("#duration"+videoID).val()
 					}
@@ -366,6 +367,40 @@
 			    		console.log('Video uploaded!');
 
 			    		app.setRenderVideo(this.videos.length - 1);
+
+			    	})
+			    	.catch(err => console.log(err))
+			},
+
+			uploadImageFile: function() {
+				updateProgressBar(0);
+			  	let img_name = $("#imginput").val();
+			  	if (img_name == "") {
+			  	    img_name = "img";
+			  	}
+			  	let imgfiledata = document.getElementById('fileinput').files[0];
+			  	if(!imgfiledata){
+			  		console.log("File is empty!");
+			  		return;
+			  	}
+
+			  	const config = {
+			    	onUploadProgress: function(progressEvent) {
+			      	var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
+			      	// console.log(percentCompleted)
+			      	updateProgressBar(percentCompleted);
+			    	}
+			  	}
+
+			  	let imgdata = new FormData()
+			  	imgdata.append('imgfile', imgfiledata);
+
+			  	axios.post('/editing/upload_img', imgdata, config)
+			    	.then(res => {
+			    		console.log(res);
+			    		this.images.push({name:img_name,file:res.data});
+	    		 		console.log("images",this.images);
+			    		console.log('Image uploaded!');
 
 			    	})
 			    	.catch(err => console.log(err))
