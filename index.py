@@ -1,7 +1,7 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, send_from_directory
 import editing.routes
 
-app = Flask(__name__)  # name for flask app
+app = Flask(__name__, static_folder='static')  # name for flask app
 app.register_blueprint(editing.routes.editing, url_prefix='/editing')
 
 
@@ -9,6 +9,11 @@ app.register_blueprint(editing.routes.editing, url_prefix='/editing')
 @app.route("/", methods=['GET'])
 def index():
     return render_template('index.html')
+
+
+@app.route("/img/favicon.ico", methods=['GET'])
+def favicon():
+    return send_from_directory(app.static_folder, 'favicon.ico')
 
 
 @app.route("/goals_and_guidelines")
