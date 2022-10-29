@@ -286,53 +286,6 @@
 				$("#render").attr('src',"");
 			},
 
-			editVideoSubmit: function(videoID,actiontype){
-				console.log("editVideoSubmit",videoID);
-				setLoader(true);
-
-				let video = this.videos[videoID].file;
-
-				if(video === undefined){
-					console.log("Video is empty!");
-					return;
-				}
-
-				let editor_payload = {};
-
-				if(actiontype == "trim"){
-					editor_payload = {
-						trim_start: $("#trim_start"+videoID).val(),
-						trim_end: $("#trim_end"+videoID).val()
-					}
-				}
-
-				else if(actiontype == "image"){
-					editor_payload = {
-						start_time: $("#start_stamp"+videoID).val(),
-						duration: $("#duration"+videoID).val()
-					}
-				}
-
-
-				editor_payload.videofile = video;
-				console.log("editor_payload",editor_payload);
-				// send edit request to backend and render the preview returned by server
-				$.post(window.location.href + "/edit_video/" + actiontype,editor_payload,function(res){
-					// console.log("Editor Response",res);
-					setLoader(false);
-					if(res.status == "success"){
-						app.videos[videoID].file = res.edited_video_path;
-						app.setRenderVideo(videoID);
-						console.log(res.message);
-						// toastr.success(res.message);
-					}
-					else{
-						// toastr.error(res.message);
-						console.log(res.message);
-					}
-				});
-			},
-
 			uploadVideoFile: function() {
 				updateProgressBar(0);
 			  	let clipname = $("#clipname").val();
@@ -378,7 +331,8 @@
 			  	if (img_name == "") {
 			  	    img_name = "img";
 			  	}
-			  	let imgfiledata = document.getElementById('fileinput').files[0];
+			  	let imgfiledata = document.getElementById('imginput').files[0];
+			  	console.log(imgfiledata)
 			  	if(!imgfiledata){
 			  		console.log("File is empty!");
 			  		return;
@@ -405,6 +359,57 @@
 			    	})
 			    	.catch(err => console.log(err))
 			},
+
+			editVideoSubmit: function(videoID,actiontype){
+				console.log("editVideoSubmit",videoID);
+				setLoader(true);
+
+				let video = this.videos[videoID].file;
+				let image = this.images[0].file;
+
+				if(video === undefined){
+					console.log("Video is empty!");
+					return;
+				}
+
+				let editor_payload = {};
+
+				if(actiontype == "trim"){
+					editor_payload = {
+						trim_start: $("#trim_start"+videoID).val(),
+						trim_end: $("#trim_end"+videoID).val()
+					}
+				}
+
+				else if(actiontype == "image"){
+					editor_payload = {
+						start_time: $("#start_stamp"+videoID).val(),
+						duration: $("#duration"+videoID).val()
+					}
+				}
+
+
+				editor_payload.videofile = video;
+				editor_payload.imgfile = image;
+				console.log("editor_payload",editor_payload);
+				// send edit request to backend and render the preview returned by server
+				$.post(window.location.href + "/edit_video/" + actiontype,editor_payload,function(res){
+					// console.log("Editor Response",res);
+					setLoader(false);
+					if(res.status == "success"){
+						app.videos[videoID].file = res.edited_video_path;
+						app.setRenderVideo(videoID);
+						console.log(res.message);
+						// toastr.success(res.message);
+					}
+					else{
+						// toastr.error(res.message);
+						console.log(res.message);
+					}
+				});
+			},
+
+
 
 			finalrender: function(){
 				setLoader(true);

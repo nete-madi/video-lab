@@ -13,8 +13,14 @@ def edit_video():
 
 @editing.route("/clips/<filename>")
 def render_clip(filename):
-    import os
     path = fullpath + "clips\\" + filename
+    print(path)
+    return send_file(path)
+
+
+@editing.route("/img/<filename>")
+def render_img(filename):
+    path = fullpath + "img\\" + filename
     print(path)
     return send_file(path)
 

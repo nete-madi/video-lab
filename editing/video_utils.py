@@ -1,6 +1,6 @@
 import os
-from moviepy.editor import VideoFileClip, concatenate_videoclips, ImageClip, CompositeVideoClip
 import time
+from moviepy.editor import VideoFileClip, concatenate_videoclips, ImageClip, CompositeVideoClip
 
 video_save_path = os.getcwd() + "\\editing\\clips\\"
 
@@ -16,8 +16,10 @@ def trim_video(videofile: str, start_time: int, end_time: int):
 
 def img_overlay(videofile: str, start_time: int, duration: int, img: str):
     clip = VideoFileClip(videofile)
+    img = os.getcwd() + "\\editing\\" + img
     img = ImageClip(img).set_start(start_time).set_duration(duration).set_pos(("center", "center"))
-    edited_path = video_save_path + "edited_" + str(int(time.time())) + videofile
+    # TODO: set videofile name dynamically
+    edited_path = video_save_path + "edited_" + str(int(time.time())) + videofile[41:]
     final = CompositeVideoClip([clip, img])
     final.write_videofile(edited_path)
     return edited_path
