@@ -3,6 +3,7 @@ from editing.video_utils import *
 import os
 
 editing = Blueprint('editing', __name__, template_folder='templates')
+fullpath = os.getcwd() + "\\editing\\"
 
 
 @editing.route("/", methods=['GET'])
@@ -13,7 +14,7 @@ def edit_video():
 @editing.route("/clips/<filename>")
 def render_clip(filename):
     import os
-    path = os.getcwd() + "\\editing\\clips\\" + filename
+    path = fullpath + "clips\\" + filename
     print(path)
     return send_file(path)
 
@@ -25,7 +26,7 @@ def upload_video():
         os.mkdir("./editing/clips")
     try:
         video_file = request.files['videofile']
-        longfilepath = os.getcwd() + "\\editing\\clips\\" + video_file.filename
+        longfilepath = fullpath + "clips\\" + video_file.filename
         # filepath = longfilepath[35:]
         video_file.save(longfilepath)
     except Exception as e:
@@ -40,7 +41,7 @@ def upload_img():
         os.mkdir("./editing/img")
     try:
         img_file = request.files['imgfile']
-        longfilepath = os.getcwd() + "\\editing\\img\\" + img_file.filename
+        longfilepath = fullpath + "img\\" + img_file.filename
         # filepath = longfilepath[35:]
         img_file.save(longfilepath)
     except Exception as e:
@@ -54,7 +55,7 @@ def editor(actiontype):
     if actiontype == "trim":
         try:
             video_file = request.form['videofile']
-            path = os.getcwd() + "\\editing\\" + video_file
+            path = fullpath + video_file
             edited_video_path = trim_video(path, int(request.form['trim_start']), int(request.form['trim_end']))
             return {
                 "status": "success",
@@ -69,7 +70,7 @@ def editor(actiontype):
     elif actiontype == "image":
         try:
             video_file = request.form['videofile']
-            path = os.getcwd() + "\\editing\\" + video_file
+            path = fullpath + video_file
             edited_video_path = img_overlay(path, int(request.form['start_time']),
                                             int(request.form['duration']), str(request.form['imgfile']))
             return {
@@ -91,7 +92,7 @@ def merged_render():
         if videoscount > 0:
             video_clip_filenames = []
             for i in range(videoscount):
-                path = os.getcwd() + "\\editing\\" + request.form['video' + str(i)]
+                path = fullpath + request.form['video' + str(i)]
                 video_clip_filenames.append(path)
             final_render_video_path = merge_videos(video_clip_filenames)[35:]
             print("final path is " + final_render_video_path)
