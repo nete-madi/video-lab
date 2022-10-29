@@ -18,6 +18,10 @@
     <style>
         .version-header {
             border-bottom: 2px solid black;
+            position:fixed;
+            width:100%;
+            overflow:auto;
+            background:grey;
         }
 
         .loader {
@@ -53,12 +57,25 @@
 			border-radius: 10px;
 		}
 
+		input[type=number]{
+		    max-width:25%;
+		    margin-top:5px;
+		    margin-bottom:5px;
+		}
+
+		a {
+		    color:black;
+		}
+		a:hover {
+		    color:white;
+		}
+
 
     </style>
 </head>
 <body>
 <div class="row version-header">
-    <div class="col"><h5 align="left">BugSwatter v. 0.1</h5></div>
+    <div class="col"><h5 align="left">BugSwatter v. 0.1 | <a href="/">Return to Home</a></h5></div>
     <div class="col"><h5 align="right" style="font-weight:bold">Step 2: Editing</h5></div>
 </div>
 <br> <br>
@@ -137,14 +154,14 @@
                             <div class="col-lg-6">
                                 <b><u>Trim</u></b>
                                 <div class="form-group">
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-8">
                                         <label for="start">Start:</label>
-                                        <input min="0" max="120" type="number" :id="`trim_start`+index"
+                                        <input id="start" min="0" max="120" type="number" :id="`trim_start`+index"
                                                value="0">
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-8">
                                         <label for="end">End: </label>
-                                        <input min="0" max="120" type="number" :id="`trim_end`+index"
+                                        <input id="end" min="0" max="120" type="number" :id="`trim_end`+index"
                                                value="0">
                                     </div>
                                     <br>
@@ -159,31 +176,31 @@
                             <div class="col-lg-6">
                                 <b><u>Add Image</u></b>
                                 <div class="form-group">
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-8">
                                         <label for="imginput">Choose Image:</label>
                                         <input type="file" accept="image/*" name="Choose Image: " id="imginput">
                                         <button class="btn btn-primary" v-on:click="uploadImageFile">Upload Image</button>
-                                        <!--Use img input in your JS function. Refer to the other functions below-->
                                     </div>
-                                    <div class="col-sm-4">
+                                    <br><br>
+                                    <div class="col-sm-8">
                                         <label for="startstamp">Starting timestamp:</label>
                                         <input id="startstamp" min="0" max="120" type="number" :id="`start_stamp`+index"
                                                value="0">
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-8">
                                         <label for="duration">Duration:</label>
                                         <input id="duration" min="0" max="120" type="number" :id="`duration`+index"
                                                value="0">
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-8">
                                         <label>Position:</label>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-8">
                                         <label for="x-val">x:</label>
                                         <input id="x-val" min="0" max="120" type="number" :id="`x_pos`+index"
                                                value="0">
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-8">
                                         <label for="y-val">y:</label>
                                         <input id="y-val" min="0" max="120" type="number" :id="`y_pos`+index"
                                                value="0">
