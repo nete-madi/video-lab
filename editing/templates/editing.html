@@ -305,14 +305,16 @@
 
 			uploadVideoFile: function() {
 				updateProgressBar(0);
-			  	let clipname = $("#clipname").val();
-			  	if (clipname == "") {
-			  	    clipname = "newClip";
-			  	}
+
 			  	let filedata = document.getElementById('fileinput').files[0];
 			  	if(!filedata){
 			  		console.log("File is empty!");
 			  		return;
+			  	}
+
+			  	let clipname = $("#clipname").val();
+			  	if (clipname == "") {
+			  	    clipname = filedata.name;
 			  	}
 
 			  	const config = {
