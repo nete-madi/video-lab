@@ -14,10 +14,13 @@ def trim_video(videofile: str, start_time: int, end_time: int):
     return trim_path
 
 
-def img_overlay(videofile: str, start_time: int, duration: int, img: str):
+def img_overlay(videofile: str, img: str, start_time: int, duration: int, x_pos: int, y_pos: int, sz_scale: float):
     clip = VideoFileClip(videofile)
     img = os.getcwd() + "\\editing\\" + img
-    img = ImageClip(img).set_start(start_time).set_duration(duration).set_pos(("center", "center"))
+    if sz_scale != 0:
+        img = ImageClip(img).set_start(start_time).set_duration(duration).set_pos((x_pos, y_pos)).resize(sz_scale)
+    else:
+        img = ImageClip(img).set_start(start_time).set_duration(duration).set_pos((x_pos, y_pos))
     # TODO: set videofile name dynamically
     edited_path = video_save_path + "edited_" + str(int(time.time())) + videofile[41:]
     final = CompositeVideoClip([clip, img])

@@ -207,6 +207,14 @@
                                                value="0">
                                     </div>
 
+                                    <div class="col-sm-8">
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <label for="sz_scale">Resize Scale:</label>
+                                        <input id="sz_scale" min="0" type="number" step="0.01" :id="`sz_scale`+index"
+                                               value="0">
+                                    </div>
+
                                 </div>
                                 <br>
                                 <div class="col-sm-6">
@@ -385,6 +393,7 @@
 				setLoader(true);
 
 				let video = this.videos[videoID].file;
+				// TODO: Allow user to upload multiple images.
 				let image = this.images[0].file;
 
 				if(video === undefined){
@@ -404,7 +413,10 @@
 				else if(actiontype == "image"){
 					editor_payload = {
 						start_time: $("#start_stamp"+videoID).val(),
-						duration: $("#duration"+videoID).val()
+						duration: $("#duration"+videoID).val(),
+						x_pos: $("#x_pos"+videoID).val(),
+						y_pos: $("#y_pos"+videoID).val(),
+						sz_scale: $("#sz_scale"+videoID).val()
 					}
 				}
 
