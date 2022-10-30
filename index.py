@@ -1,7 +1,8 @@
 from flask import Flask, render_template, send_from_directory
 import editing.routes
+import os
 
-app = Flask(__name__, static_folder='static')  # name for flask app
+app = Flask(__name__)  # name for flask app
 app.register_blueprint(editing.routes.editing, url_prefix='/editing')
 
 
@@ -13,7 +14,7 @@ def index():
 
 @app.route("/img/favicon.ico", methods=['GET'])
 def favicon():
-    return send_from_directory(app.static_folder, 'favicon.ico')
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
 @app.route("/goals_and_guidelines")
