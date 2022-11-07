@@ -70,9 +70,6 @@
 		a:hover {
 		    color:white;
 		}
-
-
-
     </style>
 </head>
 <body>
@@ -228,14 +225,18 @@
                     </div>
                 </div>
             </div>
+            <!--Eventually add a dropdown menu here, so you can select what image to render.-->
             <div class="row">
-                        <div class="col-sm-6">
-                            <img src="{{ url_for('editing.render_img', filename='pink_circle.png') }}" alt="Pink circle"
-                                 width=200 length=200>
-                        </div>
-                    </div>
+                <div class="col-sm-6">
+                    <img id="drag1" src="{{ url_for('editing.render_img', filename='pink_circle.png') }}" alt="Pink circle"
+                         width=200 height=200 draggable="true" ondragstart="drag(event)">
+                </div>
+                <div class="col-sm-6">
+                    <div style="width: 200px;height: 200px;padding: 10px;border: 1px solid #aaaaaa;" ondrop="drop(event)"
+                         ondragover="allowDrop(event)"></div>
+                </div>
+            </div>
             <br> <br>
-
         </div>
     </div>
 
@@ -268,6 +269,22 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script> -->
+
+<script type="text/javascript">
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+    }
+</script>
 
 <script type="text/javascript">
 
@@ -478,6 +495,8 @@
 	      // created() {
 	      // }
 	    })
+
+
 
 
 
