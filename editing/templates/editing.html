@@ -72,6 +72,7 @@
 		}
 
 
+
     </style>
 </head>
 <body>
@@ -118,7 +119,6 @@
                             </div>
                         </div>
                     </div>
-
 
                 </div>
                 <div class="col-sm-12" style="padding: 50px;">
@@ -180,7 +180,8 @@
                                     <div class="col-sm-8">
                                         <label for="imginput">Choose Image:</label>
                                         <input type="file" accept="image/*" name="Choose Image: " id="imginput">
-                                        <button class="btn btn-primary" v-on:click="uploadImageFile">Upload Image</button>
+                                        <button class="btn btn-primary" v-on:click="uploadImageFile">Upload Image
+                                        </button>
                                     </div>
                                     <br><br>
                                     <div class="col-sm-8">
@@ -218,15 +219,21 @@
                                 </div>
                                 <br>
                                 <div class="col-sm-6">
-                                    <button class="btn btn-warning" v-on:click="editVideoSubmit(index,'image')">Add Image</button>
+                                    <button class="btn btn-warning" v-on:click="editVideoSubmit(index,'image')">Add
+                                        Image
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
+            <div class="row">
+                        <div class="col-sm-6">
+                            <img src="{{ url_for('editing.render_img', filename='pink_circle.png') }}" alt="Pink circle"
+                                 width=200 length=200>
+                        </div>
+                    </div>
             <br> <br>
 
         </div>
@@ -471,6 +478,7 @@
 	      // created() {
 	      // }
 	    })
+
 
 
 
