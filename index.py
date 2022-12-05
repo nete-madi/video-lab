@@ -1,3 +1,8 @@
+# TODO: Drag and drop the circle onto the video.
+# Get the position of the circle from wherever you dropped it
+# and re-render your video with the circle in the position you dragged it on.
+# You may have to re-implement some things.
+# See here: https://www.openshot.org/blog/2008/09/12/drag-drop-with-gtk-and-python/
 from flask import Flask, render_template, send_from_directory
 import editing.routes
 import os
