@@ -3,6 +3,7 @@
 # and re-render your video with the circle in the position you dragged it on.
 # You may have to re-implement some things.
 # See here: https://www.openshot.org/blog/2008/09/12/drag-drop-with-gtk-and-python/
+# https://dataanalyticsireland.ie/2021/12/13/how-to-pass-a-javascript-variable-to-python-using-json/
 from flask import Flask, render_template, send_from_directory
 import editing.routes
 import os
