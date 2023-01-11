@@ -48,6 +48,7 @@
 		    border: 10px dotted #ff00ff;
 		    z-index:2;
 		    position:absolute;
+		    margin-left:10%;
 		}
 
 		/* Safari */
@@ -249,9 +250,11 @@
             <!--Eventually add a dropdown menu here, so you can select what image to render.-->
             <div class="row">
                 <div class="col-sm-6">
-                    <img id="drag1" src="{{ url_for('editing.render_img', filename='pink_circle.png') }}"
+                    <div class="drop-landing" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img id="drag1" src="{{ url_for('editing.render_img', filename='pink_circle.png') }}"
                          alt="Pink circle"
                          width=200 height=200 draggable="true" ondragstart="drag(event)">
+                    </div>
                 </div>
             </div>
             <br> <br>
