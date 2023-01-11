@@ -42,8 +42,8 @@
 		}
 
 		.drop-landing {
-		    width: 200px;
-		    height: 200px;
+		    width: 210px;
+		    height: 210px;
 		    padding: 10px;
 		    border: 10px dotted #ff00ff;
 		    z-index:2;
@@ -306,7 +306,7 @@
         var data = ev.dataTransfer.getData("text");
         var img = document.getElementById(data);
         ev.target.appendChild(document.getElementById(data));
-        console.log("coords of img are " + img.offsetLeft + " , " + img.offsetTop);
+        console.log("coords of img are " + img.offsetLeft + ", " + img.offsetTop);
     }
 
 
