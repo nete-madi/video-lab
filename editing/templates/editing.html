@@ -303,10 +303,14 @@
 
     function drop(ev) {
         ev.preventDefault();
+
         var data = ev.dataTransfer.getData("text");
         var img = document.getElementById(data);
+        var xCoord = img.offsetLeft;
+        var yCoord = img.offsetTop;
+
         ev.target.appendChild(document.getElementById(data));
-        console.log("coords of img are " + img.offsetLeft + ", " + img.offsetTop);
+        console.log("coords of img are " + xCoord + ", " + yCoord);
     }
 
 
