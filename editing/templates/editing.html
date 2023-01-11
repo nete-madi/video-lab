@@ -41,6 +41,15 @@
 		  animation: spin 2s linear infinite;
 		}
 
+		.drop-landing {
+		    width: 200px;
+		    height: 200px;
+		    padding: 10px;
+		    border: 10px dotted #ff00ff;
+		    z-index:2;
+		    position:absolute;
+		}
+
 		/* Safari */
 		@-webkit-keyframes spin {
 		  0% { -webkit-transform: rotate(0deg); }
@@ -97,9 +106,7 @@
                 <div align="center" class="row">
                     <b>Video Render Preview</b><br>
                     <div style="width: 100%;max-width: 100%;z-index:1;">
-                        <div style="width: 200px;height: 200px;padding: 10px;border: 10px dotted #ff00ff;z-index:2;position:absolute;"
-                             ondrop="drop(event)"
-                             ondragover="allowDrop(event)"></div>
+                        <div class="drop-landing" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                         <video id="render" controls></video>
 
                     </div>
