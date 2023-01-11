@@ -292,6 +292,7 @@
 <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script> -->
 
 <script type="text/javascript">
+
     function allowDrop(ev) {
         ev.preventDefault();
     }
@@ -303,8 +304,9 @@
     function drop(ev) {
         ev.preventDefault();
         var data = ev.dataTransfer.getData("text");
+        var img = document.getElementById(data);
         ev.target.appendChild(document.getElementById(data));
-        console.log("drop it low!");
+        console.log("coords of img are " + img.offsetLeft + " , " + img.offsetTop);
     }
 
 
