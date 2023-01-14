@@ -94,6 +94,7 @@
 
 
 
+
     </style>
 </head>
 <body>
@@ -200,11 +201,9 @@
                             <div class="col-lg-6">
                                 <b><u>Add Image</u></b>
                                 <div class="col-sm-8">
-                                    <div class="drop-landing" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                        <img id="drag1"
-                                             src="{{ url_for('editing.render_img', filename='circle_lg.png') }}"
-                                             alt="A 200x200 px pink circle." draggable="true" ondragstart="drag(event)">
-                                    </div>
+                                    <img id="drag1"
+                                         src="{{ url_for('editing.render_img', filename='circle_lg.png') }}"
+                                         alt="A 200x200 px pink circle." draggable="true" ondragstart="drag(event)">
                                 </div>
                                 <br>
                             </div>
@@ -267,6 +266,7 @@
         ev.target.appendChild(document.getElementById(data));
         console.log("coords of img are " + xCoord + ", " + yCoord);
     }
+
 
 
 
@@ -481,6 +481,7 @@
 	      // created() {
 	      // }
 	    })
+
 
 </script>
 </body>
