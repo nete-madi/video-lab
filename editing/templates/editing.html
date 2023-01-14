@@ -42,11 +42,13 @@
 		}
 
 		.drop-landing {
-		    width: 200px;
-		    height: 200px;
-		    border: 10px dotted #ff00ff;
+		    width: 100%;
+		    height:500px;
+		    max-height:500px;
+		    border: 5px dotted #ff00ff;
 		    z-index:200;
 		    position:absolute;
+		    background:transparent;
 		}
 
 		/* Safari */
@@ -61,15 +63,18 @@
 		}
 
 		video {
-		  width: 100%;
+		  width: 50%;
 		  height: auto;
 		  max-height: 500px;
+		  max-width: 50%;
+		  position:absolute;
 		}
 
 		.videodiv{
 			padding: 10px;
 			border: 2px solid #282860;
 			border-radius: 10px;
+			position:absolute;
 		}
 
 		input[type=number]{
@@ -86,6 +91,7 @@
 		}
 
 
+
     </style>
 </head>
 <body>
@@ -100,13 +106,12 @@
         <br><br>
         <div class="row">
             <div class="col-lg-6">
-                <div align="center" class="row">
-                    <b>Video Render Preview</b><br>
-                    <div style="width: 100%;max-width: 100%;z-index:1;">
-                        <div class="drop-landing" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                        <video id="render" controls></video>
-
-                    </div>
+                <div style="text-align:center;">
+                    <h3>Video Render Preview</h3><br>
+                </div>
+                <div align="center" class="row" style="position:relative;">
+                    <div class="drop-landing" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <video id="render" controls></video>
                 </div>
             </div>
 
@@ -191,7 +196,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <b><u>Annotations Palette</u></b>
-                                <br><br><br>
+                                <br><br>
                                 <div class="col-sm-8">
                                     <img id="drag1"
                                          src="{{ url_for('editing.render_img', filename='circle_lg.png') }}"
@@ -258,6 +263,7 @@
         ev.target.appendChild(document.getElementById(data));
         console.log("coords of img are " + xCoord + ", " + yCoord);
     }
+
 
 </script>
 
@@ -470,6 +476,7 @@
 	      // created() {
 	      // }
 	    })
+
 
 
 
