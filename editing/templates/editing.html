@@ -258,7 +258,7 @@
         var data = ev.dataTransfer.getData("text");
         var img = document.getElementById(data);
         var xCoord = img.offsetLeft;
-        var yCoord = img.offsetTop; // these offsets are the position of the circle relative to the box it's in
+        var yCoord = img.offsetTop; // these offsets are the position of the circle relative to the entire page
 
         ev.target.appendChild(document.getElementById(data));
         console.log("coords of img are " + xCoord + ", " + yCoord);
