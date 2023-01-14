@@ -42,11 +42,10 @@
 		}
 
 		.drop-landing {
-		    width: 150px;
-		    height: 150px;
+		    width: 200px;
+		    height: 200px;
 		    border: 10px dotted #ff00ff;
-		    z-index:2;
-		    position:relative;
+		    z-index:200;
 		}
 
 		/* Safari */
@@ -84,6 +83,7 @@
 		a:hover {
 		    color:white;
 		}
+
 
 
 
@@ -201,9 +201,8 @@
                                 <div class="col-sm-8">
                                     <div class="drop-landing" ondrop="drop(event)" ondragover="allowDrop(event)">
                                         <img id="drag1"
-                                             src="{{ url_for('editing.render_img', filename='pink_circle.png') }}"
-                                             alt="Pink circle"
-                                             width=150 height=150 draggable="true" ondragstart="drag(event)">
+                                             src="{{ url_for('editing.render_img', filename='circle_lg.png') }}"
+                                             alt="A 200x200 px pink circle." draggable="true" ondragstart="drag(event)">
                                     </div>
                                 </div>
                                 <br>
@@ -267,6 +266,7 @@
         ev.target.appendChild(document.getElementById(data));
         console.log("coords of img are " + xCoord + ", " + yCoord);
     }
+
 
 </script>
 
@@ -479,6 +479,7 @@
 	      // created() {
 	      // }
 	    })
+
 
 
 
