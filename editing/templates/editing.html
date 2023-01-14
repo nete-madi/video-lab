@@ -340,7 +340,7 @@
 	      el: '#app',
 	      data: {
 	        originalvideos: [],  //original video clips added by user
-	        images: [], // images uploaded by user for editing purposes
+	        //images: [], // images uploaded by user for editing purposes
 			videos: [],  //current clips being edited
 	      },
 	      delimiters: ['[[',']]'],
@@ -409,7 +409,7 @@
 			    	.catch(err => console.log(err))
 			},
 
-			uploadImageFile: function() {
+			/* uploadImageFile: function() {
 				updateProgressBar(0);
 			  	let img_name = $("#imginput").val();
 			  	if (img_name == "") {
@@ -442,7 +442,7 @@
 
 			    	})
 			    	.catch(err => console.log(err))
-			},
+			},*/
 
 			editVideoSubmit: function(videoID,actiontype){
 				console.log("editVideoSubmit",videoID);
@@ -450,7 +450,7 @@
 
 				let video = this.videos[videoID].file;
 				// TODO: Allow user to upload multiple images.
-				let image = this.images[0].file;
+				//let image = this.images[0].file;
 
 				if(video === undefined){
 					console.log("Video is empty!");
@@ -466,7 +466,7 @@
 					}
 				}
 
-				else if(actiontype == "image"){
+				/*else if(actiontype == "image"){
 					editor_payload = {
 						start_time: $("#start_stamp"+videoID).val(),
 						duration: $("#duration"+videoID).val(),
@@ -474,11 +474,11 @@
 						y_pos: $("#y_pos"+videoID).val(),
 						sz_scale: $("#sz_scale"+videoID).val()
 					}
-				}
+				}*/
 
 
 				editor_payload.videofile = video;
-				editor_payload.imgfile = image;
+				//editor_payload.imgfile = image;
 				console.log("editor_payload",editor_payload);
 				// send edit request to backend and render the preview returned by server
 				$.post(window.location.href + "/edit_video/" + actiontype,editor_payload,function(res){
