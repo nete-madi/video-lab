@@ -91,11 +91,8 @@
 		a:hover {
 		    color:white;
 		}
-
-
-
-
     </style>
+
 </head>
 <body>
 <div class="row version-header" style="z-index:9999999999">
@@ -201,7 +198,7 @@
                                 <b><u>Annotations Palette</u></b>
                                 <br><br>
                                 <div class="col-sm-8">
-                                    <div id="draggable">
+                                    <div id="draggable" class="ui-widget-content">
                                         <img
                                          src="{{ url_for('editing.render_img', filename='circle_lg.png') }}"
                                          alt="A 200x200 px pink circle.">
@@ -238,13 +235,12 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script> -->
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js" type="text/javascript"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
         integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js" type="text/javascript"></script>
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script> -->
 <!--
@@ -271,6 +267,13 @@
     }
 </script>
 -->
+
+<script type="text/javascript">
+        $ (function() {
+            $( "#draggable" ).draggable();
+        } );
+  </script>
+
 <script type="text/javascript">
 
 		function updateProgressBar(percent){
