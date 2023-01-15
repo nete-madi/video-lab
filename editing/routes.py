@@ -11,6 +11,11 @@ def edit_video():
     return render_template('editing.html')
 
 
+@editing.route("/drag.js", methods=['GET'])
+def js_file():
+    return send_file(fullpath+"drag.js")
+
+
 @editing.route("/clips/<filename>")
 def render_clip(filename):
     path = fullpath + "clips\\" + filename
@@ -40,6 +45,7 @@ def upload_video():
     return str(longfilepath[35:])
 
 
+"""
 @editing.route("/upload_img", methods=['POST'])
 def upload_img():
     # check if video save path exists
@@ -53,6 +59,7 @@ def upload_img():
     except Exception as e:
         print(e)
     return str(longfilepath[35:])
+"""
 
 
 # Main video editing pipeline
@@ -63,23 +70,6 @@ def editor(actiontype):
             video_file = request.form['videofile']
             path = fullpath + video_file
             edited_video_path = trim_video(path, int(request.form['trim_start']), int(request.form['trim_end']))
-            return {
-                "status": "success",
-                "message": "video edit success",
-                "edited_video_path": edited_video_path[35:]
-            }
-        except Exception as e:
-            return {
-                "status": "error",
-                "message": "video edit failure: " + str(e),
-            }
-    elif actiontype == "image":
-        try:
-            video_file = request.form['videofile']
-            path = fullpath + video_file
-            edited_video_path = img_overlay(path, str(request.form['imgfile']), int(request.form['start_time']),
-                                            int(request.form['duration']), int(request.form['x_pos']),
-                                            int(request.form['y_pos']), float(request.form['sz_scale']))
             return {
                 "status": "success",
                 "message": "video edit success",
