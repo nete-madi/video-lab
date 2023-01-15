@@ -92,6 +92,7 @@
 
 
 
+
     </style>
 </head>
 <body>
@@ -198,7 +199,7 @@
                                 <b><u>Annotations Palette</u></b>
                                 <br><br>
                                 <div class="col-sm-8">
-                                    <img id="drag1"
+                                    <img id="circle-lg"
                                          src="{{ url_for('editing.render_img', filename='circle_lg.png') }}"
                                          alt="A 200x200 px pink circle." draggable="true" ondragstart="drag(event)">
                                 </div>
@@ -244,7 +245,7 @@
 
 <script type="text/javascript">
 
-    function allowDrop(ev) {
+   /* function allowDrop(ev) {
         ev.preventDefault();
     }
 
@@ -262,8 +263,45 @@
 
         ev.target.appendChild(document.getElementById(data));
         console.log("coords of img are " + xCoord + ", " + yCoord);
+    }*/
+   circle-lg.onmousedown = function(event) {
+
+    let shiftX = event.clientX - circle-lg.getBoundingClientRect().left;
+    let shiftY = event.clientY - circle-lg.getBoundingClientRect().top;
+
+    circle-lg.style.position = 'absolute';
+    circle-lg.zIndex = 1000;
+    document.body.append(circle-lg);
+
+    moveAt(event.pageX, event.pageY);
+
+    // moves the ball at (pageX, pageY) coordinates
+    // taking initial shifts into account
+    function moveAt(pageX, pageY) {
+        ball.style.left = pageX - shiftX + 'px';
+        ball.style.top = pageY - shiftY + 'px';
     }
 
+    function onMouseMove(event) {
+        moveAt(event.pageX, event.pageY);
+    }
+
+    // move the ball on mousemove
+    document.addEventListener('mousemove', onMouseMove);
+
+    // drop the ball, remove unneeded handlers
+    ball.onmouseup = function() {
+        document.removeEventListener('mousemove', onMouseMove);
+        ball.onmouseup = null;
+    };
+
+    };
+
+    ball.ondragstart = function() {
+        return false;
+    };
+
+// https://javascript.info/mouse-drag-and-drop
 
 
 </script>
@@ -477,6 +515,7 @@
 	      // created() {
 	      // }
 	    })
+
 
 </script>
 </body>
