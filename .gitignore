@@ -3,6 +3,7 @@
 /*.mp3
 /__pycache__
 /editing/__pycache__/*
+/editing/__pycache__/
 /editing/clips/*.mp4
 /editing/clips/*.mp3
 /video.js
