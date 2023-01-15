@@ -1,0 +1,74 @@
+        .draggable {
+            cursor:pointer;
+        }
+        .container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            margin: 30px;
+        }
+        .version-header {
+            border-bottom: 2px solid black;
+            position:fixed;
+            width:100%;
+            overflow:auto;
+            background:grey;
+        }
+
+        .loader {
+		  border: 16px solid #f3f3f3;
+		  border-radius: 50%;
+		  border-top: 16px solid #3498db;
+		  width: 120px;
+		  height: 120px;
+		  -webkit-animation: spin 2s linear infinite; /* Safari */
+		  animation: spin 2s linear infinite;
+		}
+
+		.drop-landing {
+		    width: 100%;
+		    height:450px;
+		    max-height:500px;
+		    border: 5px dotted #ff00ff;
+		    z-index:200;
+		    position:absolute;
+		}
+
+		/* Safari */
+		@-webkit-keyframes spin {
+		  0% { -webkit-transform: rotate(0deg); }
+		  100% { -webkit-transform: rotate(360deg); }
+		}
+
+		@keyframes spin {
+		  0% { transform: rotate(0deg); }
+		  100% { transform: rotate(360deg); }
+		}
+
+		video {
+		  width: 50%;
+		  height: auto;
+		  max-height: 500px;
+		  max-width: 50%;
+		  position:absolute;
+		}
+
+		.videodiv{
+			padding: 10px;
+			border: 2px solid #282860;
+			border-radius: 10px;
+			position:absolute;
+		}
+
+		input[type=number]{
+		    max-width:25%;
+		    margin-top:5px;
+		    margin-bottom:5px;
+		}
+
+		a {
+		    color:black;
+		}
+		a:hover {
+		    color:white;
+		}

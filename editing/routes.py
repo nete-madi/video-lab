@@ -21,6 +21,11 @@ def vue_file():
     return send_file(fullpath+"src\\"+"video.js")
 
 
+@editing.route("/src/style.css", methods=['GET'])
+def css():
+    return send_file(fullpath+"src\\"+"style.css")
+
+
 @editing.route("/clips/<filename>")
 def render_clip(filename):
     path = fullpath + "clips\\" + filename
