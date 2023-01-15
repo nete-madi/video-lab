@@ -16,6 +16,11 @@ def js_file():
     return send_file(fullpath+"drag.js")
 
 
+@editing.route("/video.js", methods=['GET'])
+def vue_file():
+    return send_file(fullpath+"video.js")
+
+
 @editing.route("/clips/<filename>")
 def render_clip(filename):
     path = fullpath + "clips\\" + filename
