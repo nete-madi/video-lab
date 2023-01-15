@@ -243,205 +243,158 @@
         integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<script type="text/javascript">
-
-   let isDragging = false;
-    document.addEventListener('mousedown', function(event) {
-
-        let dragElement = event.target.closest('.draggable');
-
-        dragElement.ondragstart = function() {
-            return false;
-        };
-
-        let shiftX = event.clientX - dragElement.getBoundingClientRect().left;
-        let shiftY = event.clientY - dragElement.getBoundingClientRect().top;
-
-        dragElement.style.position = 'absolute';
-        dragElement.style.zIndex = 1000;
-        document.body.append(dragElement);
-
-        moveAt(event.pageX, event.pageY);
-
-        // moves the dragElement at (pageX, pageY) coordinates
-        // taking initial shifts into account
-        function moveAt(pageX, pageY) {
-            dragElement.style.left = pageX - shiftX + 'px';
-            dragElement.style.top = pageY - shiftY + 'px';
-        }
-
-        function onMouseMove(event) {
-            moveAt(event.pageX, event.pageY);
-        }
-
-        // move the dragElement on mousemove
-        document.addEventListener('mousemove', onMouseMove);
-
-        // drop the dragElement, remove unneeded handlers
-        dragElement.onmouseup = function() {
-            document.removeEventListener('mousemove', onMouseMove);
-            dragElement.onmouseup = null;
-        };
-
-
-    });
-// https://javascript.info/mouse-drag-and-drop
-
-
-</script>
+<script type="text/javascript" src="/bug-swatter/editing/drag.js"></script>
 
 <script type="text/javascript">
 
-		function updateProgressBar(percent){
-			$("#uploadprogress").css('width',percent+"%");
-			$("#uploadprogress").html(percent+"%");
+function updateProgressBar(percent) {
+	$("#uploadprogress").css('width', percent + "%");
+	$("#uploadprogress").html(percent + "%");
 
-			if(percent == 100){
-				setTimeout(function(){
-					updateProgressBar(0);
-				},2000);
+	if (percent == 100) {
+		setTimeout(function () {
+			updateProgressBar(0);
+		}, 2000);
+	}
+}
+
+function setLoader(status = true) {
+	if (status) $("#loaderModal").modal("show");
+	else $("#loaderModal").modal("hide");
+}
+
+var app = new Vue({
+	el: '#app',
+	data: {
+		originalvideos: [],  //original video clips added by user
+		videos: [],  //current clips being edited
+	},
+	delimiters: ['[[', ']]'],
+	methods: {
+
+		addVideo: function () {
+			this.originalvideos.push({});
+			this.videos.push({});
+		},
+
+		setRenderVideo: function (videoID) {
+			$("#render").attr('src', window.location.href + this.videos[videoID].file);
+		},
+
+		reloadOriginalVideo: function (videoID) {
+			this.videos[videoID] = { name: this.originalvideos[videoID].name, file: this.originalvideos[videoID].file };
+			app.setRenderVideo(videoID);
+		},
+
+		removeVideo: function (videoID) {
+			// permanently removes the video
+			this.videos.splice(videoID, 1);
+			this.originalvideos.splice(videoID, 1);
+			$("#render").attr('src', "");
+		},
+
+		uploadVideoFile: function () {
+			updateProgressBar(0);
+
+			let filedata = document.getElementById('fileinput').files[0];
+			if (!filedata) {
+				console.log("File is empty!");
+				return;
 			}
-		}
 
-		function setLoader(status = true){
-			if(status) $("#loaderModal").modal("show");
-			else $("#loaderModal").modal("hide");
-		}
+			let clipname = $("#clipname").val();
+			if (clipname == "") {
+				clipname = filedata.name;
+			}
 
-		var app = new Vue({
-	      el: '#app',
-	      data: {
-	        originalvideos: [],  //original video clips added by user
-			videos: [],  //current clips being edited
-	      },
-	      delimiters: ['[[',']]'],
-	      methods: {
+			const config = {
+				onUploadProgress: function (progressEvent) {
+					var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
+					updateProgressBar(percentCompleted);
 
-	      	addVideo: function(){
-	      		this.originalvideos.push({});
-				this.videos.push({});
-	      	},
-
-			setRenderVideo: function(videoID){
-				$("#render").attr('src',window.location.href + this.videos[videoID].file);
-			},
-
-			reloadOriginalVideo: function(videoID){
-				this.videos[videoID] = {name:this.originalvideos[videoID].name,file:this.originalvideos[videoID].file};
-				app.setRenderVideo(videoID);
-			},
-
-			removeVideo: function(videoID){
-				// permanently removes the video
-				this.videos.splice(videoID,1);
-				this.originalvideos.splice(videoID,1);
-				$("#render").attr('src',"");
-			},
-
-			uploadVideoFile: function() {
-				updateProgressBar(0);
-
-			  	let filedata = document.getElementById('fileinput').files[0];
-			  	if(!filedata){
-			  		console.log("File is empty!");
-			  		return;
-			  	}
-
-			  	let clipname = $("#clipname").val();
-			  	if (clipname == "") {
-			  	    clipname = filedata.name;
-			  	}
-
-			  	const config = {
-			    	onUploadProgress: function(progressEvent) {
-			      	var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
-			      	updateProgressBar(percentCompleted);
-
-			    	}
-			  	}
-
-			  	let data = new FormData()
-			  	data.append('videofile', filedata);
-
-			  	axios.post('/editing/upload', data, config)
-			    	.then(res => {
-			    		console.log(res);
-
-			    		this.originalvideos.push({name:clipname,file:res.data});
-						this.videos.push({name:clipname,file:res.data});
-	    		 		console.log("videos",this.videos);
-			    		console.log('Video uploaded!');
-
-			    		app.setRenderVideo(this.videos.length - 1);
-
-			    	})
-			    	.catch(err => console.log(err))
-			},
-
-			editVideoSubmit: function(videoID,actiontype){
-				console.log("editVideoSubmit",videoID);
-				setLoader(true);
-
-				let video = this.videos[videoID].file;
-
-				if(video === undefined){
-					console.log("Video is empty!");
-					return;
 				}
+			}
 
-				let editor_payload = {};
+			let data = new FormData()
+			data.append('videofile', filedata);
 
-				if(actiontype == "trim"){
-					editor_payload = {
-						trim_start: $("#trim_start"+videoID).val(),
-						trim_end: $("#trim_end"+videoID).val()
-					}
-				}
-
-				editor_payload.videofile = video;
-				console.log("editor_payload",editor_payload);
-				// send edit request to backend and render the preview returned by server
-				$.post(window.location.href + "/edit_video/" + actiontype,editor_payload,function(res){
-					setLoader(false);
-					if(res.status == "success"){
-						app.videos[videoID].file = res.edited_video_path;
-						app.setRenderVideo(videoID);
-						console.log(res.message);
-					}
-					else{
-						console.log(res.message);
-					}
-				});
-			},
-
-
-
-			finalrender: function(){
-				setLoader(true);
-
-				let requestobj = {videoscount: this.videos.length}
-				for(let i=0;i<this.videos.length;i++){
-					requestobj['video' + i] = this.videos[i].file;
-				}
-
-				console.log("requestobj",requestobj);
-
-				$.post(window.location.href + "/merged_render",requestobj,function(res){
+			axios.post('/editing/upload', data, config)
+				.then(res => {
 					console.log(res);
 
-					if(res.status == "success"){
-						console.log("Final render success!");
-						$("#render").attr('src',window.location.href + res.final_render_video_path);
-					}
-					else{
-						console.log("Final render ERROR: " + res.message);
-					}
+					this.originalvideos.push({ name: clipname, file: res.data });
+					this.videos.push({ name: clipname, file: res.data });
+					console.log("videos", this.videos);
+					console.log('Video uploaded!');
 
-					setLoader(false);
-				});
+					app.setRenderVideo(this.videos.length - 1);
+
+				})
+				.catch(err => console.log(err))
+		},
+
+		editVideoSubmit: function (videoID, actiontype) {
+			console.log("editVideoSubmit", videoID);
+			setLoader(true);
+
+			let video = this.videos[videoID].file;
+
+			if (video === undefined) {
+				console.log("Video is empty!");
+				return;
 			}
-	      },
-	    })
+
+			let editor_payload = {};
+
+			if (actiontype == "trim") {
+				editor_payload = {
+					trim_start: $("#trim_start" + videoID).val(),
+					trim_end: $("#trim_end" + videoID).val()
+				}
+			}
+
+			editor_payload.videofile = video;
+			console.log("editor_payload", editor_payload);
+			// send edit request to backend and render the preview returned by server
+			$.post(window.location.href + "/edit_video/" + actiontype, editor_payload, function (res) {
+				setLoader(false);
+				if (res.status == "success") {
+					app.videos[videoID].file = res.edited_video_path;
+					app.setRenderVideo(videoID);
+					console.log(res.message);
+				}
+				else {
+					console.log(res.message);
+				}
+			});
+		},
+
+		finalrender: function () {
+			setLoader(true);
+
+			let requestobj = { videoscount: this.videos.length }
+			for (let i = 0; i < this.videos.length; i++) {
+				requestobj['video' + i] = this.videos[i].file;
+			}
+
+			console.log("requestobj", requestobj);
+
+			$.post(window.location.href + "/merged_render", requestobj, function (res) {
+				console.log(res);
+
+				if (res.status == "success") {
+					console.log("Final render success!");
+					$("#render").attr('src', window.location.href + res.final_render_video_path);
+				}
+				else {
+					console.log("Final render ERROR: " + res.message);
+				}
+
+				setLoader(false);
+			});
+		}
+	},
+})
 
 
 </script>
