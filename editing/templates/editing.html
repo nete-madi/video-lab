@@ -236,15 +236,12 @@
 </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
-<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script> -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
         integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-<script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script> -->
 
 <script type="text/javascript">
 
@@ -315,7 +312,6 @@
 	      el: '#app',
 	      data: {
 	        originalvideos: [],  //original video clips added by user
-	        //images: [], // images uploaded by user for editing purposes
 			videos: [],  //current clips being edited
 	      },
 	      delimiters: ['[[',']]'],
@@ -327,7 +323,6 @@
 	      	},
 
 			setRenderVideo: function(videoID){
-				// console.log("videoID",videoID);
 				$("#render").attr('src',window.location.href + this.videos[videoID].file);
 			},
 
@@ -360,7 +355,6 @@
 			  	const config = {
 			    	onUploadProgress: function(progressEvent) {
 			      	var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
-			      	// console.log(percentCompleted)
 			      	updateProgressBar(percentCompleted);
 
 			    	}
@@ -384,48 +378,11 @@
 			    	.catch(err => console.log(err))
 			},
 
-			/* uploadImageFile: function() {
-				updateProgressBar(0);
-			  	let img_name = $("#imginput").val();
-			  	if (img_name == "") {
-			  	    img_name = "img";
-			  	}
-			  	let imgfiledata = document.getElementById('imginput').files[0];
-			  	console.log(imgfiledata)
-			  	if(!imgfiledata){
-			  		console.log("File is empty!");
-			  		return;
-			  	}
-
-			  	const config = {
-			    	onUploadProgress: function(progressEvent) {
-			      	var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
-			      	// console.log(percentCompleted)
-			      	updateProgressBar(percentCompleted);
-			    	}
-			  	}
-
-			  	let imgdata = new FormData()
-			  	imgdata.append('imgfile', imgfiledata);
-
-			  	axios.post('/editing/upload_img', imgdata, config)
-			    	.then(res => {
-			    		console.log(res);
-			    		this.images.push({name:img_name,file:res.data});
-	    		 		console.log("images",this.images);
-			    		console.log('Image uploaded!');
-
-			    	})
-			    	.catch(err => console.log(err))
-			},*/
-
 			editVideoSubmit: function(videoID,actiontype){
 				console.log("editVideoSubmit",videoID);
 				setLoader(true);
 
 				let video = this.videos[videoID].file;
-				// TODO: Allow user to upload multiple images.
-				//let image = this.images[0].file;
 
 				if(video === undefined){
 					console.log("Video is empty!");
@@ -441,32 +398,17 @@
 					}
 				}
 
-				/*else if(actiontype == "image"){
-					editor_payload = {
-						start_time: $("#start_stamp"+videoID).val(),
-						duration: $("#duration"+videoID).val(),
-						x_pos: $("#x_pos"+videoID).val(),
-						y_pos: $("#y_pos"+videoID).val(),
-						sz_scale: $("#sz_scale"+videoID).val()
-					}
-				}*/
-
-
 				editor_payload.videofile = video;
-				//editor_payload.imgfile = image;
 				console.log("editor_payload",editor_payload);
 				// send edit request to backend and render the preview returned by server
 				$.post(window.location.href + "/edit_video/" + actiontype,editor_payload,function(res){
-					// console.log("Editor Response",res);
 					setLoader(false);
 					if(res.status == "success"){
 						app.videos[videoID].file = res.edited_video_path;
 						app.setRenderVideo(videoID);
 						console.log(res.message);
-						// toastr.success(res.message);
 					}
 					else{
-						// toastr.error(res.message);
 						console.log(res.message);
 					}
 				});
@@ -499,8 +441,6 @@
 				});
 			}
 	      },
-	      // created() {
-	      // }
 	    })
 
 
