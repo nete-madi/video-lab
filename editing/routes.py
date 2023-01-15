@@ -50,23 +50,6 @@ def upload_video():
     return str(longfilepath[35:])
 
 
-"""
-@editing.route("/upload_img", methods=['POST'])
-def upload_img():
-    # check if video save path exists
-    if not os.path.isdir("./editing/img"):
-        os.mkdir("./editing/img")
-    try:
-        img_file = request.files['imgfile']
-        longfilepath = fullpath + "img\\" + img_file.filename
-        # filepath = longfilepath[35:]
-        img_file.save(longfilepath)
-    except Exception as e:
-        print(e)
-    return str(longfilepath[35:])
-"""
-
-
 # Main video editing pipeline
 @editing.route('/edit_video/<actiontype>', methods=['POST'])
 def editor(actiontype):
