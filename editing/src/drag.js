@@ -70,10 +70,3 @@ document.addEventListener('mousedown', function (event) {
         }
     };
 }); // https://javascript.info/mouse-drag-and-drop
-
-function sendPosition() {
-    let coords = // coordinates of circle
-    console.log(coords);
-    const request = new XMLHttpRequest();
-    request.open('POST', )
-} //https://www.codespeedy.com/how-to-pass-javascript-variables-to-python-in-flask/

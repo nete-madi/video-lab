@@ -127,6 +127,10 @@
                                          src="{{ url_for('editing.render_img', filename='circle_lg.png') }}"
                                          alt="A 200x200 px pink circle.">
                                 </div>
+                                <div class="col-sm-4">
+                                        <button class="btn btn-warning" v-on:click="editVideoSubmit(index,'image')">
+                                            Render Image
+                                        </button>
                                 <br>
                             </div>
                         </div>
