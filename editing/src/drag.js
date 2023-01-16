@@ -1,8 +1,7 @@
+let isDragging = false;
+   document.addEventListener('mousedown', function(event) {
 
-   let isDragging = false;
-    document.addEventListener('mousedown', function(event) {
-
-        let dragElement = event.target.closest('.draggable');
+    let dragElement = event.target.closest('.draggable');
 
         dragElement.ondragstart = function() {
             return false;
@@ -35,9 +34,9 @@
         dragElement.onmouseup = function() {
             document.removeEventListener('mousemove', onMouseMove);
             dragElement.onmouseup = null;
+            console.log("x: " + event.clientX);
+            console.log("y: " + event.clientY);
         };
-
-
     });
 // https://javascript.info/mouse-drag-and-drop
 
