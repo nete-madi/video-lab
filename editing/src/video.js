@@ -108,9 +108,11 @@ var app = new Vue({
 						start_time: 0,
 						//$("#start_stamp"+videoID).val(),
 						duration: 10,
+						x_pos:100,
+						y_pos:100
 						//$("#duration"+videoID).val(),
-						x_pos: event.clientX,
-						y_pos: event.clientY,
+						//x_pos: event.clientX,
+						//y_pos: event.clientY,
 					}
 		    }
 
