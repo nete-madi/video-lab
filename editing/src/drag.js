@@ -63,11 +63,17 @@ document.addEventListener('mousedown', function (event) {
         && (Left1 <= (Left2 + Width2))
         && ((Top1 + Height1) >= Top2)
         && (Top1 <= (Top2 + Height2))) {
-            console.log("we gottem boys");
+            console.log("in bounds");
         }
         else {
             console.log("not in bounds");
         }
     };
-});
-// https://javascript.info/mouse-drag-and-drop
+}); // https://javascript.info/mouse-drag-and-drop
+
+function sendPosition() {
+    let coords = // coordinates of circle
+    console.log(coords);
+    const request = new XMLHttpRequest();
+    request.open('POST', )
+} //https://www.codespeedy.com/how-to-pass-javascript-variables-to-python-in-flask/
