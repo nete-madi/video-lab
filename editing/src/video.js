@@ -105,9 +105,9 @@ var app = new Vue({
 			}
 			else if(actiontype == "image"){
 					editor_payload = {
-						start_time: 0
+						start_time: 0,
 						//$("#start_stamp"+videoID).val(),
-						duration: 10
+						duration: 10,
 						//$("#duration"+videoID).val(),
 						x_pos: event.clientX,
 						y_pos: event.clientY,

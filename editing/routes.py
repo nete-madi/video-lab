@@ -13,17 +13,17 @@ def edit_video():
 
 @editing.route("/src/drag.js", methods=['GET'])
 def js_file():
-    return send_file(fullpath+"src\\"+"drag.js")
+    return send_file(fullpath + "src\\" + "drag.js")
 
 
 @editing.route("/src/video.js", methods=['GET'])
 def vue_file():
-    return send_file(fullpath+"src\\"+"video.js")
+    return send_file(fullpath + "src\\" + "video.js")
 
 
 @editing.route("/src/style.css", methods=['GET'])
 def css():
-    return send_file(fullpath+"src\\"+"style.css")
+    return send_file(fullpath + "src\\" + "style.css")
 
 
 @editing.route("/clips/<filename>")
@@ -63,6 +63,23 @@ def editor(actiontype):
             video_file = request.form['videofile']
             path = fullpath + video_file
             edited_video_path = trim_video(path, int(request.form['trim_start']), int(request.form['trim_end']))
+            return {
+                "status": "success",
+                "message": "video edit success",
+                "edited_video_path": edited_video_path[35:]
+            }
+        except Exception as e:
+            return {
+                "status": "error",
+                "message": "video edit failure: " + str(e),
+            }
+    elif actiontype == "image":
+        try:
+            video_file = request.form['videofile']
+            path = fullpath + video_file
+            edited_video_path = img_overlay(path, str(request.form['imgfile']), int(request.form['start_time']),
+                                            int(request.form['duration']), int(request.form['x_pos']),
+                                            int(request.form['y_pos']))
             return {
                 "status": "success",
                 "message": "video edit success",
