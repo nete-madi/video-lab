@@ -38,7 +38,7 @@ document.addEventListener('mousedown', function (event) {
         dragElement.onmouseup = null;
         console.log("x: " + event.clientX);
         console.log("y: " + event.clientY);
-        console.log('editing area contains circle: ' + editingArea.contains(circle));
+        console.log('edit area size: ' + $("#editArea").outerWidth() + "x" + $("#editArea").outerHeight()); //edit area is 854x450 px
     };
 });
 // https://javascript.info/mouse-drag-and-drop
