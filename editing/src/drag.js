@@ -38,7 +38,36 @@ document.addEventListener('mousedown', function (event) {
         dragElement.onmouseup = null;
         console.log("x: " + event.clientX);
         console.log("y: " + event.clientY);
-        console.log('edit area size: ' + $("#editArea").outerWidth() + "x" + $("#editArea").outerHeight()); //edit area is 854x450 px
+
+        let Left1 = editingArea.offsetLeft; // undefined
+        let Left2 = circle.offsetLeft;
+        let Width1 = $("#editArea").outerWidth();
+        let Width2 = $("#circle").width();
+        let Top1 = editingArea.offsetTop; // undefined
+        let Top2 = circle.offsetTop;
+        let Height1 = $("#editArea").outerHeight();
+        let Height2 = $("#circle").height();
+
+        /*
+        console.log("left1: " + Left1);
+        console.log("left2: " + Left2);
+        console.log("width1: " + Width1);
+        console.log("Width2: " + Width2);
+        console.log("Top1: " + Top1);
+        console.log("Top2: " + Top2);
+        console.log("Height1: " + Height1);
+        console.log("Height2: " + Height2);
+        */
+
+        if( ((Left1 + Width1) >= Left2)
+        && (Left1 <= (Left2 + Width2))
+        && ((Top1 + Height1) >= Top2)
+        && (Top1 <= (Top2 + Height2))) {
+            console.log("we gottem boys");
+        }
+        else {
+            console.log("not in bounds");
+        }
     };
 });
 // https://javascript.info/mouse-drag-and-drop
