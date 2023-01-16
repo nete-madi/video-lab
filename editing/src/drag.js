@@ -2,6 +2,8 @@ let isDragging = false;
 document.addEventListener('mousedown', function (event) {
 
     let dragElement = event.target.closest('.draggable');
+    var editingArea = document.querySelector("#editArea");
+    var circle = document.querySelector("#circle");
 
     dragElement.ondragstart = function () {
         return false;
@@ -36,7 +38,7 @@ document.addEventListener('mousedown', function (event) {
         dragElement.onmouseup = null;
         console.log("x: " + event.clientX);
         console.log("y: " + event.clientY);
+        console.log('editing area contains circle: ' + editingArea.contains(circle));
     };
 });
 // https://javascript.info/mouse-drag-and-drop
-
