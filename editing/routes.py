@@ -38,7 +38,7 @@ def render_img(filename):
     path = fullpath + "img\\" + filename
     print(path)
     session['img_file'] = path
-    return send_file(path)
+    return send_file(session.get('img_file', str))
 
 
 @editing.route("/upload", methods=['POST'])
@@ -78,7 +78,7 @@ def editor(actiontype):
         try:
             video_file = request.form['videofile']
             path = fullpath + video_file
-            edited_video_path = img_overlay(path, session.get('img_file', None),
+            edited_video_path = img_overlay(path, session.get('img_file', str),
                                             int(request.form['start_time']),
                                             int(request.form['duration']), int(request.form['x_pos']),
                                             int(request.form['y_pos']))

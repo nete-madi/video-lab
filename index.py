@@ -1,9 +1,10 @@
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory,session
 import editing.routes
 import os
 
 app = Flask(__name__)  # name for flask app
 app.register_blueprint(editing.routes.editing, url_prefix='/editing')
+app.secret_key = "27eduCBA09"
 
 
 # welcome screen
