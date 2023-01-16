@@ -103,6 +103,15 @@ var app = new Vue({
 					trim_end: $("#trim_end" + videoID).val()
 				}
 			}
+			else if(actiontype == "image"){
+					editor_payload = {
+						start_time: $("#start_stamp"+videoID).val(),
+						duration: $("#duration"+videoID).val(),
+						x_pos: $("#x_pos"+videoID).val(),
+						y_pos: $("#y_pos"+videoID).val(),
+						sz_scale: $("#sz_scale"+videoID).val()
+					}
+		    }
 
 			editor_payload.videofile = video;
 			console.log("editor_payload", editor_payload);
