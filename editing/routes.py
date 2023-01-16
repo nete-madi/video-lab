@@ -1,4 +1,4 @@
-from flask import request, render_template, send_file, Blueprint
+from flask import request, render_template, send_file, Blueprint, session
 from editing.video_utils import *
 import os
 
@@ -37,6 +37,7 @@ def render_clip(filename):
 def render_img(filename):
     path = fullpath + "img\\" + filename
     print(path)
+    session['img_file'] = path
     return send_file(path)
 
 
@@ -77,7 +78,8 @@ def editor(actiontype):
         try:
             video_file = request.form['videofile']
             path = fullpath + video_file
-            edited_video_path = img_overlay(path, str(request.form['imgfile']), int(request.form['start_time']),
+            edited_video_path = img_overlay(path, session.get('img_file', None),
+                                            int(request.form['start_time']),
                                             int(request.form['duration']), int(request.form['x_pos']),
                                             int(request.form['y_pos']))
             return {

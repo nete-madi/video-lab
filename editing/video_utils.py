@@ -16,7 +16,10 @@ def trim_video(videofile: str, start_time: int, end_time: int):
 
 def img_overlay(videofile: str, img: str, start_time: int, duration: int, x_pos: int, y_pos: int):
     clip = VideoFileClip(videofile)
+    print("beep")
     img = os.getcwd() + "\\editing\\" + img
+    print("your image file that you're tryingto render is ")
+    print(img)
     img = ImageClip(img).set_start(start_time).set_duration(duration).set_pos((x_pos, y_pos))
     # TODO: set videofile name dynamically
     edited_path = video_save_path + "edited_" + str(int(time.time())) + videofile[41:]
