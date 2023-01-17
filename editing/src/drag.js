@@ -36,8 +36,17 @@ document.addEventListener('mousedown', function (event) {
     dragElement.onmouseup = function () {
         document.removeEventListener('mousemove', onMouseMove);
         dragElement.onmouseup = null;
-        console.log("x: " + event.clientX);
-        console.log("y: " + event.clientY);
+
+        // Get the top, left coordinates of two elements
+        const shapeArea = circle.getBoundingClientRect();
+        const edArea = editingArea.getBoundingClientRect();
+
+        // Calculate the top and left positions
+        const top = shapeArea.top - edArea.top;
+        const left = shapeArea.left - edArea.left;
+
+        console.log("top: " + top);
+        console.log("left: " + left);
 
         let Left1 = editingArea.offsetLeft; // undefined
         let Left2 = circle.offsetLeft;
