@@ -1,6 +1,12 @@
 let isDragging = false;
+
+// Global vars for shape position that are populated in the mousedown function
+// and later passed to the editing payload.
 var shapeTop;
 var shapeLeft;
+
+
+// Logic for dragging and dropping a shape anywhere on the viewport.
 document.addEventListener('mousedown', function (event) {
 
     let dragElement = event.target.closest('.draggable');
@@ -49,43 +55,11 @@ document.addEventListener('mousedown', function (event) {
 
         console.log("top: " + shapeTop);
         console.log("left: " + shapeLeft);
-
-        /*
-
-        let Left1 = editingArea.offsetLeft; // undefined
-        let Left2 = circle.offsetLeft;
-        let Width1 = $("#editArea").outerWidth();
-        let Width2 = $("#circle").width();
-        let Top1 = editingArea.offsetTop; // undefined
-        let Top2 = circle.offsetTop;
-        let Height1 = $("#editArea").outerHeight();
-        let Height2 = $("#circle").height();
-
-
-        console.log("left1: " + Left1);
-        console.log("left2: " + Left2);
-        console.log("width1: " + Width1);
-        console.log("Width2: " + Width2);
-        console.log("Top1: " + Top1);
-        console.log("Top2: " + Top2);
-        console.log("Height1: " + Height1);
-        console.log("Height2: " + Height2);
-
-
-        if( ((Left1 + Width1) >= Left2)
-        && (Left1 <= (Left2 + Width2))
-        && ((Top1 + Height1) >= Top2)
-        && (Top1 <= (Top2 + Height2))) {
-            console.log("in bounds");
-        }
-        else {
-            console.log("not in bounds");
-        }
-        */
     };
 }); // https://javascript.info/mouse-drag-and-drop
 
 
+// Logic for video upload progress bar.
 function updateProgressBar(percent) {
 	$("#uploadprogress").css('width', percent + "%");
 	$("#uploadprogress").html(percent + "%");
@@ -97,11 +71,13 @@ function updateProgressBar(percent) {
 	}
 }
 
+// Modal that appears while video is rendering.
 function setLoader(status = true) {
 	if (status) $("#loaderModal").modal("show");
 	else $("#loaderModal").modal("hide");
 }
 
+// Vue.js - main editing pipeline
 var app = new Vue({
 	el: '#app',
 	data: {
