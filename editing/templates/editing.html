@@ -111,11 +111,6 @@
                                                value="0">
                                     </div>
                                     <br>
-                                    <div class="col-sm-4">
-                                        <button class="btn btn-warning" v-on:click="editVideoSubmit(index,'trim')">
-                                            Trim
-                                        </button>
-                                    </div>
                                 </div>
 
                             </div>
@@ -126,39 +121,47 @@
                                     <img class="draggable" id="circle"
                                          src="{{ url_for('editing.render_img', filename='circle_lg.png') }}"
                                          alt="A 50x50 px pink circle.">
+                                    <br><br><br>
                                 </div>
-                                <div class="col-sm-4">
-                                        <button class="btn btn-warning" v-on:click="editVideoSubmit(index,'image')">
-                                            Render Image
-                                        </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <button class="btn btn-info" v-on:click="editVideoSubmit(index,'trim')">
+                                    Trim
+                                </button>
+                            </div>
+                            <div class="col-sm-6" style="position:relative;">
+                                <button class="btn btn-info" v-on:click="editVideoSubmit(index,'image')">
+                                    Render Image
+                                </button>
                                 <br>
                             </div>
                         </div>
                     </div>
                 </div>
+                <br> <br>
             </div>
-            <br> <br>
         </div>
-    </div>
 
-    <!-- Loader Modal -->
-    <div id="loaderModal" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
-        <div class="modal-dialog">
+        <!-- Loader Modal -->
+        <div id="loaderModal" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+            <div class="modal-dialog">
 
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div align="center">
-                    <div class="loader"></div>
-                    <br>
-                    <b>Rendering... Please wait</b>
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div align="center">
+                        <div class="loader"></div>
+                        <br>
+                        <b>Rendering... Please wait</b>
+                    </div>
                 </div>
+
             </div>
-
         </div>
+
+
     </div>
-
-
-</div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
