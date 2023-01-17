@@ -49,11 +49,12 @@
 		}
 
 		video {
-		  width: 50%;
+		  width: 100%;
 		  height: auto;
 		  max-height: 500px;
 		  max-width: 50%;
 		  position:absolute;
+		  object-fit:cover;
 		}
 
 		.videodiv{
