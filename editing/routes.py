@@ -11,11 +11,6 @@ def edit_video():
     return render_template('editing.html')
 
 
-@editing.route("/src/drag.js", methods=['GET'])
-def js_file():
-    return send_file(fullpath + "src\\" + "drag.js")
-
-
 @editing.route("/src/video.js", methods=['GET'])
 def vue_file():
     return send_file(fullpath + "src\\" + "video.js")

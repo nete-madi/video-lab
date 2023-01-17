@@ -44,11 +44,11 @@ document.addEventListener('mousedown', function (event) {
         const edArea = editingArea.getBoundingClientRect();
 
         // Calculate the top and left positions
-        const top = shapeArea.top - edArea.top;
-        const left = shapeArea.left - edArea.left;
+        shapeTop = shapeArea.top - edArea.top;
+        shapeLeft = shapeArea.left - edArea.left;
 
-        console.log("top: " + top);
-        console.log("left: " + left);
+        console.log("top: " + shapeTop);
+        console.log("left: " + shapeLeft);
 
         /*
 
