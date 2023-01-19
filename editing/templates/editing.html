@@ -36,14 +36,13 @@
                 </div>
                 <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip"
                       title="Disabled tooltip">
-                    <h3>This is a tooltip test.</h3>
+                    <h3>This is a tooltip test. - outside</h3>
                 </span>
                 <div align="center" class="row" style="position:relative;">
                     <div class="drop-landing" id="editArea"></div>
                     <video id="render" width="500" height="500" controls></video>
                 </div>
             </div>
-
             <div class="col-lg-6">
                 <div class="col-sm-12">
                     <div class="form-group">
@@ -53,7 +52,6 @@
                             <input type="text" class="form-control" placeholder="Clip Name"
                                    id="clipname">
                         </div>
-
                     </div>
                     <br>
                     <div class="row">
@@ -68,21 +66,22 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div class="col-sm-12" style="padding: 50px;">
                     <div class="progress">
-
                         <div id="uploadprogress" class="progress-bar progress-bar-success" role="progressbar"
                              aria-valuenow="70"
                              aria-valuemin="0" aria-valuemax="100" style="width:0%">
-
                         </div>
                     </div>
                 </div>
-
                 <div class="row videodiv" v-for="(video,index) in videos" :key="index">
                     <h3><u>[[video.name]]</u></h3>
+                    <div style="container:body;">
+                        <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip">
+                    <h3> This is a tooltip test. - inside</h3>
+                    </span>
+                    </div>
                     <br><br>
                     <div class="col-sm-4" align="center">
                         <button v-on:click="setRenderVideo(index)" class="btn btn-success">Render Clip</button>
