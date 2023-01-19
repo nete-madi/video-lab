@@ -8,12 +8,12 @@ var shapeLeft;
 
 // Activate Bootstrap tooltips on the page.
 $(document).ready(function(){
-    $('[data-bs-toggle="tooltip"]').tooltip(
-    {
-    animated: 'fade',
-    placement: 'auto',
-    html: true
-});
+ $("[data-toggle=popover]").popover({
+        html: true,
+        content: function() {
+              return $('#popover-content').html();
+            }
+    });
 });
 
 
