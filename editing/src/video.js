@@ -6,6 +6,12 @@ var shapeTop;
 var shapeLeft;
 
 
+// Activate Bootstrap tooltips on the page.
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
+
 // Logic for dragging and dropping a shape anywhere on the viewport.
 document.addEventListener('mousedown', function (event) {
 
