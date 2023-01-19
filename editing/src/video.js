@@ -11,7 +11,7 @@ $(document).ready(function(){
     $('[data-bs-toggle="tooltip"]').tooltip(
     {
     animated: 'fade',
-    placement: 'bottom',
+    placement: 'auto',
     html: true
 });
 });
