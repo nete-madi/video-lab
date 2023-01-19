@@ -29,19 +29,17 @@
 
     <div class="container-fluid">
         <!--https://stackoverflow.com/questions/42174189/tooltip-with-buttons-and-image-->
-        <span data-placement="bottom" data-toggle="popover" data-container="body" data-placement="left"
-              type="button" data-html="true" href="#" id="login" class="btn btn-default">Click me</span>
-        <div id="popover-content" class="hide">
+        <span data-placement="bottom" data-toggle="popover" data-container="body" data-placement="left" data-html="true"
+              href="#">
+            <button class="btn btn-primary">Tooltip test</button>
+        </span>
+        <div hidden id="popover-content">
             <div class="row">
-                <div class="col-xs-4">
-                    <img width="88px" height="88px"
-                         src="https://pbs.twimg.com/profile_images/816404989392211968/Wv_8ZDrX_400x400.jpg"/>
-                </div>
                 <div class="col-xs-8">
                     <h4>
-                        Justin Trudeau <br/>
+                        Popper.js<br/>
                         <small>
-                            Prime minister of Canada
+                            test
                         </small>
                     </h4>
                     <button class="btn btn-sm btn-primary">
