@@ -34,10 +34,10 @@
                 <div style="text-align:center;">
                     <h3>Video Render Preview</h3><br>
                 </div>
-                <button type="button" class="btn btn-secondary" data-toggle="tooltip"
-                        data-placement="top" title="Tooltip on top">
-                    Tooltip on top
-                </button>
+                <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip"
+                      title="Disabled tooltip">
+                    <h3>This is a tooltip test.</h3>
+                </span>
                 <div align="center" class="row" style="position:relative;">
                     <div class="drop-landing" id="editArea"></div>
                     <video id="render" width="500" height="500" controls></video>
@@ -122,7 +122,7 @@
                                 <b><u>Annotations Palette</u></b>
                                 <br><br>
                                 <div class="col-sm-8">
-                                    <img class="draggable" id="circle"
+                                    <img class="draggable" id="circle" data-bs-toggle="tooltip"
                                          src="{{ url_for('editing.render_img', filename='circle_lg.png') }}"
                                          alt="A 50x50 px pink circle.">
                                     <br><br><br>
@@ -142,31 +142,37 @@
                                 <br>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <br><br>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <br> <br>
             </div>
+            <br> <br>
         </div>
-
-
-        <!-- Loader Modal -->
-        <div id="loaderModal" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
-            <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div align="center">
-                        <div class="loader"></div>
-                        <br>
-                        <b>Rendering... Please wait</b>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-
     </div>
+
+
+    <!-- Loader Modal -->
+    <div id="loaderModal" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div align="center">
+                    <div class="loader"></div>
+                    <br>
+                    <b>Rendering... Please wait</b>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
