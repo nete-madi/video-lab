@@ -10,12 +10,8 @@ Dependencies:
 
 Usage:
 
-- On Windows CLI, execute the following two lines: 
+- On Windows, run the `launch.bat` script:
 
-`$env:FLASK_APP="index.py"`
-
-`python -m flask run`
-
-To set debug mode: `$env:FLASK_ENV="development"`
+`.\launch.bat`
 
 Adapted from [kernelshreyak](https://github.com/kernelshreyak)'s project [videoeditor_online, an online video editor using Flask and MoviePy.](https://github.com/kernelshreyak/videoeditor_online)
