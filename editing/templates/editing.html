@@ -80,7 +80,7 @@
                             </button>
                         </div>
                         <div class="col-sm-6">
-                            <div v-if="videos.length > 0" class="col-sm-3">
+                            <div v-if="videos.length > 0" class="col-sm-6">
                                 <button class="btn btn-success" v-on:click="finalrender">Merge Clips</button>
                             </div>
                         </div>
@@ -142,7 +142,7 @@
                                 <div class="col-sm-8">
                                     <img class="draggable" id="circle" data-bs-toggle="tooltip"
                                          src="{{ url_for('editing.render_img', filename='circle_lg.png') }}"
-                                         alt="A 50x50 px pink circle.">
+                                         alt="A red circle. circle.">
                                     <br><br><br>
                                 </div>
                             </div>

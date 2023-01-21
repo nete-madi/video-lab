@@ -65,8 +65,8 @@ document.addEventListener('mousedown', function (event) {
         shapeTop = shapeArea.top - edArea.top;
         shapeLeft = shapeArea.left - edArea.left;
 
-        console.log("top: " + shapeTop);
-        console.log("left: " + shapeLeft);
+        console.log("x: " + shapeLeft);
+        console.log("y: " + shapeTop);
     };
 }); // https://javascript.info/mouse-drag-and-drop
 
@@ -180,6 +180,10 @@ var app = new Vue({
 				}
 			}
 			else if(actiontype == "image"){
+			        shapeLeft = shapeLeft * 3;
+			        shapeTop = shapeTop * 3;
+			        console.log("x_new: " + shapeLeft);
+                    console.log("y_new: " + shapeTop);
 					editor_payload = {
 						start_time: 0,
 						duration: 10,
