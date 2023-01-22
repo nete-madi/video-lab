@@ -73,7 +73,7 @@ def editor(actiontype):
         try:
             video_file = request.form['videofile']
             path = fullpath + video_file
-            edited_video_path = img_overlay(path, session.get('img_file', str),
+            edited_video_path = img_overlay(path, str(request.form['img_src']),
                                             int(request.form['start_time']),
                                             int(request.form['duration']), int(float(request.form['x_pos'])),
                                             int(float(request.form['y_pos'])))

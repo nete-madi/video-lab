@@ -4,6 +4,7 @@ let isDragging = false;
 // and later passed to the editing payload.
 var shapeTop;
 var shapeLeft;
+var shapeToRender;
 
 
 // Activate Bootstrap tooltips on the page.
@@ -67,6 +68,27 @@ document.addEventListener('mousedown', function (event) {
 
         console.log("x: " + shapeLeft);
         console.log("y: " + shapeTop);
+
+        let Left1 = editingArea.offsetLeft; // undefined
+        let Left2 = circle.offsetLeft;
+        let Width1 = $("#editArea").outerWidth();
+        let Width2 = 400;
+        let Top1 = editingArea.offsetTop; // undefined
+        let Top2 = circle.offsetTop;
+        let Height1 = $("#editArea").outerHeight();
+        let Height2 = 400;
+
+        if( ((Left1 + Width1) >= Left2)
+        && (Left1 <= (Left2 + Width2))
+        && ((Top1 + Height1) >= Top2)
+        && (Top1 <= (Top2 + Height2))) {
+            console.log("in bounds");
+            shapeToRender = $("#circle_lg").attr("src");
+            console.log($("#circle_lg").attr("src"));
+        }
+        else {
+            console.log("not in bounds");
+        }
     };
 }); // https://javascript.info/mouse-drag-and-drop
 
@@ -188,7 +210,8 @@ var app = new Vue({
 						start_time: 0,
 						duration: 10,
 						x_pos:shapeLeft,
-						y_pos:shapeTop
+						y_pos:shapeTop,
+						img_src:shapeToRender
 					}
 		    }
 
