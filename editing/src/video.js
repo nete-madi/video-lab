@@ -16,8 +16,8 @@ function generate(){
 
         var canvas = document.getElementById("generatedText");
         var ctx = canvas.getContext("2d");
-        ctx.font = "30px Arial";
-        ctx.fillText(msg,30,30);
+        ctx.font = "40px Arial";
+        ctx.fillText(msg,40,30);
     });
 }(jQuery);
 
