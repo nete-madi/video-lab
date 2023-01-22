@@ -23,7 +23,7 @@ document.addEventListener('mousedown', function (event) {
 
     let dragElement = event.target.closest('.draggable');
     var editingArea = document.querySelector("#editArea");
-    var circle = document.querySelector("#circle");
+    var circle = document.querySelector("#circle_lg");
 
     dragElement.ondragstart = function () {
         return false;
