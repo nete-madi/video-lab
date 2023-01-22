@@ -6,6 +6,21 @@ var shapeTop;
 var shapeLeft;
 var shapeToRender;
 
+// https://hashnode.com/post/whats-the-best-way-to-generate-image-from-text-using-javascript-and-html5-apis-cik6k8rbj01izxy53619llzzp
+// Produces an image from text entered by the user
+
+function generate(){
+	$("#generate").on('click', function(ev) {
+  	    ev.preventDefault();
+        var msg = $("#textToGenerate").val();
+
+        var canvas = document.getElementById("generatedText");
+        var ctx = canvas.getContext("2d");
+        ctx.font = "30px Arial";
+        ctx.fillText(msg,30,30);
+    });
+}(jQuery);
+
 
 // Activate Bootstrap tooltips on the page.
 $(document).ready(function(){
@@ -16,7 +31,6 @@ $(document).ready(function(){
             }
     });
 });
-
 
 // Logic for dragging and dropping a shape anywhere on the viewport.
 document.addEventListener('mousedown', function (event) {
@@ -90,7 +104,6 @@ document.addEventListener('mousedown', function (event) {
         }
     };
 }); // https://javascript.info/mouse-drag-and-drop
-
 
 // Logic for video upload progress bar.
 function updateProgressBar(percent) {
