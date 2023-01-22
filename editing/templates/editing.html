@@ -139,11 +139,41 @@
                             <div class="col-lg-6">
                                 <b><u>Annotations Palette</u></b>
                                 <br><br>
-                                <div class="col-sm-8">
-                                    <img class="draggable" id="circle" data-bs-toggle="tooltip"
-                                         src="{{ url_for('editing.render_img', filename='circle_lg.png') }}"
-                                         alt="A red circle. circle.">
-                                    <br><br><br>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img class="draggable" id="circle_lg" data-bs-toggle="tooltip"
+                                             src="{{ url_for('editing.render_img', filename='circle_lg.png') }}"
+                                             alt="A red circle.">
+                                        <br><br><br>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <img class="draggable" id="circle_sm" data-bs-toggle="tooltip"
+                                             src="{{ url_for('editing.render_img', filename='circle_sm.png') }}"
+                                             alt="A red circle.">
+                                        <br><br><br>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img class="draggable" id="ar_right" data-bs-toggle="tooltip"
+                                             src="{{ url_for('editing.render_img', filename='arrow_right.png') }}"
+                                             alt="A red circle.">
+                                        <br><br><br>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <img class="draggable" id="ar_left" data-bs-toggle="tooltip"
+                                             src="{{ url_for('editing.render_img', filename='arrow_left.png') }}"
+                                             alt="A red circle.">
+                                        <br><br><br>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <img class="draggable" id="highlight" data-bs-toggle="tooltip"
+                                             src="{{ url_for('editing.render_img', filename='highlight.png') }}"
+                                             alt="A red circle.">
+                                        <br><br><br>
+                                    </div>
                                 </div>
                             </div>
                         </div>
