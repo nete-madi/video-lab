@@ -112,7 +112,21 @@
                         <br>
 
                         <h4><u>Video Effects</u></h4>
-                        <br>
+                        <br><br>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <button class="btn btn-info" v-on:click="editVideoSubmit(index,'trim')">
+                                    Trim Clip
+                                </button>
+                            </div>
+                            <div class="col-sm-6">
+                                <button class="btn btn-info" v-on:click="editVideoSubmit(index,'image')">
+                                    Render Image
+                                </button>
+                                <br>
+                            </div>
+                        </div>
+                        <br><br>
                         <div class="row">
                             <div class="col-lg-6">
                                 <b><u>Trim</u></b>
@@ -127,6 +141,7 @@
                                         <input id="end" min="0" max="120" type="number" :id="`trim_end`+index"
                                                value="0">
                                     </div>
+                                    <br>
                                     <br>
                                 </div>
                             </div>
@@ -160,9 +175,7 @@
                                              alt="An arrow pointing up and to the left.">
                                         <br><br><br>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
+                                    <div class="col-sm-6">
                                         <img class="draggable" id="highlight" data-bs-toggle="tooltip"
                                              src="{{ url_for('editing.render_img', filename='highlight.png') }}"
                                              alt="A translucent yellow box.">
@@ -171,47 +184,30 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <button class="btn btn-info" v-on:click="editVideoSubmit(index,'trim')">
-                                    Trim
-                                </button>
-                            </div>
-                            <div class="col-sm-6" style="position:relative;">
-                                <button class="btn btn-info" v-on:click="editVideoSubmit(index,'image')">
-                                    Render Image
-                                </button>
-                                <br>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <br><br>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
-            <br> <br>
         </div>
+        <br> <br>
     </div>
+</div>
 
 
-    <!-- Loader Modal -->
-    <div id="loaderModal" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
-        <div class="modal-dialog">
+<!-- Loader Modal -->
+<div id="loaderModal" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
 
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div align="center">
-                    <div class="loader"></div>
-                    <br>
-                    <b>Rendering... Please wait</b>
-                </div>
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div align="center">
+                <div class="loader"></div>
+                <br>
+                <b>Rendering... Please wait</b>
             </div>
-
         </div>
+
     </div>
+</div>
 
 
 </div>
