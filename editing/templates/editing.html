@@ -96,7 +96,6 @@
                 </div>
                 <div class="row videodiv" v-for="(video,index) in videos" :key="index">
                     <h3><u>[[video.name]]</u></h3>
-                    <br><br>
                     <div class="col-sm-4" align="center">
                         <button v-on:click="setRenderVideo(index)" class="btn btn-success">Render Clip</button>
                     </div>
@@ -110,7 +109,6 @@
                     <br><br><br><br>
                     <div align="center">
                         <br>
-
                         <h4><u>Video Effects</u></h4>
                         <br><br>
                         <div class="row">

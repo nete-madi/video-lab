@@ -37,7 +37,6 @@ document.addEventListener('mousedown', function (event) {
 
     let dragElement = event.target.closest('.draggable');
     var editingArea = document.querySelector("#editArea");
-    var shape = document.querySelector("#circle_lg");
 
     dragElement.ondragstart = function () {
         return false;
@@ -96,8 +95,13 @@ document.addEventListener('mousedown', function (event) {
         && ((Top1 + Height1) >= Top2)
         && (Top1 <= (Top2 + Height2))) {
             console.log("in bounds");
-            shapeToRender = $(dragElement).attr("src");
-            console.log(shapeToRender);
+            if ($(dragElement).attr("id") == "generatedText") {
+                console.log("canvas");
+                shapeToRender = document.getElementById('generatedText').toDataURL();
+            }
+            else {
+                shapeToRender = $(dragElement).attr("src");
+            }
         }
         else {
             console.log("not in bounds");
