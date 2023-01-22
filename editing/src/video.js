@@ -18,13 +18,12 @@ $(document).ready(function(){
 });
 
 
-
 // Logic for dragging and dropping a shape anywhere on the viewport.
 document.addEventListener('mousedown', function (event) {
 
     let dragElement = event.target.closest('.draggable');
     var editingArea = document.querySelector("#editArea");
-    var circle = document.querySelector("#circle_lg");
+    var shape = document.querySelector("#circle_lg");
 
     dragElement.ondragstart = function () {
         return false;
@@ -59,7 +58,7 @@ document.addEventListener('mousedown', function (event) {
         dragElement.onmouseup = null;
 
         // Get the top, left coordinates of two elements
-        const shapeArea = circle.getBoundingClientRect();
+        const shapeArea = dragElement.getBoundingClientRect();
         const edArea = editingArea.getBoundingClientRect();
 
         // Calculate the top and left positions
@@ -70,12 +69,12 @@ document.addEventListener('mousedown', function (event) {
         console.log("y: " + shapeTop);
 
         let Left1 = editingArea.offsetLeft; // undefined
-        let Left2 = circle.offsetLeft;
-        let Width1 = $("#editArea").outerWidth();
+        let Left2 = dragElement.offsetLeft;
+        let Width1 = $(editingArea).outerWidth();
         let Width2 = 400;
         let Top1 = editingArea.offsetTop; // undefined
-        let Top2 = circle.offsetTop;
-        let Height1 = $("#editArea").outerHeight();
+        let Top2 = dragElement.offsetTop;
+        let Height1 = $(editingArea).outerHeight();
         let Height2 = 400;
 
         if( ((Left1 + Width1) >= Left2)
@@ -83,8 +82,8 @@ document.addEventListener('mousedown', function (event) {
         && ((Top1 + Height1) >= Top2)
         && (Top1 <= (Top2 + Height2))) {
             console.log("in bounds");
-            shapeToRender = $("#circle_lg").attr("src");
-            console.log($("#circle_lg").attr("src"));
+            shapeToRender = $(dragElement).attr("src");
+            console.log(shapeToRender);
         }
         else {
             console.log("not in bounds");
