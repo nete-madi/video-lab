@@ -81,14 +81,14 @@ document.addEventListener('mousedown', function (event) {
         console.log("x: " + shapeLeft);
         console.log("y: " + shapeTop);
 
-        let Left1 = editingArea.offsetLeft; // undefined
-        let Left2 = dragElement.offsetLeft;
-        let Width1 = $(editingArea).outerWidth();
-        let Width2 = 400;
-        let Top1 = editingArea.offsetTop; // undefined
-        let Top2 = dragElement.offsetTop;
-        let Height1 = $(editingArea).outerHeight();
-        let Height2 = 400;
+        let Left1 = edArea.left + window.scrollX;
+        let Left2 = shapeLeft;
+        let Width1 = $(editingArea).width();
+        let Width2 = $(dragElement).width();
+        let Top1 = edArea.top + window.scrollY; // zero, this is incorrect
+        let Top2 = shapeTop;
+        let Height1 = $(editingArea).height();
+        let Height2 = $(dragElement).height();
 
         if( ((Left1 + Width1) >= Left2)
         && (Left1 <= (Left2 + Width2))
