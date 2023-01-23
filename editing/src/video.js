@@ -17,8 +17,16 @@ function generate(){
         var canvas = document.getElementById("generatedText");
         var ctx = canvas.getContext("2d");
         ctx.font = "40px Arial";
-        ctx.fillText(msg,40,30);
+        ctx.fillText(msg,0,40);
     });
+}(jQuery);
+
+function download(){
+	$("#download").on("click", function(){
+  	var canvas = document.getElementById("generatedText");
+    var fullQuality = canvas.toDataURL("image/png", 1.0);
+    window.open(fullQuality);
+  });
 }(jQuery);
 
 
@@ -97,7 +105,7 @@ document.addEventListener('mousedown', function (event) {
             console.log("in bounds");
             if ($(dragElement).attr("id") == "generatedText") {
                 console.log("canvas");
-                shapeToRender = document.getElementById('generatedText').toDataURL();
+                shapeToRender = "\\editing\\" + document.getElementById('generatedText').toDataURL();
             }
             else {
                 shapeToRender = $(dragElement).attr("src");
