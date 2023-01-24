@@ -1,9 +1,9 @@
 from flask import request, render_template, send_file, Blueprint, session
-from editing.video_utils import *
+from video_utils import *
 import os
 
 editing = Blueprint('editing', __name__, template_folder='templates')
-fullpath = os.getcwd() + "\\editing\\"
+fullpath = os.getcwd()
 
 
 @editing.route("/", methods=['GET'])
@@ -11,14 +11,14 @@ def edit_video():
     return render_template('editing.html')
 
 
-@editing.route("/src/video.js", methods=['GET'])
+@editing.route("/static/video.js", methods=['GET'])
 def vue_file():
-    return send_file(fullpath + "src\\" + "video.js")
+    return send_file("\\static\\" + "video.js")
 
 
-@editing.route("/src/style.css", methods=['GET'])
+@editing.route("/static/style.css", methods=['GET'])
 def css():
-    return send_file(fullpath + "src\\" + "style.css")
+    return send_file(fullpath + "static\\" + "style.css")
 
 
 @editing.route("/clips/<filename>")
@@ -30,7 +30,7 @@ def render_clip(filename):
 
 @editing.route("/img/<filename>")
 def render_img(filename):
-    path = fullpath + "img\\" + filename
+    path = fullpath + "\\img\\" + filename
     print(path)
     session['img_file'] = path
     return send_file(session.get('img_file', str))
@@ -39,8 +39,8 @@ def render_img(filename):
 @editing.route("/upload", methods=['POST'])
 def upload_video():
     # check if video save path exists
-    if not os.path.isdir("./editing/clips"):
-        os.mkdir("./editing/clips")
+    if not os.path.isdir("./clips"):
+        os.mkdir("./clips")
     try:
         video_file = request.files['videofile']
         longfilepath = fullpath + "clips\\" + video_file.filename
@@ -48,7 +48,7 @@ def upload_video():
         video_file.save(longfilepath)
     except Exception as e:
         print(e)
-    return str(longfilepath[35:])
+    return str(longfilepath[32:])
 
 
 # Main video editing pipeline

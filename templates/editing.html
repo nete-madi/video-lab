@@ -16,7 +16,7 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
     <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="src/style.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
 
 </head>
 <body>
@@ -241,7 +241,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
         integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script type="text/javascript" src="src/video.js"></script>
+<script type="text/javascript" src="{{url_for('static', filename='video.js')}}"></script>
 
 </body>
 </html>

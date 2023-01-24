@@ -1,9 +1,9 @@
-from flask import Flask, render_template, send_from_directory,session
-import editing.routes
+from flask import Flask, render_template, send_from_directory
+import routes
 import os
 
 app = Flask(__name__)  # name for flask app
-app.register_blueprint(editing.routes.editing, url_prefix='/editing')
+app.register_blueprint(routes.editing, url_prefix='/editing')
 app.secret_key = "27eduCBA09"
 
 
@@ -13,7 +13,7 @@ def index():
     return render_template('index.html')
 
 
-@app.route("/img/favicon.ico", methods=['GET'])
+@app.route("/favicon.ico", methods=['GET'])
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
