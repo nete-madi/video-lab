@@ -10,19 +10,21 @@ def trim_video(videofile: str, start_time: int, end_time: int):
     clip = VideoFileClip(videofile)
     videofile = videofile.replace(video_save_path, "")
     trim_path = video_save_path + "edited_" + str(int(time.time())) + videofile
+    file_name = "edited_" + str(int(time.time())) + videofile
     trimmed_clip = clip.subclip(start_time, end_time)
     trimmed_clip.write_videofile(trim_path)
-    return trim_path
+    return VIDEO_SAVE_DIR + file_name
 
 
 def img_overlay(videofile: str, img: str, start_time: int, duration: int, x_pos: int, y_pos: int):
     clip = VideoFileClip(videofile)
     img = os.getcwd() + img
     img = ImageClip(img).set_start(start_time).set_duration(duration).set_pos((x_pos, y_pos)).resize(1.52)
-    edited_path = video_save_path + "edited_" + str(int(time.time())) + videofile[41:]
+    edited_path = video_save_path + "edited_" + str(int(time.time())) + videofile
+    file_name = "edited_" + str(int(time.time())) + videofile
     final = CompositeVideoClip([clip, img])
     final.write_videofile(edited_path)
-    return edited_path
+    return VIDEO_SAVE_DIR + file_name
 
 
 def merge_videos(video_clip_filenames):

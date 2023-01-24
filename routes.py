@@ -40,12 +40,12 @@ def upload_video():
     # check if video save path exists
     if not os.path.isdir("./" + VIDEO_SAVE_DIR):
         os.mkdir("./" + VIDEO_SAVE_DIR)
+    video_file = request.files['videofile']
+    relative_path = VIDEO_SAVE_DIR + video_file.filename
     try:
-        video_file = request.files['videofile']
         # https://towardsdatascience.com/simple-trick-to-work-with-relative-paths-in-python-c072cdc9acb9
         filepath = os.path.join(ROOT_DIR, VIDEO_SAVE_DIR, video_file.filename)
         video_file.save(filepath)
-        relative_path = VIDEO_SAVE_DIR + video_file.filename
     except Exception as e:
         print(e)
     return str(relative_path)
@@ -57,12 +57,12 @@ def editor(actiontype):
     if actiontype == "trim":
         try:
             video_file = request.form['videofile']
-            path = os.getcwd() + video_file
+            path = ROOT_DIR + video_file
             edited_video_path = trim_video(path, int(request.form['trim_start']), int(request.form['trim_end']))
             return {
                 "status": "success",
                 "message": "video edit success",
-                "edited_video_path": edited_video_path[35:]
+                "edited_video_path": edited_video_path
             }
         except Exception as e:
             return {
@@ -72,7 +72,7 @@ def editor(actiontype):
     elif actiontype == "image":
         try:
             video_file = request.form['videofile']
-            path = os.getcwd() + video_file
+            path = ROOT_DIR + video_file
             edited_video_path = img_overlay(path, str(request.form['img_src']),
                                             int(request.form['start_time']),
                                             int(request.form['duration']), int(float(request.form['x_pos'])),
@@ -80,7 +80,7 @@ def editor(actiontype):
             return {
                 "status": "success",
                 "message": "video edit success",
-                "edited_video_path": edited_video_path[35:]
+                "edited_video_path": edited_video_path
             }
         except Exception as e:
             return {
