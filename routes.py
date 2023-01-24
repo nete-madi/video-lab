@@ -1,10 +1,9 @@
 from flask import request, render_template, send_file, Blueprint, session
 from video_utils import *
-from config.definitions import ROOT_DIR
+from config.definitions import ROOT_DIR, VIDEO_SAVE_DIR
 import os
 
 editing = Blueprint('editing', __name__, template_folder='templates')
-fullpath = os.getcwd()
 
 
 @editing.route("/", methods=['GET'])
@@ -19,20 +18,19 @@ def vue_file():
 
 @editing.route("/static/style.css", methods=['GET'])
 def css():
-    return send_file(fullpath + "static\\" + "style.css")
+    return send_file("\\static\\" + "style.css")
 
 
-@editing.route("/clips/<filename>")
+@editing.route("/clips/<filename>", methods=['GET'])
+# use a transformer to get the high level path
 def render_clip(filename):
-    path = fullpath + "\\clips\\" + filename
-    print(path)
+    path = ROOT_DIR + VIDEO_SAVE_DIR + filename
     return send_file(path)
 
 
 @editing.route("/img/<filename>")
 def render_img(filename):
-    path = fullpath + "\\img\\" + filename
-    print(path)
+    path = os.getcwd() + "\\img\\" + filename
     session['img_file'] = path
     return send_file(session.get('img_file', str))
 
@@ -40,15 +38,17 @@ def render_img(filename):
 @editing.route("/upload", methods=['POST'])
 def upload_video():
     # check if video save path exists
-    if not os.path.isdir("./clips"):
-        os.mkdir("./clips")
+    if not os.path.isdir("./" + VIDEO_SAVE_DIR):
+        os.mkdir("./" + VIDEO_SAVE_DIR)
     try:
         video_file = request.files['videofile']
-        filepath = os.path.join(ROOT_DIR, 'clips', 'sample-mp4-file.mp4')
-        video_file.save(os.path.join(ROOT_DIR, 'clips', 'sample-mp4-file.mp4'))
+        # https://towardsdatascience.com/simple-trick-to-work-with-relative-paths-in-python-c072cdc9acb9
+        filepath = os.path.join(ROOT_DIR, VIDEO_SAVE_DIR, video_file.filename)
+        video_file.save(filepath)
+        relative_path = VIDEO_SAVE_DIR + video_file.filename
     except Exception as e:
         print(e)
-    return str(filepath)
+    return str(relative_path)
 
 
 # Main video editing pipeline
@@ -57,7 +57,7 @@ def editor(actiontype):
     if actiontype == "trim":
         try:
             video_file = request.form['videofile']
-            path = fullpath + video_file
+            path = os.getcwd() + video_file
             edited_video_path = trim_video(path, int(request.form['trim_start']), int(request.form['trim_end']))
             return {
                 "status": "success",
@@ -72,7 +72,7 @@ def editor(actiontype):
     elif actiontype == "image":
         try:
             video_file = request.form['videofile']
-            path = fullpath + video_file
+            path = os.getcwd() + video_file
             edited_video_path = img_overlay(path, str(request.form['img_src']),
                                             int(request.form['start_time']),
                                             int(request.form['duration']), int(float(request.form['x_pos'])),
@@ -96,7 +96,7 @@ def merged_render():
         if videoscount > 0:
             video_clip_filenames = []
             for i in range(videoscount):
-                path = fullpath + request.form['video' + str(i)]
+                path = os.getcwd() + request.form['video' + str(i)]
                 video_clip_filenames.append(path)
             final_render_video_path = merge_videos(video_clip_filenames)[35:]
             print("final path is " + final_render_video_path)

@@ -1,8 +1,9 @@
 import os
 import time
 from moviepy.editor import VideoFileClip, concatenate_videoclips, ImageClip, CompositeVideoClip
+from config.definitions import ROOT_DIR, VIDEO_SAVE_DIR
 
-video_save_path = os.getcwd() + "\\editing\\clips\\"
+video_save_path = ROOT_DIR + VIDEO_SAVE_DIR
 
 
 def trim_video(videofile: str, start_time: int, end_time: int):
