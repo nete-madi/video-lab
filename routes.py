@@ -23,7 +23,7 @@ def css():
 
 @editing.route("/clips/<filename>")
 def render_clip(filename):
-    path = fullpath + "clips\\" + filename
+    path = fullpath + "\\clips\\" + filename
     print(path)
     return send_file(path)
 
@@ -43,12 +43,12 @@ def upload_video():
         os.mkdir("./clips")
     try:
         video_file = request.files['videofile']
-        longfilepath = fullpath + "clips\\" + video_file.filename
+        longfilepath = fullpath + "\\clips\\" + video_file.filename
         # filepath = longfilepath[35:]
         video_file.save(longfilepath)
     except Exception as e:
         print(e)
-    return str(longfilepath[32:])
+    return str(longfilepath[27:])
 
 
 # Main video editing pipeline
