@@ -30,9 +30,8 @@ def render_clip(filename):
 
 @editing.route("/img/<filename>")
 def render_img(filename):
-    path = os.getcwd() + "\\img\\" + filename
-    session['img_file'] = path
-    return send_file(session.get('img_file', str))
+    path = ROOT_DIR + "\\img\\" + filename
+    return send_file(path)
 
 
 @editing.route("/upload", methods=['POST'])

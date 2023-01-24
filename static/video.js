@@ -105,10 +105,11 @@ document.addEventListener('mousedown', function (event) {
             console.log("in bounds");
             if ($(dragElement).attr("id") == "generatedText") {
                 console.log("canvas");
-                shapeToRender = "\\editing\\" + document.getElementById('generatedText').toDataURL();
+                shapeToRender = document.getElementById('generatedText').toDataURL();
             }
             else {
                 shapeToRender = $(dragElement).attr("src");
+                console.log(shapeToRender)
             }
         }
         else {
