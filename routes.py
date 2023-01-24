@@ -1,5 +1,6 @@
 from flask import request, render_template, send_file, Blueprint, session
 from video_utils import *
+from config.definitions import ROOT_DIR
 import os
 
 editing = Blueprint('editing', __name__, template_folder='templates')
@@ -43,12 +44,11 @@ def upload_video():
         os.mkdir("./clips")
     try:
         video_file = request.files['videofile']
-        longfilepath = fullpath + "\\clips\\" + video_file.filename
-        # filepath = longfilepath[35:]
-        video_file.save(longfilepath)
+        filepath = os.path.join(ROOT_DIR, 'clips', 'sample-mp4-file.mp4')
+        video_file.save(os.path.join(ROOT_DIR, 'clips', 'sample-mp4-file.mp4'))
     except Exception as e:
         print(e)
-    return str(longfilepath[27:])
+    return str(filepath)
 
 
 # Main video editing pipeline
