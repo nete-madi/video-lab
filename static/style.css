@@ -1,7 +1,23 @@
-img {
+#circle_lg {
     height:200px;
     width:auto;
 }
+
+#ar_right {
+    height:100px;
+    width:auto;
+}
+
+#ar_left {
+    height:100px;
+    width:auto;
+}
+
+#circle_sm {
+    height:100px;
+    width:auto;
+}
+
 .draggable {
     cursor:pointer;
 }

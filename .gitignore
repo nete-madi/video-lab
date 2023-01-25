@@ -4,8 +4,8 @@
 /__pycache__
 /editing/__pycache__/*
 /editing/__pycache__/
-/editing/clips/*.mp4
-/editing/clips/*.mp3
+/clips/*.mp4
+/clips/*.mp3
 /video.js
 /*.png
 /todo.py
