@@ -18,6 +18,11 @@
     width:auto;
 }
 
+#highlight {
+    width:auto;
+    height:auto;
+}
+
 .draggable {
     cursor:pointer;
 }
