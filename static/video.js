@@ -108,10 +108,12 @@ document.addEventListener('mousedown', function (event) {
                 text = true;
                 console.log("canvas");
                 shapeToRender = document.getElementById('generatedText').toDataURL();
+				console.log(shapeToRender);
             }
             else {
                 text = false;
                 shapeToRender = $(dragElement).attr("src");
+				console.log(shapeToRender);
             }
         }
         else {
