@@ -44,6 +44,7 @@ def upload_video():
     try:
         # https://towardsdatascience.com/simple-trick-to-work-with-relative-paths-in-python-c072cdc9acb9
         filepath = os.path.join(ROOT_DIR, VIDEO_SAVE_DIR, video_file.filename)
+        print("filepath is " + filepath)
         video_file.save(filepath)
     except Exception as e:
         print(e)
@@ -73,6 +74,7 @@ def editor(actiontype):
             video_file = request.form['videofile']
             path = ROOT_DIR + video_file
             edited_video_path = img_overlay(path, str(request.form['img_src']),
+                                            bool(request.form['text']),
                                             int(request.form['start_time']),
                                             int(request.form['duration']), int(float(request.form['x_pos'])),
                                             int(float(request.form['y_pos'])))

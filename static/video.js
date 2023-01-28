@@ -5,6 +5,7 @@ let isDragging = false;
 var shapeTop;
 var shapeLeft;
 var shapeToRender;
+var text;
 
 // https://hashnode.com/post/whats-the-best-way-to-generate-image-from-text-using-javascript-and-html5-apis-cik6k8rbj01izxy53619llzzp
 // Produces an image from text entered by the user
@@ -104,10 +105,12 @@ document.addEventListener('mousedown', function (event) {
         && (Top1 <= (Top2 + Height2))) {
             console.log("in bounds");
             if ($(dragElement).attr("id") == "generatedText") {
+                text = true;
                 console.log("canvas");
                 shapeToRender = document.getElementById('generatedText').toDataURL();
             }
             else {
+                text = false;
                 shapeToRender = $(dragElement).attr("src");
             }
         }
@@ -235,7 +238,8 @@ var app = new Vue({
 						duration: 10,
 						x_pos:shapeLeft,
 						y_pos:shapeTop,
-						img_src:shapeToRender
+						img_src:shapeToRender,
+						text: text
 					}
 		    }
 
