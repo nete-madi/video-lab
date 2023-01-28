@@ -19,11 +19,15 @@ def trim_video(videofile: str, start_time: int, end_time: int):
 def img_overlay(videofile: str, img: str, text: bool, start_time: int, duration: int, x_pos: int, y_pos: int):
     clip = VideoFileClip(videofile)
     videofile = videofile.replace(video_save_path, "")
-    img = ROOT_DIR + "\\img\\" + img[13:]
-    img = ImageClip(img).set_start(start_time).set_duration(duration).set_pos((x_pos, y_pos)).resize(1.51)
+    if text:
+        print("txt")
+    else:
+        img = ROOT_DIR + "\\img\\" + img[13:]
+    new_img = ImageClip(img).set_start(start_time).set_duration(duration).set_pos((x_pos, y_pos)).resize(1.51)
+    print("done!")
     edited_path = video_save_path + "edited_" + str(int(time.time())) + videofile
     file_name = "edited_" + str(int(time.time())) + videofile
-    final = CompositeVideoClip([clip, img])
+    final = CompositeVideoClip([clip, new_img])
     final.write_videofile(edited_path)
     return VIDEO_SAVE_DIR + file_name
 
