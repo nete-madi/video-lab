@@ -43,8 +43,7 @@ def upload_video():
     relative_path = VIDEO_SAVE_DIR + video_file.filename
     try:
         # https://towardsdatascience.com/simple-trick-to-work-with-relative-paths-in-python-c072cdc9acb9
-        filepath = os.path.join(ROOT_DIR, VIDEO_SAVE_DIR, video_file.filename)
-        print("filepath is " + filepath)
+        filepath = ROOT_DIR + VIDEO_SAVE_DIR + video_file.filename
         video_file.save(filepath)
     except Exception as e:
         print(e)
