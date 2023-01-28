@@ -34,7 +34,6 @@ def img_overlay(videofile: str, img: str, text: bool, start_time: int, duration:
 
 def merge_videos(video_clip_filenames):
     video_clips = []
-    # The video clip filenames are the short path. You need the long path
     for filename in video_clip_filenames:
         video_clips.append(VideoFileClip(filename))
     final_clip = concatenate_videoclips(video_clips, method="compose")

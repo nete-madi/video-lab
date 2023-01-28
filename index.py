@@ -24,4 +24,4 @@ def goals():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)  # runs the app with server, toggle debug on and off
+    app.run(debug=False, port=5000)  # runs the app with server, toggle debug on and off
