@@ -18,15 +18,6 @@ function generate(){
     });
 }(jQuery);
 
-/*
-function download(){
-	$("#download").on("click", function(){
-  	var canvas = document.getElementById("generatedText");
-    var fullQuality = canvas.toDataURL("image/png", 1.0);
-    window.open(fullQuality);
-  });
-}(jQuery);
-*/
 
 // Activate Bootstrap tooltips on the page.
 $(document).ready(function(){
@@ -101,17 +92,14 @@ document.addEventListener('mousedown', function (event) {
         && ((Top1 + Height1) >= Top2)
         && (Top1 <= (Top2 + Height2))) {
             console.log("in bounds");
-           /* if ($(dragElement).attr("id") == "generatedText") {
+           if ($(dragElement).attr("id") == "generatedText") {
                 text = true;
-                console.log("canvas");
-                shapeToRender = document.getElementById('generatedText').toDataURL();
-				console.log(shapeToRender);
             }
-            else {*/
+            else {
                 text = false;
                 shapeToRender = $(dragElement).attr("src");
 				console.log(shapeToRender);
-            // }
+           }
         }
         else {
             console.log("not in bounds");
