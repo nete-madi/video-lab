@@ -73,10 +73,24 @@ def editor(actiontype):
             video_file = request.form['videofile']
             path = ROOT_DIR + video_file
             edited_video_path = img_overlay(path, str(request.form['img_src']),
-                                            bool(request.form['text']),
                                             int(request.form['start_time']),
                                             int(request.form['duration']), int(float(request.form['x_pos'])),
                                             int(float(request.form['y_pos'])))
+            return {
+                "status": "success",
+                "message": "video edit success",
+                "edited_video_path": edited_video_path
+            }
+        except Exception as e:
+            return {
+                "status": "error",
+                "message": "video edit failure: " + str(e),
+            }
+    elif actiontype == "text":
+        try:
+            video_file = request.form['videofile']
+            path = ROOT_DIR + video_file
+            edited_video_path = text_overlay() #configure this function in video_utils.py
             return {
                 "status": "success",
                 "message": "video edit success",
