@@ -156,9 +156,12 @@
                                         </button>
                                     </div>
                                     <br>
-                                    <div class="col-lg-6">
-                                        <div class="generatedText"></div>
-                                        yeet skeet
+                                    <div class="col-lg-6 draggable" id="generatedText"></div>
+                                    <div class="col-sm-8">
+                                        <button id="rendertext" class="btn btn-info"
+                                                v-on:click="editVideoSubmit(index,'image')">
+                                            Render Text (double click)
+                                        </button>
                                     </div>
                                 </div>
                             </div>
