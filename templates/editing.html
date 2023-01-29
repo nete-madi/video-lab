@@ -164,7 +164,7 @@
                                         </div>
                                     </div>
                                     <br>
-                                    <div class="col-lg-10 draggable" id="generatedText"></div>
+                                    <div class="col-lg-10 draggable" id="generatedText" onmousedown="drag()"></div>
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -173,12 +173,14 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <img class="draggable" id="circle_lg" data-bs-toggle="tooltip"
+                                             onmousedown="drag()"
                                              src="{{ url_for('editing.render_img', filename='circle_lg.png') }}"
                                              alt="A red circle.">
                                         <br><br><br>
                                     </div>
                                     <div class="col-sm-6">
                                         <img class="draggable" id="circle_sm" data-bs-toggle="tooltip"
+                                             onmousedown="drag()"
                                              src="{{ url_for('editing.render_img', filename='circle_sm.png') }}"
                                              alt="A red circle.">
                                         <br><br><br>
@@ -187,18 +189,21 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <img class="draggable" id="ar_right" data-bs-toggle="tooltip"
+                                             onmousedown="drag()"
                                              src="{{ url_for('editing.render_img', filename='arrow_right.png') }}"
                                              alt="An arrow pointing up and to the right.">
                                         <br><br><br>
                                     </div>
                                     <div class="col-sm-6">
                                         <img class="draggable" id="ar_left" data-bs-toggle="tooltip"
+                                             onmousedown="drag()"
                                              src="{{ url_for('editing.render_img', filename='arrow_left.png') }}"
                                              alt="An arrow pointing up and to the left.">
                                         <br><br><br>
                                     </div>
                                     <div class="col-lg-12">
                                         <img class="draggable" id="highlight" data-bs-toggle="tooltip"
+                                             onmousedown="drag()"
                                              src="{{ url_for('editing.render_img', filename='highlight.png') }}"
                                              alt="A translucent yellow box.">
                                         <br><br><br>
