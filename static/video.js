@@ -29,6 +29,22 @@ $(document).ready(function(){
     });
 });
 
+
+// Reset draggable items to original position
+$(".draggable").data({
+    'originalLeft': $(".draggable").css('left'),
+    'originalTop': $(".draggable").css('top')
+});
+
+function reset(){
+    $("#reset").on('click', function() {
+        $(".draggable").css({
+            'left': $(".draggable").data('originalLeft'),
+            'top': $(".draggable").data('originalTop')
+        });
+    });
+}
+
 // Logic for dragging and dropping a shape anywhere on the viewport.
 document.addEventListener('mousedown', function (event) {
 
