@@ -104,17 +104,17 @@ document.addEventListener('mousedown', function (event) {
         && ((Top1 + Height1) >= Top2)
         && (Top1 <= (Top2 + Height2))) {
             console.log("in bounds");
-            if ($(dragElement).attr("id") == "generatedText") {
+           /* if ($(dragElement).attr("id") == "generatedText") {
                 text = true;
                 console.log("canvas");
                 shapeToRender = document.getElementById('generatedText').toDataURL();
 				console.log(shapeToRender);
             }
-            else {
+            else {*/
                 text = false;
                 shapeToRender = $(dragElement).attr("src");
 				console.log(shapeToRender);
-            }
+            // }
         }
         else {
             console.log("not in bounds");
