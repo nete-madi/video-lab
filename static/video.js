@@ -14,14 +14,11 @@ function generate(){
 	$("#generate").on('click', function(ev) {
   	    ev.preventDefault();
         var msg = $("#textToGenerate").val();
-
-        var canvas = document.getElementById("generatedText");
-        var ctx = canvas.getContext("2d");
-        ctx.font = "40px Arial";
-        ctx.fillText(msg,0,40);
+        document.getElementById("generatedText").innerHTML=msg;
     });
 }(jQuery);
 
+/*
 function download(){
 	$("#download").on("click", function(){
   	var canvas = document.getElementById("generatedText");
@@ -29,7 +26,7 @@ function download(){
     window.open(fullQuality);
   });
 }(jQuery);
-
+*/
 
 // Activate Bootstrap tooltips on the page.
 $(document).ready(function(){

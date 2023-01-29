@@ -23,6 +23,11 @@
     height:auto;
 }
 
+#generatedText {
+    font:30px Arial;
+    font-weight:bold;
+}
+
 .draggable {
     cursor:pointer;
 }
