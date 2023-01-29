@@ -11,11 +11,9 @@ var text;
 // Produces an image from text entered by the user
 
 function generate() {
-	$("#generate").on('click', function (ev) {
-		ev.preventDefault();
-		var msg = $("#textToGenerate").val();
-		document.getElementById("generatedText").innerHTML = msg;
-	});
+    console.log("clicked");
+    var msg = $("#textToGenerate").val();
+    document.getElementById("generatedText").innerHTML = msg;
 } (jQuery);
 
 
