@@ -229,6 +229,20 @@ var app = new Vue({
 						text: text
 					}
 		    }
+		    else if(actiontype == "text"){
+			        shapeLeft = shapeLeft * 3;
+			        shapeTop = shapeTop * 4.5;
+			        console.log("x_new: " + shapeLeft);
+                    console.log("y_new: " + shapeTop);
+					editor_payload = {
+						start_time: 0,
+						duration: 10,
+						x_pos:shapeLeft,
+						y_pos:shapeTop,
+						title: $("#textToGenerate").val(),
+						text: text
+					}
+		    }
 
 			editor_payload.videofile = video;
 			console.log("editor_payload", editor_payload);
