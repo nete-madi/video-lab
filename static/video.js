@@ -10,102 +10,105 @@ var text;
 // https://hashnode.com/post/whats-the-best-way-to-generate-image-from-text-using-javascript-and-html5-apis-cik6k8rbj01izxy53619llzzp
 // Produces an image from text entered by the user
 
-function generate(){
-	$("#generate").on('click', function(ev) {
-  	    ev.preventDefault();
-        var msg = $("#textToGenerate").val();
-        document.getElementById("generatedText").innerHTML=msg;
-    });
-}(jQuery);
+function generate() {
+	$("#generate").on('click', function (ev) {
+		ev.preventDefault();
+		var msg = $("#textToGenerate").val();
+		document.getElementById("generatedText").innerHTML = msg;
+	});
+} (jQuery);
 
 
 // Activate Bootstrap tooltips on the page.
-$(document).ready(function(){
- $("[data-toggle=popover]").popover({
-        html: true,
-        content: function() {
-              return $('#popover-content').html();
-            }
-    });
+$(document).ready(function () {
+	$("[data-toggle=popover]").popover({
+		html: true,
+		content: function () {
+			return $('#popover-content').html();
+		}
+	});
 });
 
 // Logic for dragging and dropping a shape anywhere on the viewport.
-document.addEventListener('mousedown', function (event) {
+function drag() {
+	document.addEventListener('mousedown', function (event) {
 
-    let dragElement = event.target.closest('.draggable');
-    var editingArea = document.querySelector("#editArea");
+		let dragElement = event.target.closest('.draggable');
+		var editingArea = document.querySelector("#editArea");
 
-    dragElement.ondragstart = function () {
-        return false;
-    };
+		dragElement.ondragstart = function () {
+			return false;
+		};
 
-    let shiftX = event.clientX - dragElement.getBoundingClientRect().left;
-    let shiftY = event.clientY - dragElement.getBoundingClientRect().top;
+		let shiftX = event.clientX - dragElement.getBoundingClientRect().left;
+		let shiftY = event.clientY - dragElement.getBoundingClientRect().top;
 
-    dragElement.style.position = 'absolute';
-    dragElement.style.zIndex = 1000;
-    document.body.append(dragElement);
+		dragElement.style.position = 'absolute';
+		dragElement.style.zIndex = 1000;
+		document.body.append(dragElement);
 
-    moveAt(event.pageX, event.pageY);
+		moveAt(event.pageX, event.pageY);
 
-    // moves the dragElement at (pageX, pageY) coordinates
-    // taking initial shifts into account
-    function moveAt(pageX, pageY) {
-        dragElement.style.left = pageX - shiftX + 'px';
-        dragElement.style.top = pageY - shiftY + 'px';
-    }
+		// moves the dragElement at (pageX, pageY) coordinates
+		// taking initial shifts into account
+		function moveAt(pageX, pageY) {
+			dragElement.style.left = pageX - shiftX + 'px';
+			dragElement.style.top = pageY - shiftY + 'px';
+		}
 
-    function onMouseMove(event) {
-        moveAt(event.pageX, event.pageY);
-    }
+		function onMouseMove(event) {
+			moveAt(event.pageX, event.pageY);
+		}
 
-    // move the dragElement on mousemove
-    document.addEventListener('mousemove', onMouseMove);
+		// move the dragElement on mousemove
+		document.addEventListener('mousemove', onMouseMove);
 
-    // drop the dragElement, remove unneeded handlers
-    dragElement.onmouseup = function () {
-        document.removeEventListener('mousemove', onMouseMove);
-        dragElement.onmouseup = null;
+		// drop the dragElement, remove unneeded handlers
+		dragElement.onmouseup = function () {
+			document.removeEventListener('mousemove', onMouseMove);
+			dragElement.onmouseup = null;
 
-        // Get the top, left coordinates of two elements
-        const shapeArea = dragElement.getBoundingClientRect();
-        const edArea = editingArea.getBoundingClientRect();
+			// Get the top, left coordinates of two elements
+			const shapeArea = dragElement.getBoundingClientRect();
+			const edArea = editingArea.getBoundingClientRect();
 
-        // Calculate the top and left positions
-        shapeTop = shapeArea.top - edArea.top;
-        shapeLeft = shapeArea.left - edArea.left;
+			// Calculate the top and left positions
+			shapeTop = shapeArea.top - edArea.top;
+			shapeLeft = shapeArea.left - edArea.left;
 
-        console.log("x: " + shapeLeft);
-        console.log("y: " + shapeTop);
+			console.log("x: " + shapeLeft);
+			console.log("y: " + shapeTop);
 
-        let Left1 = edArea.left + window.scrollX;
-        let Left2 = shapeLeft;
-        let Width1 = $(editingArea).width();
-        let Width2 = $(dragElement).width();
-        let Top1 = edArea.top + window.scrollY; // zero, this is incorrect
-        let Top2 = shapeTop;
-        let Height1 = $(editingArea).height();
-        let Height2 = $(dragElement).height();
+			let Left1 = edArea.left + window.scrollX;
+			let Left2 = shapeLeft;
+			let Width1 = $(editingArea).width();
+			let Width2 = $(dragElement).width();
+			let Top1 = edArea.top + window.scrollY; // zero, this is incorrect
+			let Top2 = shapeTop;
+			let Height1 = $(editingArea).height();
+			let Height2 = $(dragElement).height();
 
-        if( ((Left1 + Width1) >= Left2)
-        && (Left1 <= (Left2 + Width2))
-        && ((Top1 + Height1) >= Top2)
-        && (Top1 <= (Top2 + Height2))) {
-            console.log("in bounds");
-           if ($(dragElement).attr("id") == "generatedText") {
-                text = true;
-            }
-            else {
-                text = false;
-                shapeToRender = $(dragElement).attr("src");
-				console.log(shapeToRender);
-           }
-        }
-        else {
-            console.log("not in bounds");
-        }
-    };
-}); // https://javascript.info/mouse-drag-and-drop
+			if (((Left1 + Width1) >= Left2)
+				&& (Left1 <= (Left2 + Width2))
+				&& ((Top1 + Height1) >= Top2)
+				&& (Top1 <= (Top2 + Height2))) {
+				console.log("in bounds");
+				if ($(dragElement).attr("id") == "generatedText") {
+					text = true;
+				}
+				else {
+					text = false;
+					shapeToRender = $(dragElement).attr("src");
+					console.log(shapeToRender);
+				}
+			}
+			else {
+				console.log("not in bounds");
+			}
+		};
+	}); // https://javascript.info/mouse-drag-and-drop
+
+}
 
 // Logic for video upload progress bar.
 function updateProgressBar(percent) {
@@ -215,34 +218,34 @@ var app = new Vue({
 					trim_end: $("#trim_end" + videoID).val()
 				}
 			}
-			else if(actiontype == "image"){
-			        shapeLeft = shapeLeft * 3;
-			        shapeTop = shapeTop * 4.5;
-			        console.log("x_new: " + shapeLeft);
-                    console.log("y_new: " + shapeTop);
-					editor_payload = {
-						start_time: 0,
-						duration: 10,
-						x_pos:shapeLeft,
-						y_pos:shapeTop,
-						img_src:shapeToRender,
-						text: text
-					}
-		    }
-		    else if(actiontype == "text"){
-			        shapeLeft = shapeLeft * 3;
-			        shapeTop = shapeTop * 4.5;
-			        console.log("x_new: " + shapeLeft);
-                    console.log("y_new: " + shapeTop);
-					editor_payload = {
-						start_time: 0,
-						duration: 10,
-						x_pos:shapeLeft,
-						y_pos:shapeTop,
-						title: $("#textToGenerate").val(),
-						text: text
-					}
-		    }
+			else if (actiontype == "image") {
+				shapeLeft = shapeLeft * 3;
+				shapeTop = shapeTop * 4.5;
+				console.log("x_new: " + shapeLeft);
+				console.log("y_new: " + shapeTop);
+				editor_payload = {
+					start_time: 0,
+					duration: 10,
+					x_pos: shapeLeft,
+					y_pos: shapeTop,
+					img_src: shapeToRender,
+					text: text
+				}
+			}
+			else if (actiontype == "text") {
+				shapeLeft = shapeLeft * 3;
+				shapeTop = shapeTop * 4.5;
+				console.log("x_new: " + shapeLeft);
+				console.log("y_new: " + shapeTop);
+				editor_payload = {
+					start_time: 0,
+					duration: 10,
+					x_pos: shapeLeft,
+					y_pos: shapeTop,
+					title: $("#textToGenerate").val(),
+					text: text
+				}
+			}
 
 			editor_payload.videofile = video;
 			console.log("editor_payload", editor_payload);
