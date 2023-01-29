@@ -1,11 +1,13 @@
 #circle_lg {
     height:200px;
     width:auto;
+    user-select: none;
 }
 
 #ar_right {
     height:100px;
     width:auto;
+    user-select: none;
 }
 
 #ar_left {
@@ -30,6 +32,7 @@
 
 .draggable {
     cursor:pointer;
+    user-select: none;
 }
 
 .container {
