@@ -96,18 +96,13 @@
                 </div>
                 <div class="row videodiv" v-for="(video,index) in videos" :key="index">
                     <h3><u>[[video.name]]</u></h3>
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <button v-on:click="setRenderVideo(index)" class="btn btn-success">Render Clip</button>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <button v-on:click="removeVideo(index)" class="btn btn-danger">Delete Clip</button>
                     </div>
-                    <div class="col-sm-3">
-                        <button id="reset" class="btn btn-info" onclick="reset()">
-                            Reset Annotations
-                        </button>
-                    </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <button class="btn btn-dark" v-on:click="reloadOriginalVideo(index)">Reload Original Video
                         </button>
                     </div>
