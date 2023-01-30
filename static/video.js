@@ -219,17 +219,22 @@ var app = new Vue({
 				}
 			}
 			else if (actiontype == "image") {
-			    if (shapeType != "highlight") {
-			        if (shapeType != "circle_lg") {
-			            // correct numbers for circle_sm, ar_right, ar_left
-				        shapeTop = shapeTop * 3.1;
-			        }
-			        else {
-				        shapeTop = shapeTop * 4.5;
-			        }
-
+			    if (shapeType != "circle_lg") {
+			        // correct numbers for circle_sm, ar_right, ar_left
+				    shapeTop = shapeTop * 3.1;
+			    }
+			    else {
+				    shapeTop = shapeTop * 4.5;
 			    }
 			    shapeLeft = shapeLeft * 3;
+
+			    if (shapeType != "highlight") {
+			        scale = 1.51;
+			    }
+			    else {
+			        scale = 2.51;
+			    }
+
 				console.log("x_new: " + shapeLeft);
 				console.log("y_new: " + shapeTop);
 				editor_payload = {
