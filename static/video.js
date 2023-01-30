@@ -219,7 +219,7 @@ var app = new Vue({
 			}
 			else if (actiontype == "image") {
 			    if (shapeType != "circle_lg") {
-			        shapeLeft = shapeLeft * 2.6;
+			        shapeLeft = shapeLeft * 3;
 				    shapeTop = shapeTop * 3.1;
 			    }
 			    else {
