@@ -7,6 +7,7 @@ var shapeLeft;
 var shapeToRender;
 var text;
 var shapeType;
+var scale;
 
 // https://hashnode.com/post/whats-the-best-way-to-generate-image-from-text-using-javascript-and-html5-apis-cik6k8rbj01izxy53619llzzp
 // Produces an image from text entered by the user
@@ -218,12 +219,15 @@ var app = new Vue({
 				}
 			}
 			else if (actiontype == "image") {
-			    if (shapeType != "circle_lg") {
-			        // correct numbers for circle_sm, ar_right, ar_left
-				    shapeTop = shapeTop * 3.1;
-			    }
-			    else {
-				    shapeTop = shapeTop * 4.5;
+			    if (shapeType != "highlight") {
+			        if (shapeType != "circle_lg") {
+			            // correct numbers for circle_sm, ar_right, ar_left
+				        shapeTop = shapeTop * 3.1;
+			        }
+			        else {
+				        shapeTop = shapeTop * 4.5;
+			        }
+
 			    }
 			    shapeLeft = shapeLeft * 3;
 				console.log("x_new: " + shapeLeft);
