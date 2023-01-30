@@ -219,13 +219,13 @@ var app = new Vue({
 			}
 			else if (actiontype == "image") {
 			    if (shapeType != "circle_lg") {
-			        shapeLeft = shapeLeft * 3;
+			        // correct numbers for circle_sm, ar_right, ar_left
 				    shapeTop = shapeTop * 3.1;
 			    }
 			    else {
-			        shapeLeft = shapeLeft * 3;
 				    shapeTop = shapeTop * 4.5;
 			    }
+			    shapeLeft = shapeLeft * 3;
 				console.log("x_new: " + shapeLeft);
 				console.log("y_new: " + shapeTop);
 				editor_payload = {
