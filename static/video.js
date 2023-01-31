@@ -243,7 +243,8 @@ var app = new Vue({
 					x_pos: shapeLeft,
 					y_pos: shapeTop,
 					img_src: shapeToRender,
-					text: text
+					text: text,
+					scale: scale
 				}
 			}
 			else if (actiontype == "text") {
