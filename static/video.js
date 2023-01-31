@@ -232,7 +232,7 @@ var app = new Vue({
 			        scale = 1.51;
 			    }
 			    else {
-			        scale = 2.51;
+			        scale = 3.2;
 			    }
 
 				console.log("x_new: " + shapeLeft);
