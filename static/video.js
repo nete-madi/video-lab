@@ -249,7 +249,7 @@ var app = new Vue({
 			}
 			else if (actiontype == "text") {
 				shapeLeft = shapeLeft * 3;
-				shapeTop = shapeTop * 4.5;
+				shapeTop = shapeTop * 3.1;
 				console.log("x_new: " + shapeLeft);
 				console.log("y_new: " + shapeTop);
 				editor_payload = {

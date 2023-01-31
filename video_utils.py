@@ -33,7 +33,7 @@ def text_overlay(videofile: str, text: str, start_time: int, duration: int, x_po
     videofile = videofile.replace(video_save_path, "")
     # see if you can configure these dynamically
     text = TextClip(text, font="Arial", fontsize=30, color='black').set_start(start_time).set_duration(
-        duration).set_pos((x_pos, y_pos)).resize(1.51)
+        duration).set_pos((x_pos, y_pos)).resize(3)
     edited_path = video_save_path + "edited_" + str(int(time.time())) + videofile
     file_name = "edited_" + str(int(time.time())) + videofile
     final = CompositeVideoClip([clip, text])
