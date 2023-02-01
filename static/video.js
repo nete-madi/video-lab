@@ -224,7 +224,7 @@ var app = new Vue({
 				    shapeTop = shapeTop * 3.1;
 			    }
 			    else {
-				    shapeTop = shapeTop * 4.5;
+				    shapeTop = shapeTop * 3;
 			    }
 			    shapeLeft = shapeLeft * 3;
 
