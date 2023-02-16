@@ -101,6 +101,7 @@ function drag() {
 					shapeType = $(dragElement).attr("id");
 					console.log(shapeType);
 				}
+				$("#durationModal").modal("show");
 			}
 			else {
 				console.log("not in bounds");
