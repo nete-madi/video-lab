@@ -8,6 +8,7 @@ var shapeToRender;
 var text;
 var shapeType;
 var scale;
+var duration;
 
 // https://hashnode.com/post/whats-the-best-way-to-generate-image-from-text-using-javascript-and-html5-apis-cik6k8rbj01izxy53619llzzp
 // Produces an image from text entered by the user
@@ -108,6 +109,10 @@ function drag() {
 			}
 		};
 	}); // https://javascript.info/mouse-drag-and-drop
+
+}
+
+function setDuration() {
 
 }
 
