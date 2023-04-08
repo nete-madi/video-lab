@@ -1,6 +1,6 @@
-# BugSwatter
+# VideoLab
 
-This is a project for my master's thesis. Learn to create better videos to attach to your bug reports--this tool does it all for you.
+VideoLab is a novel prototype of a tool meant to allow end-users to supplement their bug reports by recording, editing, and attaching video clips of bugs to reports. 
 
 Dependencies:
 
