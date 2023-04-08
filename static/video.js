@@ -8,6 +8,7 @@ var shapeToRender;
 var text;
 var shapeType;
 var scale;
+var duration;
 
 // https://hashnode.com/post/whats-the-best-way-to-generate-image-from-text-using-javascript-and-html5-apis-cik6k8rbj01izxy53619llzzp
 // Produces an image from text entered by the user
@@ -101,6 +102,7 @@ function drag() {
 					shapeType = $(dragElement).attr("id");
 					console.log(shapeType);
 				}
+				$("#durationModal").modal("show");
 			}
 			else {
 				console.log("not in bounds");
@@ -108,6 +110,30 @@ function drag() {
 		};
 	}); // https://javascript.info/mouse-drag-and-drop
 
+}
+
+document.getElementById("1").onclick = function() {
+   duration = 1;
+   $("#durationModal").modal("hide");
+   console.log(duration);
+}
+
+document.getElementById("5").onclick = function() {
+   duration = 5;
+   $("#durationModal").modal("hide");
+   console.log(duration);
+}
+
+document.getElementById("10").onclick = function() {
+   duration = 10;
+   $("#durationModal").modal("hide");
+   console.log(duration);
+}
+
+document.getElementById("all").onclick = function() {
+   duration = 18;
+   $("#durationModal").modal("hide");
+   console.log(duration);
 }
 
 // Logic for video upload progress bar.
@@ -239,7 +265,7 @@ var app = new Vue({
 				console.log("y_new: " + shapeTop);
 				editor_payload = {
 					start_time: 0,
-					duration: 10,
+					duration: duration,
 					x_pos: shapeLeft,
 					y_pos: shapeTop,
 					img_src: shapeToRender,
@@ -254,7 +280,7 @@ var app = new Vue({
 				console.log("y_new: " + shapeTop);
 				editor_payload = {
 					start_time: 0,
-					duration: 10,
+					duration: duration,
 					x_pos: shapeLeft,
 					y_pos: shapeTop,
 					title: $("#textToGenerate").val(),
