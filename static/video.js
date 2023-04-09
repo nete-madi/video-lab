@@ -317,7 +317,12 @@ var app = new Vue({
 		setStartAndDuration: function (index, button_id) {
 	        // get id of clicked button
 	        duration = button_id;
-	        start_pos = document.getElementById("start_pos").value;
+	        if (button_id == 18) {
+	            start_pos = 0;
+	        }
+	        else {
+	            start_pos = document.getElementById("start_pos").value;
+	        }
 	        $("#durationModal").modal("hide");
             console.log("duration is: " + duration);
             console.log("start position is: "+ start_pos);
