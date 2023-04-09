@@ -112,7 +112,7 @@ function drag() {
 	}); // https://javascript.info/mouse-drag-and-drop
 
 }
-
+/*
 document.getElementById("1").onclick = function() {
    duration = 1;
    start_pos = document.getElementById("start_pos").value;
@@ -120,6 +120,7 @@ document.getElementById("1").onclick = function() {
    console.log("duration is: " + duration);
    console.log("start position is: "+ start_pos);
 }
+*/
 
 document.getElementById("5").onclick = function() {
    duration = 5;
