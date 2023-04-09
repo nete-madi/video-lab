@@ -236,7 +236,7 @@ var app = new Vue({
 		},
 
 		editVideoSubmit: function (videoID, actiontype) {
-			console.log("editVideoSubmit", videoID);
+			console.log("editVideoSubmit return value: ", videoID);
 			setLoader(true);
 
 			let video = this.videos[videoID].file;
@@ -274,10 +274,8 @@ var app = new Vue({
 				console.log("x_new: " + shapeLeft);
 				console.log("y_new: " + shapeTop);
 				editor_payload = {
-					// start_time: start_pos,
-					// duration: duration,
-					start_time: 0;
-					duration: 5;
+					start_time: start_pos,
+					duration: duration,
 					x_pos: shapeLeft,
 					y_pos: shapeTop,
 					img_src: shapeToRender,
@@ -316,8 +314,7 @@ var app = new Vue({
 			});
 		},
 
-		setStartAndDuration: function (videoID, button_id) {
-		    let index = this.videos[videoID].file;
+		setStartAndDuration: function (index, button_id) {
 	        // get id of clicked button
 	        duration = button_id;
 	        start_pos = document.getElementById("start_pos").value;
