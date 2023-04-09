@@ -174,6 +174,17 @@ var app = new Vue({
 	delimiters: ['[[', ']]'],
 	methods: {
 
+	    setStartAndDuration: function (button_id) {
+	        // get id of clicked button
+	        duration = button_id;
+	        start_pos = document.getElementById("start_pos").value;
+	        $("#durationModal").modal("hide");
+            console.log("duration is: " + duration);
+            console.log("start position is: "+ start_pos);
+            editVideoSubmit(index, 'image');
+
+	    },
+
 		addVideo: function () {
 			this.originalvideos.push({});
 			this.videos.push({});
