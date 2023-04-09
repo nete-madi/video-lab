@@ -199,7 +199,7 @@
 
     <!--Modal with duration buttons that appears after dragging and dropping a shape-->
     <div class="modal fade" id="durationModal" tabindex="-1" role="dialog" aria-labelledby="durationModalLabel"
-         aria-hidden="true">
+         aria-hidden="true" v-for="(video,index) in videos" :key="index">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
