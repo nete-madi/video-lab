@@ -15,8 +15,8 @@ var start_pos;
 // Produces an image from text entered by the user
 
 function generate() {
-    var msg = $("#textToGenerate").val();
-    document.getElementById("generatedText").innerHTML = msg;
+	var msg = $("#textToGenerate").val();
+	document.getElementById("generatedText").innerHTML = msg;
 } (jQuery);
 
 
@@ -122,28 +122,28 @@ document.getElementById("1").onclick = function() {
 }
 */
 
-document.getElementById("5").onclick = function() {
-   duration = 5;
-   start_pos = document.getElementById("start_pos").value;
-   $("#durationModal").modal("hide");
-   console.log("duration is: " + duration);
-   console.log("start position is: "+ start_pos);
+document.getElementById("5").onclick = function () {
+	duration = 5;
+	start_pos = document.getElementById("start_pos").value;
+	$("#durationModal").modal("hide");
+	console.log("duration is: " + duration);
+	console.log("start position is: " + start_pos);
 }
 
-document.getElementById("10").onclick = function() {
-   duration = 10;
-   start_pos = document.getElementById("start_pos").value;
-   $("#durationModal").modal("hide");
-   console.log("duration is: " + duration);
-   console.log("start position is: "+ start_pos);
+document.getElementById("10").onclick = function () {
+	duration = 10;
+	start_pos = document.getElementById("start_pos").value;
+	$("#durationModal").modal("hide");
+	console.log("duration is: " + duration);
+	console.log("start position is: " + start_pos);
 }
 
-document.getElementById("all").onclick = function() {
-   duration = 18;
-   start_pos = 0;
-   $("#durationModal").modal("hide");
-   console.log("duration is: " + duration);
-   console.log("start position is: "+ start_pos);
+document.getElementById("all").onclick = function () {
+	duration = 18;
+	start_pos = 0;
+	$("#durationModal").modal("hide");
+	console.log("duration is: " + duration);
+	console.log("start position is: " + start_pos);
 }
 
 // Logic for video upload progress bar.
@@ -255,21 +255,21 @@ var app = new Vue({
 				}
 			}
 			else if (actiontype == "image") {
-			    if (shapeType != "circle_lg") {
-			        // correct numbers for circle_sm, ar_right, ar_left
-				    shapeTop = shapeTop * 3.1;
-			    }
-			    else {
-				    shapeTop = shapeTop * 3;
-			    }
-			    shapeLeft = shapeLeft * 3;
+				if (shapeType != "circle_lg") {
+					// correct numbers for circle_sm, ar_right, ar_left
+					shapeTop = shapeTop * 3.1;
+				}
+				else {
+					shapeTop = shapeTop * 3;
+				}
+				shapeLeft = shapeLeft * 3;
 
-			    if (shapeType != "highlight") {
-			        scale = 1.51;
-			    }
-			    else {
-			        scale = 3.2;
-			    }
+				if (shapeType != "highlight") {
+					scale = 1.51;
+				}
+				else {
+					scale = 3.2;
+				}
 
 				console.log("x_new: " + shapeLeft);
 				console.log("y_new: " + shapeTop);
@@ -315,20 +315,20 @@ var app = new Vue({
 		},
 
 		setStartAndDuration: function (index, button_id) {
-	        // get id of clicked button
-	        duration = button_id;
-	        if (button_id == 18) {
-	            start_pos = 0;
-	        }
-	        else {
-	            start_pos = document.getElementById("start_pos").value;
-	        }
-	        $("#durationModal").modal("hide");
-            console.log("duration is: " + duration);
-            console.log("start position is: "+ start_pos);
-            this.editVideoSubmit(index, 'image');
+			// get id of clicked button
+			duration = button_id;
+			if (button_id == 18) {
+				start_pos = 0;
+			}
+			else {
+				start_pos = document.getElementById("start_pos").value;
+			}
+			$("#durationModal").modal("hide");
+			console.log("duration is: " + duration);
+			console.log("start position is: " + start_pos);
+			this.editVideoSubmit(index, 'image');
 
-	    },
+		},
 
 		finalrender: function () {
 			setLoader(true);
