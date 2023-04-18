@@ -52,14 +52,16 @@
                     <br>
                     <div class="row">
                         <div class="col-sm-4">
-                                <button class="btn btn-primary" v-on:click="uploadVideoFile">Upload</button>
-                                </span>
+                            <button class="btn btn-primary" v-on:click="uploadVideoFile">Upload</button>
+                            </span>
                         </div>
-                        <div class="col-sm-6">
-                            <div v-if="videos.length > 0" class="col-sm-6">
-                                <button class="btn btn-success" v-on:click="finalrender">Merge Clips</button>
-                            </div>
-                        </div>
+                        <div class="col-sm-4">
+                        <button v-on:click="removeVideo(index)" class="btn btn-danger">Delete Clip</button>
+                    </div>
+                    <div class="col-sm-4">
+                        <button class="btn btn-success" v-on:click="reloadOriginalVideo(index)">Reload Original Video
+                        </button>
+                    </div>
                     </div>
                 </div>
                 <div class="col-sm-12" style="padding: 50px;">
@@ -72,38 +74,15 @@
                 </div>
                 <div class="row videodiv" v-for="(video,index) in videos" :key="index">
                     <h3><u>[[video.name]]</u></h3>
-                    <div class="col-sm-4">
-                        <button v-on:click="setRenderVideo(index)" class="btn btn-success">Render Clip</button>
-                    </div>
-                    <div class="col-sm-4">
-                        <button v-on:click="removeVideo(index)" class="btn btn-danger">Delete Clip</button>
-                    </div>
-                    <div class="col-sm-4">
-                        <button class="btn btn-dark" v-on:click="reloadOriginalVideo(index)">Reload Original Video
-                        </button>
-                    </div>
                     <br><br><br><br>
                     <div align="center">
                         <br>
                         <h4><u>Video Effects</u></h4>
                         <br><br>
                         <div class="row">
-                            <div class="col-sm-6">
-                                <button class="btn btn-info" v-on:click="editVideoSubmit(index,'trim')">
-                                    Trim Clip
-                                </button>
-                            </div>
-                            <div class="col-sm-6">
-                                <button class="btn btn-info" v-on:click="editVideoSubmit(index,'image')">
-                                    Render Image
-                                </button>
-                                <br>
-                            </div>
-                        </div>
-                        <br><br>
-                        <div class="row">
                             <div class="col-lg-6">
                                 <b><u>Trim</u></b>
+                                <br><br>
                                 <div class="form-group">
                                     <div class="col-sm-8">
                                         <label for="start">Start:</label>
@@ -114,6 +93,14 @@
                                         <label for="end">End: </label>
                                         <input id="end" min="0" max="120" type="number" :id="`trim_end`+index"
                                                value="0">
+                                    </div>
+                                    <br><br>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-info" v-on:click="editVideoSubmit(index,'trim')">
+                                                Trim Clip
+                                            </button>
+                                        </div>
                                     </div>
                                     <br><br>
                                     <div class="col-sm-8">
@@ -127,15 +114,9 @@
                                     </div>
                                     <br>
                                     <div class="row">
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-12">
                                             <button id="generate" class="btn btn-dark" onclick="generate()">
                                                 Generate Text
-                                            </button>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <button id="rendertext" class="btn btn-info"
-                                                    v-on:click="editVideoSubmit(index,'text')">
-                                                Render Text
                                             </button>
                                         </div>
                                     </div>
