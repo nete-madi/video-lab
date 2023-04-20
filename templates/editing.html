@@ -172,7 +172,14 @@
                 </div>
             </div>-->
             <div class="row videodiv">
-                    <h3><u>Video Name</u></h3>
+                <div v-if="!videos.length">
+                    <h3><u>No Video Selected</u></h3>
+                </div>
+                <div v-else>
+                    <div v-for="(video,index) in videos" :key="index">
+                    <h3><u>[[video.name]]</u></h3>
+                        </div>
+                </div>
                     <br><br><br><br>
                     <div align="center">
                         <br>
