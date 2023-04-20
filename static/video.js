@@ -9,6 +9,7 @@ var shapeType;
 var scale;
 var duration;
 var start_pos;
+var text;
 
 // https://hashnode.com/post/whats-the-best-way-to-generate-image-from-text-using-javascript-and-html5-apis-cik6k8rbj01izxy53619llzzp
 // Produces an image from text entered by the user
@@ -105,15 +106,6 @@ function drag() {
 	}); // https://javascript.info/mouse-drag-and-drop
 
 }
-/*
-document.getElementById("1").onclick = function() {
-   duration = 1;
-   start_pos = document.getElementById("start_pos").value;
-   $("#durationModal").modal("hide");
-   console.log("duration is: " + duration);
-   console.log("start position is: "+ start_pos);
-}
-*/
 
 document.getElementById("5").onclick = function () {
 	duration = 5;
@@ -258,45 +250,47 @@ var app = new Vue({
 				}
 			}
 			else if (actiontype == "image") {
-				if (shapeType == "text") {
-					shapeLeft = shapeLeft * 3;
+				if (shapeType != "circle_lg") {
+					// correct numbers for circle_sm, ar_right, ar_left
 					shapeTop = shapeTop * 3.1;
-					console.log("x_new: " + shapeLeft);
-					console.log("y_new: " + shapeTop);
-					editor_payload = {
-						start_time: 0,
-						duration: duration,
-						x_pos: shapeLeft,
-						y_pos: shapeTop,
-						title: $("#textToGenerate").val(),
-					}
-			    else {
-					if (shapeType != "circle_lg") {
-						// correct numbers for circle_sm, ar_right, ar_left
-						shapeTop = shapeTop * 3.1;
-					}
-					else {
-						shapeTop = shapeTop * 3;
-					}
-					shapeLeft = shapeLeft * 3;
+				}
+				else {
+					shapeTop = shapeTop * 3;
+				}
+				shapeLeft = shapeLeft * 3;
 
-					if (shapeType != "highlight") {
-						scale = 1.51;
-					}
-					else {
-						scale = 3.2;
-					}
+				if (shapeType != "highlight") {
+					scale = 1.51;
+				}
+				else {
+					scale = 3.2;
+				}
 
-					console.log("x_new: " + shapeLeft);
-					console.log("y_new: " + shapeTop);
-					editor_payload = {
-						start_time: start_pos,
-						duration: duration,
-						x_pos: shapeLeft,
-						y_pos: shapeTop,
-						img_src: shapeToRender,
-						scale: scale
-					}
+				console.log("x_new: " + shapeLeft);
+				console.log("y_new: " + shapeTop);
+				editor_payload = {
+					start_time: start_pos,
+					duration: duration,
+					x_pos: shapeLeft,
+					y_pos: shapeTop,
+					img_src: shapeToRender,
+					text: text,
+					scale: scale
+				}
+			}
+
+			else if (actiontype == "text") {
+				shapeLeft = shapeLeft * 3;
+				shapeTop = shapeTop * 3.1;
+				console.log("x_new: " + shapeLeft);
+				console.log("y_new: " + shapeTop);
+				editor_payload = {
+					start_time: 0,
+					duration: duration,
+					x_pos: shapeLeft,
+					y_pos: shapeTop,
+					title: $("#textToGenerate").val(),
+					text: text
 				}
 			}
 
