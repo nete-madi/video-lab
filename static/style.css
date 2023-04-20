@@ -59,12 +59,13 @@
 }
 
 .drop-landing {
-    width:100%;
+    width:850px;
     height:450px;
     max-height:500px;
     border: 3px dotted #ff00ff;
     z-index:200;
     position:absolute;
+    margin-left:25%;
 }
 
 .edit-menu {
