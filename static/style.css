@@ -67,6 +67,18 @@
     position:absolute;
 }
 
+.edit-menu {
+    background:grey;
+    height:200px;
+}
+
+.menu {
+    padding:75px;
+    margin-left:50px;
+    margin-right:50px;
+    margin-top:10px;
+}
+
 /* Safari */
 @-webkit-keyframes spin {
     0% { -webkit-transform: rotate(0deg); }
