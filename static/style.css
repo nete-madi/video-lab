@@ -68,16 +68,14 @@
     margin-left:25%;
 }
 
-.edit-menu {
-    background:grey;
-    height:200px;
-}
-
 .menu {
     padding:75px;
-    margin-left:50px;
-    margin-right:50px;
     margin-top:10px;
+}
+
+.btn-lg {
+    font-weight:bold;
+    font-size:30px;
 }
 
 /* Safari */
