@@ -94,10 +94,15 @@ function drag() {
 				&& ((Top1 + Height1) >= Top2)
 				&& (Top1 <= (Top2 + Height2))) {
 				console.log("in bounds");
-				shapeToRender = $(dragElement).attr("src");
-				shapeType = $(dragElement).attr("id");
-				console.log("shape type is " + shapeType);
-				$("#durationModal").modal("show");
+				if ($(dragElement).attr("id") == "generatedText") {
+					text = true;
+				}
+				else {
+					text = false;
+					shapeToRender = $(dragElement).attr("src");
+					shapeType = $(dragElement).attr("id");
+					console.log(shapeType);
+				}
 			}
 			else {
 				console.log("not in bounds");
