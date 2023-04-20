@@ -93,7 +93,6 @@ function drag() {
 				&& (Left1 <= (Left2 + Width2))
 				&& ((Top1 + Height1) >= Top2)
 				&& (Top1 <= (Top2 + Height2))) {
-				console.log("in bounds");
 				if ($(dragElement).attr("id") == "generatedText") {
 					text = true;
 				}
@@ -103,6 +102,7 @@ function drag() {
 					shapeType = $(dragElement).attr("id");
 					console.log(shapeType);
 				}
+				$("#durationModal").modal("show");
 			}
 			else {
 				console.log("not in bounds");
@@ -315,9 +315,10 @@ var app = new Vue({
 			});
 		},
 
-		setStartAndDuration: function (index, button_id, actiontype) {
+		setStartAndDuration: function (index, button_id) {
 			// get id of clicked button
 			duration = button_id;
+			let actiontype = 'image';
 			if (button_id == 18) {
 				start_pos = 0;
 			}
@@ -325,10 +326,12 @@ var app = new Vue({
 				start_pos = document.getElementById("start_pos").value;
 			}
 			$("#durationModal").modal("hide");
+			if (text == true) {
+				actiontype = 'text';
+			}
 			console.log("duration is: " + duration);
 			console.log("start position is: " + start_pos);
-			this.editVideoSubmit(index, 'image');
-
+			this.editVideoSubmit(index, actiontype);
 		},
 
 		finalrender: function () {
