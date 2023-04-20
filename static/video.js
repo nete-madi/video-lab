@@ -5,7 +5,6 @@ let isDragging = false;
 var shapeTop;
 var shapeLeft;
 var shapeToRender;
-var text;
 var shapeType;
 var scale;
 var duration;
@@ -94,15 +93,9 @@ function drag() {
 				&& ((Top1 + Height1) >= Top2)
 				&& (Top1 <= (Top2 + Height2))) {
 				console.log("in bounds");
-				if ($(dragElement).attr("id") == "generatedText") {
-					text = true;
-				}
-				else {
-					text = false;
-					shapeToRender = $(dragElement).attr("src");
-					shapeType = $(dragElement).attr("id");
-					console.log(shapeType);
-				}
+				shapeToRender = $(dragElement).attr("src");
+				shapeType = $(dragElement).attr("id");
+				console.log("shape type is " + shapeType);
 				$("#durationModal").modal("show");
 			}
 			else {
@@ -237,12 +230,12 @@ var app = new Vue({
 
 		buttonChecker: function (videos, videoID, actiontype) {
 
-		    if (videos.length == 0) {
-		        alert("You must upload a video first before performing this action.");
-		    }
-		    else {
-		        this.editVideoSubmit(videoID, actiontype);
-		    }
+			if (videos.length == 0) {
+				alert("You must upload a video first before performing this action.");
+			}
+			else {
+				this.editVideoSubmit(videoID, actiontype);
+			}
 		},
 
 		editVideoSubmit: function (videoID, actiontype) {
@@ -265,46 +258,45 @@ var app = new Vue({
 				}
 			}
 			else if (actiontype == "image") {
-				if (shapeType != "circle_lg") {
-					// correct numbers for circle_sm, ar_right, ar_left
+				if (shapeType == "text") {
+					shapeLeft = shapeLeft * 3;
 					shapeTop = shapeTop * 3.1;
-				}
-				else {
-					shapeTop = shapeTop * 3;
-				}
-				shapeLeft = shapeLeft * 3;
+					console.log("x_new: " + shapeLeft);
+					console.log("y_new: " + shapeTop);
+					editor_payload = {
+						start_time: 0,
+						duration: duration,
+						x_pos: shapeLeft,
+						y_pos: shapeTop,
+						title: $("#textToGenerate").val(),
+					}
+			    else {
+					if (shapeType != "circle_lg") {
+						// correct numbers for circle_sm, ar_right, ar_left
+						shapeTop = shapeTop * 3.1;
+					}
+					else {
+						shapeTop = shapeTop * 3;
+					}
+					shapeLeft = shapeLeft * 3;
 
-				if (shapeType != "highlight") {
-					scale = 1.51;
-				}
-				else {
-					scale = 3.2;
-				}
+					if (shapeType != "highlight") {
+						scale = 1.51;
+					}
+					else {
+						scale = 3.2;
+					}
 
-				console.log("x_new: " + shapeLeft);
-				console.log("y_new: " + shapeTop);
-				editor_payload = {
-					start_time: start_pos,
-					duration: duration,
-					x_pos: shapeLeft,
-					y_pos: shapeTop,
-					img_src: shapeToRender,
-					text: text,
-					scale: scale
-				}
-			}
-			else if (actiontype == "text") {
-				shapeLeft = shapeLeft * 3;
-				shapeTop = shapeTop * 3.1;
-				console.log("x_new: " + shapeLeft);
-				console.log("y_new: " + shapeTop);
-				editor_payload = {
-					start_time: 0,
-					duration: duration,
-					x_pos: shapeLeft,
-					y_pos: shapeTop,
-					title: $("#textToGenerate").val(),
-					text: text
+					console.log("x_new: " + shapeLeft);
+					console.log("y_new: " + shapeTop);
+					editor_payload = {
+						start_time: start_pos,
+						duration: duration,
+						x_pos: shapeLeft,
+						y_pos: shapeTop,
+						img_src: shapeToRender,
+						scale: scale
+					}
 				}
 			}
 
@@ -324,7 +316,7 @@ var app = new Vue({
 			});
 		},
 
-		setStartAndDuration: function (index, button_id) {
+		setStartAndDuration: function (index, button_id, actiontype) {
 			// get id of clicked button
 			duration = button_id;
 			if (button_id == 18) {
