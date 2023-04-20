@@ -59,9 +59,14 @@
                             <button v-on:click="removeVideo(index)" class="btn btn-danger">Delete Clip</button>
                         </div>
                         <div class="col-sm-4">
-                            <button class="btn btn-success" v-on:click="reloadOriginalVideo(index)">Reload Original
-                                Video
-                            </button>
+                            <div v-if="videos.length">
+                                <div v-for="(video,index) in videos" :key="index">
+                                    <button class="btn btn-success" v-on:click="reloadOriginalVideo(index)">Reload
+                                        Original
+                                        Video
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
