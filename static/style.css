@@ -83,7 +83,6 @@ video {
     height: auto;
     max-height: 500px;
     max-width: 50%;
-    position:absolute;
     object-fit:cover;
 }
 
