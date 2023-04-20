@@ -235,6 +235,16 @@ var app = new Vue({
 				.catch(err => console.log(err))
 		},
 
+		buttonChecker: function (videos, videoID, actiontype) {
+
+		    if (videos.length == 0) {
+		        alert("You must upload a video first before performing this action.");
+		    }
+		    else {
+		        this.editVideoSubmit(videoID, actiontype);
+		    }
+		},
+
 		editVideoSubmit: function (videoID, actiontype) {
 			console.log("editVideoSubmit return value: ", videoID);
 			setLoader(true);

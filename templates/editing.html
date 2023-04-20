@@ -56,12 +56,13 @@
                             </span>
                         </div>
                         <div class="col-sm-4">
-                        <button v-on:click="removeVideo(index)" class="btn btn-danger">Delete Clip</button>
-                    </div>
-                    <div class="col-sm-4">
-                        <button class="btn btn-success" v-on:click="reloadOriginalVideo(index)">Reload Original Video
-                        </button>
-                    </div>
+                            <button v-on:click="removeVideo(index)" class="btn btn-danger">Delete Clip</button>
+                        </div>
+                        <div class="col-sm-4">
+                            <button class="btn btn-success" v-on:click="reloadOriginalVideo(index)">Reload Original
+                                Video
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-12" style="padding: 50px;">
@@ -72,114 +73,114 @@
                         </div>
                     </div>
                 </div>
-               <!-- <div class="row videodiv" v-for="(video,index) in videos" :key="index">
-                    <h3><u>[[video.name]]</u></h3>
-                    <br><br><br><br>
-                    <div align="center">
-                        <br>
-                        <h4><u>Video Effects</u></h4>
-                        <br><br>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <b><u>Trim</u></b>
-                                <br><br>
-                                <div class="form-group">
-                                    <div class="col-sm-8">
-                                        <label for="start">Start:</label>
-                                        <input id="start" min="0" max="120" type="number" :id="`trim_start`+index"
-                                               value="0">
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <label for="end">End: </label>
-                                        <input id="end" min="0" max="120" type="number" :id="`trim_end`+index"
-                                               value="0">
-                                    </div>
-                                    <br><br>
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <button class="btn btn-info" v-on:click="editVideoSubmit(index,'trim')">
-                                                Trim Clip
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <br><br>
-                                    <div class="col-sm-8">
-                                        <b><u>Place Text</u></b>
-                                    </div>
-                                    <br>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control"
-                                               placeholder="Enter text to place on video..."
-                                               id="textToGenerate">
-                                    </div>
-                                    <br>
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <button id="generate" class="btn btn-dark" onclick="generate()">
-                                                Generate Text
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="col-lg-10 draggable" id="generatedText" onmousedown="drag()"></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <b><u>Annotations Palette</u></b>
-                                <br><br>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <img class="draggable" id="circle_lg"
-                                             onmousedown="drag()"
-                                             src="{{ url_for('editing.render_img', filename='circle_lg.png') }}"
-                                             alt="A red circle.">
-                                        <br><br><br>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <img class="draggable" id="circle_sm"
-                                             onmousedown="drag()"
-                                             src="{{ url_for('editing.render_img', filename='circle_sm.png') }}"
-                                             alt="A red circle.">
-                                        <br><br><br>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <img class="draggable" id="ar_right"
-                                             onmousedown="drag()"
-                                             src="{{ url_for('editing.render_img', filename='arrow_right.png') }}"
-                                             alt="An arrow pointing up and to the right.">
-                                        <br><br><br>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <img class="draggable" id="ar_left"
-                                             onmousedown="drag()"
-                                             src="{{ url_for('editing.render_img', filename='arrow_left.png') }}"
-                                             alt="An arrow pointing up and to the left.">
-                                        <br><br><br>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <img class="draggable" id="highlight"
-                                             onmousedown="drag()"
-                                             src="{{ url_for('editing.render_img', filename='highlight.png') }}"
-                                             alt="A translucent yellow box.">
-                                        <br><br><br>
-                                    </div>
-                                </div>
-                            </div>
+                <!-- <div class="row videodiv" v-for="(video,index) in videos" :key="index">
+                     <h3><u>[[video.name]]</u></h3>
+                     <br><br><br><br>
+                     <div align="center">
+                         <br>
+                         <h4><u>Video Effects</u></h4>
+                         <br><br>
+                         <div class="row">
+                             <div class="col-lg-6">
+                                 <b><u>Trim</u></b>
+                                 <br><br>
+                                 <div class="form-group">
+                                     <div class="col-sm-8">
+                                         <label for="start">Start:</label>
+                                         <input id="start" min="0" max="120" type="number" :id="`trim_start`+index"
+                                                value="0">
+                                     </div>
+                                     <div class="col-sm-8">
+                                         <label for="end">End: </label>
+                                         <input id="end" min="0" max="120" type="number" :id="`trim_end`+index"
+                                                value="0">
+                                     </div>
+                                     <br><br>
+                                     <div class="row">
+                                         <div class="col-sm-12">
+                                             <button class="btn btn-info" v-on:click="editVideoSubmit(index,'trim')">
+                                                 Trim Clip
+                                             </button>
+                                         </div>
+                                     </div>
+                                     <br><br>
+                                     <div class="col-sm-8">
+                                         <b><u>Place Text</u></b>
+                                     </div>
+                                     <br>
+                                     <div class="col-sm-8">
+                                         <input type="text" class="form-control"
+                                                placeholder="Enter text to place on video..."
+                                                id="textToGenerate">
+                                     </div>
+                                     <br>
+                                     <div class="row">
+                                         <div class="col-sm-12">
+                                             <button id="generate" class="btn btn-dark" onclick="generate()">
+                                                 Generate Text
+                                             </button>
+                                         </div>
+                                     </div>
+                                     <br>
+                                     <div class="col-lg-10 draggable" id="generatedText" onmousedown="drag()"></div>
+                                 </div>
+                             </div>
+                             <div class="col-lg-6">
+                                 <b><u>Annotations Palette</u></b>
+                                 <br><br>
+                                 <div class="row">
+                                     <div class="col-sm-6">
+                                         <img class="draggable" id="circle_lg"
+                                              onmousedown="drag()"
+                                              src="{{ url_for('editing.render_img', filename='circle_lg.png') }}"
+                                              alt="A red circle.">
+                                         <br><br><br>
+                                     </div>
+                                     <div class="col-sm-6">
+                                         <img class="draggable" id="circle_sm"
+                                              onmousedown="drag()"
+                                              src="{{ url_for('editing.render_img', filename='circle_sm.png') }}"
+                                              alt="A red circle.">
+                                         <br><br><br>
+                                     </div>
+                                 </div>
+                                 <div class="row">
+                                     <div class="col-sm-6">
+                                         <img class="draggable" id="ar_right"
+                                              onmousedown="drag()"
+                                              src="{{ url_for('editing.render_img', filename='arrow_right.png') }}"
+                                              alt="An arrow pointing up and to the right.">
+                                         <br><br><br>
+                                     </div>
+                                     <div class="col-sm-6">
+                                         <img class="draggable" id="ar_left"
+                                              onmousedown="drag()"
+                                              src="{{ url_for('editing.render_img', filename='arrow_left.png') }}"
+                                              alt="An arrow pointing up and to the left.">
+                                         <br><br><br>
+                                     </div>
+                                     <div class="col-lg-12">
+                                         <img class="draggable" id="highlight"
+                                              onmousedown="drag()"
+                                              src="{{ url_for('editing.render_img', filename='highlight.png') }}"
+                                              alt="A translucent yellow box.">
+                                         <br><br><br>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>-->
+                <div class="row videodiv">
+                    <div v-if="!videos.length">
+                        <h3><u>No Video Selected</u></h3>
+                    </div>
+                    <div v-else>
+                        <div v-for="(video,index) in videos" :key="index">
+                            <h3><u>[[video.name]]</u></h3>
                         </div>
                     </div>
-                </div>
-            </div>-->
-            <div class="row videodiv">
-                <div v-if="!videos.length">
-                    <h3><u>No Video Selected</u></h3>
-                </div>
-                <div v-else>
-                    <div v-for="(video,index) in videos" :key="index">
-                    <h3><u>[[video.name]]</u></h3>
-                        </div>
-                </div>
                     <br><br><br><br>
                     <div align="center">
                         <br>
@@ -190,22 +191,49 @@
                                 <b><u>Trim</u></b>
                                 <br><br>
                                 <div class="form-group">
-                                    <div class="col-sm-8">
-                                        <label for="start">Start:</label>
-                                        <input id="start" min="0" max="120" type="number"
-                                               value="0">
+                                    <div v-if="!videos.length">
+                                        <div class="col-sm-8">
+                                            <label for="start">Start:</label>
+                                            <input id="start" min="0" max="120" type="number"
+                                                   value="0">
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <label for="end">End: </label>
+                                            <input id="end" min="0" max="120" type="number"
+                                                   value="0">
+                                        </div>
                                     </div>
-                                    <div class="col-sm-8">
-                                        <label for="end">End: </label>
-                                        <input id="end" min="0" max="120" type="number"
-                                               value="0">
+                                    <div v-else>
+                                        <div v-for="(video,index) in videos" :key="index">
+                                            <div class="col-sm-8">
+                                                <label for="start">Start:</label>
+                                                <input id="start" min="0" max="120" type="number"
+                                                       value="0" :id="`trim_start`+index">
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <label for="end">End: </label>
+                                                <input id="end" min="0" max="120" type="number"
+                                                       value="0" :id="`trim_end`+index">
+                                            </div>
+                                        </div>
                                     </div>
                                     <br><br>
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <button class="btn btn-info">
-                                                Trim Clip
-                                            </button>
+                                            <div v-if="!videos.length">
+                                                <button class="btn btn-info"
+                                                        v-on:click="buttonChecker(videos, index, 'trim')">
+                                                    Trim Clip
+                                                </button>
+                                            </div>
+                                            <div v-else>
+                                                <div v-for="(video,index) in videos" :key="index">
+                                                    <button class="btn btn-info"
+                                                            v-on:click="buttonChecker(videos, index, 'trim')">
+                                                        Trim Clip
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <br><br>
