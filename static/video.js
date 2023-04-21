@@ -22,12 +22,13 @@ function generate() {
 
 // Activate Bootstrap tooltips on the page.
 $(document).ready(function () {
-	$("[data-toggle=popover]").popover({
-		html: true,
-		content: function () {
-			return $('#popover-content').html();
-		}
-	});
+	$("[data-bs-toggle=popover]").popover({
+      html : true,
+      sanitize: false,
+      content: function() {
+        return $('#popover_content_wrapper').html();
+      }
+    });
 });
 
 // Logic for dragging and dropping a shape anywhere on the viewport.

@@ -78,6 +78,18 @@
     font-size:30px;
 }
 
+.popover {
+
+}
+
+.popover-header {
+    font-size: 30px;
+}
+
+.popover-body {
+    font-size: 25px;
+}
+
 /* Safari */
 @-webkit-keyframes spin {
     0% { -webkit-transform: rotate(0deg); }
