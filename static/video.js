@@ -11,150 +11,6 @@ var duration;
 var start_pos;
 var text;
 
-// https://hashnode.com/post/whats-the-best-way-to-generate-image-from-text-using-javascript-and-html5-apis-cik6k8rbj01izxy53619llzzp
-// Produces an image from text entered by the user
-
-function generate() {
-	var msg = $("#textToGenerate").val();
-	document.getElementById("generatedText").innerHTML = msg;
-} (jQuery);
-
-
-// Activate Bootstrap tooltips on the page.
-$(document).ready(function () {
-	$("[data-bs-toggle=popover]").popover({
-      html : true,
-      sanitize: false,
-      content: function() {
-        return $('#popover_content_wrapper').html();
-      }
-    });
-});
-
-// Logic for dragging and dropping a shape anywhere on the viewport.
-function drag() {
-	document.addEventListener('mousedown', function (event) {
-
-		let dragElement = event.target.closest('.draggable');
-		var editingArea = document.querySelector("#editArea");
-
-		dragElement.ondragstart = function () {
-			return false;
-		};
-
-		let shiftX = event.clientX - dragElement.getBoundingClientRect().left;
-		let shiftY = event.clientY - dragElement.getBoundingClientRect().top;
-
-		dragElement.style.position = 'absolute';
-		dragElement.style.zIndex = 1000;
-		document.body.append(dragElement);
-
-		moveAt(event.pageX, event.pageY);
-
-		// moves the dragElement at (pageX, pageY) coordinates
-		// taking initial shifts into account
-		function moveAt(pageX, pageY) {
-			dragElement.style.left = pageX - shiftX + 'px';
-			dragElement.style.top = pageY - shiftY + 'px';
-		}
-
-		function onMouseMove(event) {
-			moveAt(event.pageX, event.pageY);
-		}
-
-		// move the dragElement on mousemove
-		document.addEventListener('mousemove', onMouseMove);
-
-		// drop the dragElement, remove unneeded handlers
-		dragElement.onmouseup = function () {
-			document.removeEventListener('mousemove', onMouseMove);
-			dragElement.onmouseup = null;
-
-			// Get the top, left coordinates of two elements
-			const shapeArea = dragElement.getBoundingClientRect();
-			const edArea = editingArea.getBoundingClientRect();
-
-			// Calculate the top and left positions
-			shapeTop = shapeArea.top - edArea.top;
-			shapeLeft = shapeArea.left - edArea.left;
-
-			console.log("x: " + shapeLeft);
-			console.log("y: " + shapeTop);
-
-			let Left1 = edArea.left + window.scrollX;
-			let Left2 = shapeLeft;
-			let Width1 = $(editingArea).width();
-			let Width2 = $(dragElement).width();
-			let Top1 = edArea.top + window.scrollY; // zero, this is incorrect
-			let Top2 = shapeTop;
-			let Height1 = $(editingArea).height();
-			let Height2 = $(dragElement).height();
-
-			if (((Left1 + Width1) >= Left2)
-				&& (Left1 <= (Left2 + Width2))
-				&& ((Top1 + Height1) >= Top2)
-				&& (Top1 <= (Top2 + Height2))) {
-				if ($(dragElement).attr("id") == "generatedText") {
-					text = true;
-				}
-				else {
-					text = false;
-					shapeToRender = $(dragElement).attr("src");
-					shapeType = $(dragElement).attr("id");
-					console.log(shapeType);
-				}
-				$("#durationModal").modal("show");
-			}
-			else {
-				console.log("not in bounds");
-			}
-		};
-	}); // https://javascript.info/mouse-drag-and-drop
-
-}
-
-document.getElementById("5").onclick = function () {
-	duration = 5;
-	start_pos = document.getElementById("start_pos").value;
-	$("#durationModal").modal("hide");
-	console.log("duration is: " + duration);
-	console.log("start position is: " + start_pos);
-}
-
-document.getElementById("10").onclick = function () {
-	duration = 10;
-	start_pos = document.getElementById("start_pos").value;
-	$("#durationModal").modal("hide");
-	console.log("duration is: " + duration);
-	console.log("start position is: " + start_pos);
-}
-
-document.getElementById("all").onclick = function () {
-	duration = 18;
-	start_pos = 0;
-	$("#durationModal").modal("hide");
-	console.log("duration is: " + duration);
-	console.log("start position is: " + start_pos);
-}
-
-// Logic for video upload progress bar.
-function updateProgressBar(percent) {
-	$("#uploadprogress").css('width', percent + "%");
-	$("#uploadprogress").html(percent + "%");
-
-	if (percent == 100) {
-		setTimeout(function () {
-			updateProgressBar(0);
-		}, 2000);
-	}
-}
-
-// Modal that appears while video is rendering.
-function setLoader(status = true) {
-	if (status) $("#loaderModal").modal("show");
-	else $("#loaderModal").modal("hide");
-}
-
 // Vue.js - main editing pipeline
 var app = new Vue({
 	el: '#app',
@@ -361,4 +217,153 @@ var app = new Vue({
 		}
 	},
 })
+
+// Generates text
+function generate() {
+	var msg = $("#textToGenerate").val();
+	document.getElementById("generatedText").innerHTML = msg;
+} (jQuery);
+
+
+// Activate Bootstrap tooltips on the page.
+$(document).ready(function () {
+	$("[data-bs-toggle=popover]").popover({
+      html : true,
+      sanitize: false, // https://stackoverflow.com/questions/56264280/html-form-inside-bootstrap-popover-not-working
+      content: function() {
+        return $('#popover_content_wrapper').html();
+      }
+    });
+});
+
+// Logic for dragging and dropping a shape anywhere on the viewport.
+function drag() {
+	document.addEventListener('mousedown', function (event) {
+
+		let dragElement = event.target.closest('.draggable');
+		var editingArea = document.querySelector("#editArea");
+
+		dragElement.ondragstart = function () {
+			return false;
+		};
+
+		let shiftX = event.clientX - dragElement.getBoundingClientRect().left;
+		let shiftY = event.clientY - dragElement.getBoundingClientRect().top;
+
+		dragElement.style.position = 'absolute';
+		dragElement.style.zIndex = 1000;
+		document.body.append(dragElement);
+
+		moveAt(event.pageX, event.pageY);
+
+		// moves the dragElement at (pageX, pageY) coordinates
+		// taking initial shifts into account
+		function moveAt(pageX, pageY) {
+			dragElement.style.left = pageX - shiftX + 'px';
+			dragElement.style.top = pageY - shiftY + 'px';
+		}
+
+		function onMouseMove(event) {
+			moveAt(event.pageX, event.pageY);
+		}
+
+		// move the dragElement on mousemove
+		document.addEventListener('mousemove', onMouseMove);
+
+		// drop the dragElement, remove unneeded handlers
+		dragElement.onmouseup = function () {
+			document.removeEventListener('mousemove', onMouseMove);
+			dragElement.onmouseup = null;
+
+			// Get the top, left coordinates of two elements
+			const shapeArea = dragElement.getBoundingClientRect();
+			const edArea = editingArea.getBoundingClientRect();
+
+			// Calculate the top and left positions
+			shapeTop = shapeArea.top - edArea.top;
+			shapeLeft = shapeArea.left - edArea.left;
+
+			console.log("x: " + shapeLeft);
+			console.log("y: " + shapeTop);
+
+			let Left1 = edArea.left + window.scrollX;
+			let Left2 = shapeLeft;
+			let Width1 = $(editingArea).width();
+			let Width2 = $(dragElement).width();
+			let Top1 = edArea.top + window.scrollY; // zero, this is incorrect
+			let Top2 = shapeTop;
+			let Height1 = $(editingArea).height();
+			let Height2 = $(dragElement).height();
+
+			if (((Left1 + Width1) >= Left2)
+				&& (Left1 <= (Left2 + Width2))
+				&& ((Top1 + Height1) >= Top2)
+				&& (Top1 <= (Top2 + Height2))) {
+				if ($(dragElement).attr("id") == "generatedText") {
+					text = true;
+				}
+				else {
+					text = false;
+					shapeToRender = $(dragElement).attr("src");
+					shapeType = $(dragElement).attr("id");
+					console.log(shapeType);
+				}
+				$("#durationModal").modal("show");
+			}
+			else {
+				console.log("not in bounds");
+			}
+		};
+	}); // https://javascript.info/mouse-drag-and-drop
+
+}
+
+$(document).on('click', '#upload', function(){
+  let file = document.querySelector("#fileinput");
+  console.log(file.files);
+});
+
+/*
+document.getElementById("5").onclick = function () {
+	duration = 5;
+	start_pos = document.getElementById("start_pos").value;
+	$("#durationModal").modal("hide");
+	console.log("duration is: " + duration);
+	console.log("start position is: " + start_pos);
+}
+
+document.getElementById("10").onclick = function () {
+	duration = 10;
+	start_pos = document.getElementById("start_pos").value;
+	$("#durationModal").modal("hide");
+	console.log("duration is: " + duration);
+	console.log("start position is: " + start_pos);
+}
+
+document.getElementById("all").onclick = function () {
+	duration = 18;
+	start_pos = 0;
+	$("#durationModal").modal("hide");
+	console.log("duration is: " + duration);
+	console.log("start position is: " + start_pos);
+}
+
+// Logic for video upload progress bar.
+function updateProgressBar(percent) {
+	$("#uploadprogress").css('width', percent + "%");
+	$("#uploadprogress").html(percent + "%");
+
+	if (percent == 100) {
+		setTimeout(function () {
+			updateProgressBar(0);
+		}, 2000);
+	}
+}
+*/
+
+// Modal that appears while video is rendering.
+function setLoader(status = true) {
+	if (status) $("#loaderModal").modal("show");
+	else $("#loaderModal").modal("hide");
+}
 
