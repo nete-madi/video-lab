@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <title>Step 2: Editing -- VideoLab</title>
     <meta charset="utf-8">
@@ -68,8 +68,51 @@
         <h2>I love to generate text</h2>
     </div>
     <div id="trimpop" style="display: none">
-         <b><u>Trim</u></b>
-                     <br><br>
+        <b><u>Trim</u></b>
+        <br><br>
+        <div class="form-group">
+            <div v-if="!videos.length">
+                <span>
+                    <label for="start">Start:</label>
+                    <input id="start" min="0" max="120" type="number"
+                           value="0">
+                    <label for="end">End: </label>
+                    <input id="end" min="0" max="120" type="number"
+                           value="0">
+                </span>
+            </div>
+            <div v-else>
+                <div v-for="(video,index) in videos" :key="index">
+                     <span>
+                    <label for="start">Start:</label>
+                    <input id="start" min="0" max="120" type="number"
+                           value="0">
+                    <label for="end">End: </label>
+                    <input id="end" min="0" max="120" type="number"
+                           value="0">
+                </span>
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div v-if="!videos.length">
+                        <button class="btn btn-info"
+                                v-on:click="buttonChecker(videos, index, 'trim')">
+                            Trim Clip
+                        </button>
+                    </div>
+                    <div v-else>
+                        <div v-for="(video,index) in videos" :key="index">
+                            <button class="btn btn-info"
+                                    v-on:click="buttonChecker(videos, index, 'trim')">
+                                Trim Clip
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <!--
@@ -79,56 +122,7 @@
              <h4><u>Video Effects</u></h4>
              <br><br>
              <div class="row">
-                 <div class="col-lg-6">
-                     <b><u>Trim</u></b>
-                     <br><br>
-                     <div class="form-group">
-                         <div v-if="!videos.length">
-                             <div class="col-sm-8">
-                                 <label for="start">Start:</label>
-                                 <input id="start" min="0" max="120" type="number"
-                                        value="0">
-                             </div>
-                             <div class="col-sm-8">
-                                 <label for="end">End: </label>
-                                 <input id="end" min="0" max="120" type="number"
-                                        value="0">
-                             </div>
-                         </div>
-                         <div v-else>
-                             <div v-for="(video,index) in videos" :key="index">
-                                 <div class="col-sm-8">
-                                     <label for="start">Start:</label>
-                                     <input id="start" min="0" max="120" type="number"
-                                            value="0" :id="`trim_start`+index">
-                                 </div>
-                                 <div class="col-sm-8">
-                                     <label for="end">End: </label>
-                                     <input id="end" min="0" max="120" type="number"
-                                            value="0" :id="`trim_end`+index">
-                                 </div>
-                             </div>
-                         </div>
-                         <br><br>
-                         <div class="row">
-                             <div class="col-sm-12">
-                                 <div v-if="!videos.length">
-                                     <button class="btn btn-info"
-                                             v-on:click="buttonChecker(videos, index, 'trim')">
-                                         Trim Clip
-                                     </button>
-                                 </div>
-                                 <div v-else>
-                                     <div v-for="(video,index) in videos" :key="index">
-                                         <button class="btn btn-info"
-                                                 v-on:click="buttonChecker(videos, index, 'trim')">
-                                             Trim Clip
-                                         </button>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                         <br><br>
+
                          <div class="col-sm-8">
                              <b><u>Place Text</u></b>
                          </div>
