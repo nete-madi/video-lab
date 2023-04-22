@@ -326,9 +326,14 @@ function setLoader(status = true) {
 	else $("#loaderModal").modal("hide");
 }
 
+// this gets the upload button working
 $(document).on("click", "#upload", function(event){
     app.uploadVideoFile();
     $("#importModal").modal('hide');
+});
+
+$("#upnew").on("click", function(){
+    $("#importModal").modal('show');
 });
 
 /*
