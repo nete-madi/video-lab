@@ -43,7 +43,6 @@ var app = new Vue({
 		},
 
 		uploadVideoFile: function () {
-			updateProgressBar(0);
 
 			let filedata = document.getElementById('fileinput').files[0];
 			if (!filedata) {
@@ -59,7 +58,6 @@ var app = new Vue({
 			const config = {
 				onUploadProgress: function (progressEvent) {
 					var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
-					updateProgressBar(percentCompleted);
 
 				}
 			}
@@ -318,10 +316,11 @@ function drag() {
 
 }
 
+/*
 $(document).on('click', '#upload', function(){
   let file = document.querySelector("#fileinput");
   console.log(file.files);
-});
+});*/
 
 /*
 document.getElementById("5").onclick = function () {
@@ -348,17 +347,6 @@ document.getElementById("all").onclick = function () {
 	console.log("start position is: " + start_pos);
 }
 
-// Logic for video upload progress bar.
-function updateProgressBar(percent) {
-	$("#uploadprogress").css('width', percent + "%");
-	$("#uploadprogress").html(percent + "%");
-
-	if (percent == 100) {
-		setTimeout(function () {
-			updateProgressBar(0);
-		}, 2000);
-	}
-}
 */
 
 // Modal that appears while video is rendering.
