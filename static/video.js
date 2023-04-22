@@ -13,11 +13,28 @@ var text;
 
 // Activate Bootstrap tooltips on the page.
 $(document).ready(function () {
-	$("[data-bs-toggle=popover]").popover({
+	$("#shapebtn").popover({
       html : true,
+      placement: 'top',
       sanitize: false, // https://stackoverflow.com/questions/56264280/html-form-inside-bootstrap-popover-not-working
       content: function() {
-        return $('#popover_content_wrapper').html();
+        return $('#shapepop').html();
+      }
+    });
+    $("#textbtn").popover({
+      html : true,
+      placement: 'top',
+      sanitize: false, // https://stackoverflow.com/questions/56264280/html-form-inside-bootstrap-popover-not-working
+      content: function() {
+        return $('#textpop').html();
+      }
+    });
+    $("#trimbtn").popover({
+      html : true,
+      placement: 'top',
+      sanitize: false, // https://stackoverflow.com/questions/56264280/html-form-inside-bootstrap-popover-not-working
+      content: function() {
+        return $('#trimpop').html();
       }
     });
 });
