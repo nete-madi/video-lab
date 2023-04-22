@@ -11,6 +11,22 @@ var duration;
 var start_pos;
 var text;
 
+// Activate Bootstrap tooltips on the page.
+$(document).ready(function () {
+	$("[data-bs-toggle=popover]").popover({
+      html : true,
+      sanitize: false, // https://stackoverflow.com/questions/56264280/html-form-inside-bootstrap-popover-not-working
+      content: function() {
+        return $('#popover_content_wrapper').html();
+      }
+    });
+});
+
+// Load the import video modal on page load.
+$(document).ready(function(){
+    $("#importModal").modal('show');
+});
+
 // Vue.js - main editing pipeline
 var app = new Vue({
 	el: '#app',
@@ -222,18 +238,6 @@ function generate() {
 	document.getElementById("generatedText").innerHTML = msg;
 } (jQuery);
 
-
-// Activate Bootstrap tooltips on the page.
-$(document).ready(function () {
-	$("[data-bs-toggle=popover]").popover({
-      html : true,
-      sanitize: false, // https://stackoverflow.com/questions/56264280/html-form-inside-bootstrap-popover-not-working
-      content: function() {
-        return $('#popover_content_wrapper').html();
-      }
-    });
-});
-
 // Logic for dragging and dropping a shape anywhere on the viewport.
 function drag() {
 	document.addEventListener('mousedown', function (event) {
@@ -316,6 +320,17 @@ function drag() {
 
 }
 
+// Modal that appears while video is rendering.
+function setLoader(status = true) {
+	if (status) $("#loaderModal").modal("show");
+	else $("#loaderModal").modal("hide");
+}
+
+$(document).on("click", "#upload", function(event){
+    app.uploadVideoFile();
+    $("#importModal").modal('hide');
+});
+
 /*
 $(document).on('click', '#upload', function(){
   let file = document.querySelector("#fileinput");
@@ -348,10 +363,4 @@ document.getElementById("all").onclick = function () {
 }
 
 */
-
-// Modal that appears while video is rendering.
-function setLoader(status = true) {
-	if (status) $("#loaderModal").modal("show");
-	else $("#loaderModal").modal("hide");
-}
 
