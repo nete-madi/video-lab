@@ -87,7 +87,7 @@ var app = new Vue({
 
 					this.originalvideos.push({ name: clipname, file: res.data });
 					this.videos.push({ name: clipname, file: res.data });
-					console.log("videos", this.videos);
+					console.log("videos in list: ", this.videos.length);
 					console.log('Video uploaded!');
 
 					app.setRenderVideo(this.videos.length - 1);
