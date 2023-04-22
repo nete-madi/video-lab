@@ -64,16 +64,6 @@
     <div id="popover_content_wrapper" style="display: none"></div>
 </div>
 <!--
-
-<!--     <div class="row videodiv">
-         <div v-if="!videos.length">
-             <h3><u>No Video Selected</u></h3>
-         </div>
-         <div v-else>
-             <div v-for="(video,index) in videos" :key="index">
-                 <h3><u>[[video.name]]</u></h3>
-             </div>
-         </div>
          <br><br><br><br>
          <div align="center">
              <br>
@@ -234,8 +224,8 @@
         </div>
     </div>
 </div>
-</div>
 
+<!--Modal for uploading videos-->
 <div class="modal fade" id="importModal" tabindex="-1" role="dialog" aria-labelledby="importModalLabel"
      aria-hidden="true" v-for="(video,index) in videos" :key="index">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -272,10 +262,8 @@
         </div>
     </div>
 </div>
-</div>
 
-
-<!-- Loader Modal -->
+<!-- Modal that appears when video is rendering -->
 <div id="loaderModal" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog">
 
@@ -290,9 +278,6 @@
     </div>
 </div>
 
-
-</div>
-</div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
