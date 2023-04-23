@@ -11,37 +11,39 @@ var duration;
 var start_pos;
 var text;
 
+const clearHistoryBtn = '<span>All records will be removed</span> <button type="button" class="confirm-clear-history btn btn-sm btn-danger" onclick="alert("event raised");">Yes</button> <button type="button" class="btn btn-sm btn-link" onclick="alert("event raised from no button");">No</button>';
+
 // Activate Bootstrap tooltips on the page.
 $(document).ready(function () {
 	$("#shapebtn").popover({
-      html : true,
-      placement: 'top',
-      sanitize: false, // https://stackoverflow.com/questions/56264280/html-form-inside-bootstrap-popover-not-working
-      content: function() {
-        return $('#shapepop').html();
-      }
-    });
-    $("#textbtn").popover({
-      html : true,
-      placement: 'top',
-      sanitize: false, // https://stackoverflow.com/questions/56264280/html-form-inside-bootstrap-popover-not-working
-      content: function() {
-        return $('#textpop').html();
-      }
-    });
-    $("#trimbtn").popover({
-      html : true,
-      placement: 'top',
-      sanitize: false, // https://stackoverflow.com/questions/56264280/html-form-inside-bootstrap-popover-not-working
-      content: function() {
-        return $('#trimpop').html();
-      }
-    });
+		html: true,
+		placement: 'top',
+		sanitize: false, // https://stackoverflow.com/questions/56264280/html-form-inside-bootstrap-popover-not-working
+		content: function () {
+			return $('#shapepop').html();
+		}
+	});
+	$("#textbtn").popover({
+		html: true,
+		placement: 'top',
+		sanitize: false, // https://stackoverflow.com/questions/56264280/html-form-inside-bootstrap-popover-not-working
+		content: function () {
+			return $('#textpop').html();
+		}
+	});
+	$("#trimbtn").popover({
+		html: true,
+		placement: 'top',
+		sanitize: false, // https://stackoverflow.com/questions/56264280/html-form-inside-bootstrap-popover-not-working
+		content: function () {
+			return $('#trimpop').html();
+		}
+	});
 });
 
 // Load the import video modal on page load.
-$(document).ready(function(){
-    $("#importModal").modal('show');
+$(document).ready(function () {
+	$("#importModal").modal('show');
 });
 
 // Vue.js - main editing pipeline
@@ -343,14 +345,14 @@ function setLoader(status = true) {
 	else $("#loaderModal").modal("hide");
 }
 
-// this gets the upload button working
-$(document).on("click", "#upload", function(event){
-    app.uploadVideoFile();
-    $("#importModal").modal('hide');
+// lets upload button work from inside modal
+$(document).on("click", "#upload", function (event) {
+	app.uploadVideoFile();
+	$("#importModal").modal('hide');
 });
 
-$("#upnew").on("click", function(){
-    $("#importModal").modal('show');
+$("#upnew").on("click", function () {
+	$("#importModal").modal('show');
 });
 
 /*

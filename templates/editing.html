@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <title>Step 2: Editing -- VideoLab</title>
     <meta charset="utf-8">
@@ -146,7 +146,7 @@
     <div class="row" align="center">
         <div v-else>
             <div v-for="(video,index) in videos" :key="index">
-                <button class="btn btn-info"
+                <button class="btn btn-info" id="trimclip"
                         v-on:click="buttonChecker(videos, index, 'trim')">
                     Trim Clip
                 </button>
