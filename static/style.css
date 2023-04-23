@@ -29,6 +29,10 @@
     font:30px Arial;
 }
 
+#trimpop {
+    display: none;
+}
+
 .draggable {
     cursor:pointer;
     user-select: none;
