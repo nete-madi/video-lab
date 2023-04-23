@@ -33,6 +33,10 @@
     display: none;
 }
 
+#shapepop {
+    width:100%;
+}
+
 .draggable {
     cursor:pointer;
     user-select: none;
@@ -83,7 +87,6 @@
 }
 
 .popover {
-    max-width:100%;
     border: 2px solid black;
 }
 
