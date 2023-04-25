@@ -1,8 +1,6 @@
 // video.js: Handles all of the JavaScript and initializes the Vue application
 // TODO: Hook up trimming button.
 // TODO: Hook up text generation button.
-// TODO: fix shape popover positioning
-// TODO: hook up shape rendering
 
 // This is for the dragging to work
 let isDragging = false;
@@ -148,10 +146,11 @@ var app = new Vue({
 			let editor_payload = {};
 
 			if (actiontype == "trim") {
-				editor_payload = {
-					trim_start: $("#trim_start" + videoID).val(),
-					trim_end: $("#trim_end" + videoID).val()
-				}
+				/*editor_payload = {
+					trim_start: $("#start" + videoID).val(),
+					trim_end: $("#end" + videoID).val()
+				}*/
+				console.log("start is " + document.getElementById("start_trim").value);
 			}
 			else if (actiontype == "image") {
 				if (shapeType != "circle_lg") {
@@ -366,6 +365,10 @@ $(document).on("click", "#upload", function (event) {
 
 $("#upnew").on("click", function () {
 	$("#importModal").modal('show');
+});
+
+$(document).on("click", "#trimclip", function (event) {
+	app.buttonChecker(app.$data.videos, 0, 'trim');
 });
 
 document.getElementById("1").onclick = function () {
