@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <title>Step 2: Editing -- VideoLab</title>
     <meta charset="utf-8">
@@ -125,12 +125,12 @@
     <div class="row" align="center">
         <div class="form-group">
             <div v-for="(video,index) in videos" :key="index">
-                <div class="col-sm-8">
+                <div class="col-sm-10">
                     <label for="start">Start:</label>
                     <input id="start" min="0" max="120" type="number"
                            value="0">
                 </div>
-                <div class="col-sm-8">
+                <div class="col-sm-10">
                     <label for="end">End: </label>
                     <input id="end" min="0" max="120" type="number"
                            value="0">

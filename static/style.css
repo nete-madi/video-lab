@@ -30,11 +30,8 @@
 }
 
 #trimpop {
-    display: none;
-}
-
-#shapepop {
-    width:100%;
+    display:none;
+    max-width:100%;
 }
 
 .draggable {
@@ -84,10 +81,12 @@
 .btn-lg {
     font-weight:bold;
     font-size:30px;
+    max-width:25%;
 }
 
 .popover {
     border: 2px solid black;
+    width:100%;
 }
 
 .popover-header {

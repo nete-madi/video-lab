@@ -4,6 +4,7 @@
 // TODO: Fix spacing of the shape tooltip.
 // TODO: Re-introduce the duration modal.
 // TODO: Fix determination of a shape being in bounds.
+// TODO: Make tooltips the same width as their buttons
 
 // This is for the dragging to work
 let isDragging = false;
@@ -25,7 +26,6 @@ $(document).ready(function () {
 	$("#shapebtn").popover({
 		html: true,
 		placement: 'top',
-		container: 'body',
 		sanitize: false, // https://stackoverflow.com/questions/56264280/html-form-inside-bootstrap-popover-not-working
 		content: function () {
 			return $('#shapepop').html();
