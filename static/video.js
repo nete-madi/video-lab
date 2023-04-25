@@ -259,12 +259,6 @@ var app = new Vue({
 	},
 })
 
-// Generates text
-function generate() {
-	var msg = $("#textToGenerate").val();
-	document.getElementById("generatedText").innerHTML = msg;
-} (jQuery);
-
 // Logic for dragging and dropping a shape anywhere on the viewport.
 function drag() {
 	document.addEventListener('mousedown', function (event) {
@@ -369,6 +363,11 @@ $("#upnew").on("click", function () {
 
 $(document).on("click", "#trimclip", function (event) {
 	app.buttonChecker(app.$data.videos, 0, 'trim');
+});
+
+$(document).on("click", "#generate", function (event) {
+    var msg = $("#textToGenerate").val();
+	document.getElementById("generatedText").innerHTML = msg;
 });
 
 document.getElementById("1").onclick = function () {
