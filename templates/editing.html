@@ -62,45 +62,26 @@
             </span>
     </div>
     <div id="shapepop" style="display: none">
-        <div class="row">
-            <div class="col-lg-4">
-                <img class="draggable" id="circle_lg"
-                     onmousedown="drag()"
-                     src="{{ url_for('editing.render_img', filename='circle_lg.png') }}"
-                     alt="A red circle.">
-                <br><br><br>
-            </div>
-            <div class="col-lg-4">
-                <img class="draggable" id="circle_sm"
-                     onmousedown="drag()"
-                     src="{{ url_for('editing.render_img', filename='circle_sm.png') }}"
-                     alt="A red circle.">
-                <br><br><br>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-8">
-                <img class="draggable" id="ar_right"
-                     onmousedown="drag()"
-                     src="{{ url_for('editing.render_img', filename='arrow_right.png') }}"
-                     alt="An arrow pointing up and to the right.">
-                <br><br><br>
-            </div>
-            <div class="col-lg-8">
-                <img class="draggable" id="ar_left"
-                     onmousedown="drag()"
-                     src="{{ url_for('editing.render_img', filename='arrow_left.png') }}"
-                     alt="An arrow pointing up and to the left.">
-                <br><br><br>
-            </div>
-            <div class="col-lg-12">
-                <img class="draggable" id="highlight"
-                     onmousedown="drag()"
-                     src="{{ url_for('editing.render_img', filename='highlight.png') }}"
-                     alt="A translucent yellow box.">
-                <br><br><br>
-            </div>
-        </div>
+        <img class="draggable" id="circle_lg"
+             onmousedown="drag()"
+             src="{{ url_for('editing.render_img', filename='circle_lg.png') }}"
+             alt="A red circle.">
+        <img class="draggable" id="circle_sm"
+             onmousedown="drag()"
+             src="{{ url_for('editing.render_img', filename='circle_sm.png') }}"
+             alt="A red circle.">
+        <img class="draggable" id="ar_right"
+             onmousedown="drag()"
+             src="{{ url_for('editing.render_img', filename='arrow_right.png') }}"
+             alt="An arrow pointing up and to the right.">
+        <img class="draggable" id="ar_left"
+             onmousedown="drag()"
+             src="{{ url_for('editing.render_img', filename='arrow_left.png') }}"
+             alt="An arrow pointing up and to the left.">
+        <img class="draggable" id="highlight"
+             onmousedown="drag()"
+             src="{{ url_for('editing.render_img', filename='highlight.png') }}"
+             alt="A translucent yellow box.">
     </div>
 </div>
 
@@ -135,7 +116,7 @@
     </div>
     <br>
     <div v-else>
-        <div v-for="(video,index) in videos" :key="index"  align="center">
+        <div v-for="(video,index) in videos" :key="index" align="center">
             <button class="btn btn-info" id="trimclip"
                     v-on:click="buttonChecker(videos, index, 'trim')">
                 Trim Clip
