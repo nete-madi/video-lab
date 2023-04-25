@@ -103,7 +103,7 @@
         </div>
     </div>
 </div>
-<div id="textpop" style="display: none">
+<div id="textpop" style="display: none;width:1000px;">
     <br>
     <div class="col-sm-10">
         <input type="text" class="form-control"
@@ -121,32 +121,24 @@
     <br>
     <div class="col-lg-10 draggable" id="generatedText" onmousedown="drag()"></div>
 </div>
-<div id="trimpop">
-    <div class="row" align="center">
-        <div class="form-group">
-            <div v-for="(video,index) in videos" :key="index">
-                <div class="col-sm-10">
-                    <label for="start">Start:</label>
-                    <input id="start" min="0" max="120" type="number"
-                           value="0">
-                </div>
-                <div class="col-sm-10">
-                    <label for="end">End: </label>
-                    <input id="end" min="0" max="120" type="number"
-                           value="0">
-                </div>
-            </div>
+<div id="trimpop" style="display:none">
+    <div class="form-group">
+        <div v-for="(video,index) in videos" :key="index">
+            <label for="start">Start:</label>
+            <input id="start" min="0" max="120" type="number"
+                   value="0">
+            <label for="end">End: </label>
+            <input id="end" min="0" max="120" type="number"
+                   value="0">
         </div>
     </div>
     <br>
-    <div class="row" align="center">
-        <div v-else>
-            <div v-for="(video,index) in videos" :key="index">
-                <button class="btn btn-info" id="trimclip"
-                        v-on:click="buttonChecker(videos, index, 'trim')">
-                    Trim Clip
-                </button>
-            </div>
+    <div v-else>
+        <div v-for="(video,index) in videos" :key="index"  align="center">
+            <button class="btn btn-info" id="trimclip"
+                    v-on:click="buttonChecker(videos, index, 'trim')">
+                Trim Clip
+            </button>
         </div>
     </div>
 </div>

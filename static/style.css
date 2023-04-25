@@ -29,11 +29,6 @@
     font:30px Arial;
 }
 
-#trimpop {
-    display:none;
-    max-width:100%;
-}
-
 .draggable {
     cursor:pointer;
     user-select: none;
@@ -86,8 +81,11 @@
 
 .popover {
     border: 2px solid black;
-    width:100%;
+    max-width:100%;
+    width:300px;
 }
+
+
 
 .popover-header {
     font-size: 30px;
