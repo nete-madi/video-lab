@@ -82,17 +82,35 @@
 .popover {
     border: 2px solid black;
     max-width:100%;
-    width:300px;
-}
-
-
-
-.popover-header {
-    font-size: 30px;
+    width:400px;
 }
 
 .popover-body {
     font-size: 20px;
+}
+
+.trimpopover {
+    border:2px solid black;
+    background-color: #fff;
+    border-radius:5px;
+    z-index:99999;
+    width:300px;
+}
+
+.textpopover {
+    border:2px solid black;
+    border-radius:5px;
+    background-color: #fff;
+    z-index:99999;
+    width:400px;
+}
+
+.shapepopover {
+    border:2px solid black;
+    border-radius:5px;
+    background-color: #fff;
+    z-index:99999;
+    width:750px;
 }
 
 /* Safari */

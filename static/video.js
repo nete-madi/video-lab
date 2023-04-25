@@ -27,6 +27,7 @@ $(document).ready(function () {
 		html: true,
 		placement: 'top',
 		sanitize: false, // https://stackoverflow.com/questions/56264280/html-form-inside-bootstrap-popover-not-working
+		template: '<div class="shapepopover" role="tooltip"><div class="arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>',
 		content: function () {
 			return $('#shapepop').html();
 		}
@@ -35,6 +36,7 @@ $(document).ready(function () {
 		html: true,
 		placement: 'top',
 		sanitize: false, // https://stackoverflow.com/questions/56264280/html-form-inside-bootstrap-popover-not-working
+		template: '<div class="textpopover" role="tooltip"><div class="arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>',
 		content: function () {
 			return $('#textpop').html();
 		}
@@ -43,6 +45,7 @@ $(document).ready(function () {
 		html: true,
 		placement: 'top',
 		sanitize: false, // https://stackoverflow.com/questions/56264280/html-form-inside-bootstrap-popover-not-working
+		template: '<div class="trimpopover" role="tooltip"><div class="arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>',
 		content: function () {
 			return $('#trimpop').html();
 		}
