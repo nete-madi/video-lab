@@ -1,8 +1,8 @@
 // video.js: Handles all of the JavaScript and initializes the Vue application
 // TODO: Hook up trimming button.
 // TODO: Hook up text generation button.
-// TODO: Re-introduce the duration modal.
-// TODO: Fix determination of a shape being in bounds.
+// TODO: fix shape popover positioning
+// TODO: hook up shape rendering
 
 // This is for the dragging to work
 let isDragging = false;
@@ -134,7 +134,7 @@ var app = new Vue({
 			}
 		},
 
-		editVideoSubmit: function (videoID, actiontype) {
+		editVideoSubmit: function (videoID, actiontype, buttoncheck) {
 			console.log("editVideoSubmit return value: ", videoID);
 			setLoader(true);
 
@@ -338,8 +338,11 @@ function drag() {
 					shapeType = $(dragElement).attr("id");
 					console.log(shapeType);
 				}
+				// Show duration modal and hide all open popovers on shape drop
 				$("#durationModal").modal("show");
 				$("#shapebtn").popover('hide');
+				$("#textbtn").popover('hide');
+				$("#trimbtn").popover('hide');
 			}
 			else {
 				console.log("not in bounds");
@@ -365,19 +368,24 @@ $("#upnew").on("click", function () {
 	$("#importModal").modal('show');
 });
 
-/*
-$(document).on('click', '#upload', function(){
-  let file = document.querySelector("#fileinput");
-  console.log(file.files);
-});*/
+document.getElementById("1").onclick = function () {
+	duration = 1;
+	start_pos = document.getElementById("start_pos").value;
+	$("#durationModal").modal("hide");
+	console.log("duration is: " + duration);
+	console.log("start position is: " + start_pos);
+	// call setstartandduration
+	app.setStartAndDuration(0,1);
+}
 
-/*
 document.getElementById("5").onclick = function () {
 	duration = 5;
 	start_pos = document.getElementById("start_pos").value;
 	$("#durationModal").modal("hide");
 	console.log("duration is: " + duration);
 	console.log("start position is: " + start_pos);
+	// call setstartandduration
+	app.setStartAndDuration(0,5);
 }
 
 document.getElementById("10").onclick = function () {
@@ -386,6 +394,8 @@ document.getElementById("10").onclick = function () {
 	$("#durationModal").modal("hide");
 	console.log("duration is: " + duration);
 	console.log("start position is: " + start_pos);
+	// call setstartandduration
+	app.setStartAndDuration(0,10);
 }
 
 document.getElementById("all").onclick = function () {
@@ -394,7 +404,7 @@ document.getElementById("all").onclick = function () {
 	$("#durationModal").modal("hide");
 	console.log("duration is: " + duration);
 	console.log("start position is: " + start_pos);
+	// call setstartandduration
+	app.setStartAndDuration(0,18);
 }
-
-*/
 
