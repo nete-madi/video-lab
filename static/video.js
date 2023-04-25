@@ -1,10 +1,8 @@
 // video.js: Handles all of the JavaScript and initializes the Vue application
 // TODO: Hook up trimming button.
 // TODO: Hook up text generation button.
-// TODO: Fix spacing of the shape tooltip.
 // TODO: Re-introduce the duration modal.
 // TODO: Fix determination of a shape being in bounds.
-// TODO: Make tooltips the same width as their buttons
 
 // This is for the dragging to work
 let isDragging = false;
@@ -341,6 +339,7 @@ function drag() {
 					console.log(shapeType);
 				}
 				$("#durationModal").modal("show");
+				$("#shapebtn").popover('hide');
 			}
 			else {
 				console.log("not in bounds");
