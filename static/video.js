@@ -1,5 +1,5 @@
 // video.js: Handles all of the JavaScript and initializes the Vue application
-// TODO: Fix text bounding
+// TODO: Add a button to reset all shapes back to their original positions
 
 // This is for the dragging to work
 let isDragging = false;
@@ -14,6 +14,12 @@ var scale;
 var duration;
 var start_pos;
 var text;
+
+
+// Reset shapes to their original positions
+function reset() {
+
+}
 
 
 // Activate Bootstrap tooltips on the page.
