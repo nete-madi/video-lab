@@ -373,7 +373,8 @@ $(document).on("click", "#trimclip", function (event) {
 
 $(document).on("click", "#generate", function (event) {
     let color = $('input[name=color]:checked').val();
-    $(".textpopover").find('#generatedText').css( "font", "30px Arial" );
+    let size =  $('input[name=size]:checked').val();
+    $(".textpopover").find('#generatedText').css( "font", size );
     $(".textpopover").find('#generatedText').css( "color", color );
 
     var msg = $('.textpopover').find('#textToGenerate').val();
