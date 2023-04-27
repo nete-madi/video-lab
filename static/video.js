@@ -192,7 +192,7 @@ var app = new Vue({
 					duration: duration,
 					x_pos: shapeLeft,
 					y_pos: shapeTop,
-					title: $("#textToGenerate").val(),
+					title: $('.textpopover').find('#textToGenerate').val(),
 					text: text
 				}
 			}
@@ -366,8 +366,8 @@ $(document).on("click", "#trimclip", function (event) {
 });
 
 $(document).on("click", "#generate", function (event) {
-    var msg = $("#textToGenerate").val();
-	document.getElementById("generatedText").innerHTML = msg;
+    var msg = $('.textpopover').find('#textToGenerate').val();
+	$('.textpopover').find('#generatedText').html(msg);
 });
 
 document.getElementById("1").onclick = function () {
