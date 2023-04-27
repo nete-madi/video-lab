@@ -25,10 +25,6 @@
     height:auto;
 }
 
-#generatedText {
-    font:30px Arial;
-}
-
 .draggable {
     cursor:pointer;
     user-select: none;

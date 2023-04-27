@@ -1,5 +1,5 @@
 // video.js: Handles all of the JavaScript and initializes the Vue application
-// TODO: Hook up text generation button.
+// TODO: Fix text bounding
 
 // This is for the dragging to work
 let isDragging = false;
@@ -369,6 +369,16 @@ $(document).on("click", "#generate", function (event) {
     var msg = $('.textpopover').find('#textToGenerate').val();
 	$('.textpopover').find('#generatedText').html(msg);
 });
+
+
+if(document.getElementById('red').checked) {
+  console.log($('.textpopover').find('#generatedText'));
+  $('.textpopover').find('#generatedText').style.color = "red";
+  $('.textpopover').find('#generatedText').style.font = "30px Arial";
+}else if(document.getElementById('black').checked) {
+  $('.textpopover').find('#generatedText').style.color = "black";
+  $('.textpopover').find('#generatedText').style.font = "30px Arial";
+}
 
 document.getElementById("1").onclick = function () {
 	duration = 1;
