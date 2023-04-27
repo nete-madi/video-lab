@@ -62,7 +62,7 @@
     width: 50%;
     height:450px;
     max-height:500px;
-    border: 3px dotted #ff00ff;
+    border: 0px dotted #ff00ff;
     z-index:200;
     margin-left:25%;
     position:absolute;
