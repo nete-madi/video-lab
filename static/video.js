@@ -269,6 +269,10 @@ var app = new Vue({
 function drag() {
 	document.addEventListener('mousedown', function (event) {
 
+        $("#shapebtn").popover('hide');
+		$("#textbtn").popover('hide');
+		$("#trimbtn").popover('hide');
+
 		let dragElement = event.target.closest('.draggable');
 		var editingArea = document.querySelector("#editArea");
 
