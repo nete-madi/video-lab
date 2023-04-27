@@ -47,6 +47,7 @@ $(document).ready(function () {
 	});
 });
 
+
 // Load the import video modal on page load.
 $(document).ready(function () {
 	$("#importModal").modal('show');
@@ -367,18 +368,13 @@ $(document).on("click", "#trimclip", function (event) {
 
 $(document).on("click", "#generate", function (event) {
     var msg = $('.textpopover').find('#textToGenerate').val();
-	$('.textpopover').find('#generatedText').html(msg);
+    if(msg == "") {
+        alert("Text box is empty!");
+    }
+    else {
+        $('.textpopover').find('#generatedText').html(msg);
+    }
 });
-
-
-if(document.getElementById('red').checked) {
-  console.log($('.textpopover').find('#generatedText'));
-  $('.textpopover').find('#generatedText').style.color = "red";
-  $('.textpopover').find('#generatedText').style.font = "30px Arial";
-}else if(document.getElementById('black').checked) {
-  $('.textpopover').find('#generatedText').style.color = "black";
-  $('.textpopover').find('#generatedText').style.font = "30px Arial";
-}
 
 document.getElementById("1").onclick = function () {
 	duration = 1;
