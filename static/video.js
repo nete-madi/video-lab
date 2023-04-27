@@ -36,6 +36,11 @@ $(document).ready(function () {
 			return $('#textpop').html();
 		}
 	});
+	$('#textbtn').on('shown.bs.popover', function() {
+    $('#red input').on('click', function() {
+
+    });
+  });
 	$("#trimbtn").popover({
 		html: true,
 		placement: 'top',
@@ -367,6 +372,10 @@ $(document).on("click", "#trimclip", function (event) {
 });
 
 $(document).on("click", "#generate", function (event) {
+    let color = $('input[name=color]:checked').val();
+    $(".textpopover").find('#generatedText').css( "font", "30px Arial" );
+    $(".textpopover").find('#generatedText').css( "color", color );
+
     var msg = $('.textpopover').find('#textToGenerate').val();
     if(msg == "") {
         alert("Text box is empty!");
