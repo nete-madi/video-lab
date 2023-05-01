@@ -21,7 +21,6 @@ function reset() {
 
 }
 
-
 // Activate Bootstrap tooltips on the page.
 $(document).ready(function () {
 	$("#shapebtn").popover({
@@ -57,7 +56,6 @@ $(document).ready(function () {
 		}
 	});
 });
-
 
 // Load the import video modal on page load.
 $(document).ready(function () {
