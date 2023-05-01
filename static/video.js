@@ -15,18 +15,12 @@ var duration;
 var start_pos;
 var text;
 
-
-// Reset shapes to their original positions
-function reset() {
-
-}
-
 // Activate Bootstrap tooltips on the page.
 $(document).ready(function () {
 	$("#shapebtn").popover({
 		html: true,
 		placement: 'top',
-		sanitize: false, // https://stackoverflow.com/questions/56264280/html-form-inside-bootstrap-popover-not-working
+		sanitize: false,
 		template: '<div class="shapepopover" role="tooltip"><div class="arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>',
 		content: function () {
 			return $('#shapepop').html();
@@ -35,7 +29,7 @@ $(document).ready(function () {
 	$("#textbtn").popover({
 		html: true,
 		placement: 'top',
-		sanitize: false, // https://stackoverflow.com/questions/56264280/html-form-inside-bootstrap-popover-not-working
+		sanitize: false,
 		template: '<div class="textpopover" role="tooltip"><div class="arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>',
 		content: function () {
 			return $('#textpop').html();
@@ -49,7 +43,7 @@ $(document).ready(function () {
 	$("#trimbtn").popover({
 		html: true,
 		placement: 'top',
-		sanitize: false, // https://stackoverflow.com/questions/56264280/html-form-inside-bootstrap-popover-not-working
+		sanitize: false,
 		template: '<div class="trimpopover" role="tooltip"><div class="arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>',
 		content: function () {
 			return $('#trimpop').html();
@@ -355,7 +349,7 @@ function drag() {
 				console.log("not in bounds");
 			}
 		};
-	}); // https://javascript.info/mouse-drag-and-drop
+	});
 
 }
 
@@ -433,4 +427,8 @@ document.getElementById("all").onclick = function () {
 	// call setstartandduration
 	app.setStartAndDuration(0,18);
 }
+
+// StackOverflow references:
+// Popover santizing: https://stackoverflow.com/questions/56264280/html-form-inside-bootstrap-popover-not-working
+// Dragging and dropping: https://javascript.info/mouse-drag-and-drop
 
