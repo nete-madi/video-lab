@@ -6,8 +6,8 @@ let isDragging = false;
 
 // Global vars for shape position that are populated in the mousedown function
 // and later passed to the editing payload.
-var shapeTop;
-var shapeLeft;
+var shapeY;
+var shapeX;
 var shapeToRender;
 var shapeType;
 var scale;
@@ -159,12 +159,12 @@ var app = new Vue({
 			else if (actiontype == "image") {
 				if (shapeType != "circle_lg") {
 					// correct numbers for circle_sm, ar_right, ar_left
-					shapeTop = shapeTop * 3.1;
+					shapeY = shapeY * 3.1;
 				}
 				else {
-					shapeTop = shapeTop * 3;
+					shapeY = shapeY * 3;
 				}
-				shapeLeft = shapeLeft * 3;
+				shapeX = shapeX * 3;
 
 				if (shapeType != "highlight") {
 					scale = 1.51;
@@ -173,13 +173,13 @@ var app = new Vue({
 					scale = 3.2;
 				}
 
-				console.log("x_new: " + shapeLeft);
-				console.log("y_new: " + shapeTop);
+				console.log("x_new: " + shapeX);
+				console.log("y_new: " + shapeY);
 				editor_payload = {
 					start_time: start_pos,
 					duration: duration,
-					x_pos: shapeLeft,
-					y_pos: shapeTop,
+					x_pos: shapeX,
+					y_pos: shapeY,
 					img_src: shapeToRender,
 					text: text,
 					scale: scale
@@ -187,15 +187,15 @@ var app = new Vue({
 			}
 
 			else if (actiontype == "text") {
-				shapeLeft = shapeLeft * 3;
-				shapeTop = shapeTop * 3.1;
-				console.log("x_new: " + shapeLeft);
-				console.log("y_new: " + shapeTop);
+				shapeX = shapeX * 3;
+				shapeY = shapeY * 3.1;
+				console.log("x_new: " + shapeX);
+				console.log("y_new: " + shapeY);
 				editor_payload = {
 					start_time: 0,
 					duration: duration,
-					x_pos: shapeLeft,
-					y_pos: shapeTop,
+					x_pos: shapeX,
+					y_pos: shapeY,
 					title: $('.textpopover').find('#textToGenerate').val(),
 					text: text
 				}
@@ -311,25 +311,31 @@ function drag() {
 			const edArea = editingArea.getBoundingClientRect();
 
 			// Calculate the top and left positions
-			shapeTop = shapeArea.top - edArea.top;
-			shapeLeft = shapeArea.left - edArea.left;
+			shapeX = shapeArea.top - edArea.top;
+			shapeY = shapeArea.left - edArea.left;
 
-			console.log("x: " + shapeLeft);
-			console.log("y: " + shapeTop);
+			console.log("x: " + shapeX);
+			console.log("y: " + shapeY);
 
-			let Left1 = edArea.left + window.scrollX;
-			let Left2 = shapeLeft;
+			/*
+
+			let Left1 = edArea.left + window.screenX;
+			let Left2 = shapeX;
 			let Width1 = $(editingArea).width();
 			let Width2 = $(dragElement).width();
-			let Top1 = edArea.top + window.scrollY; // zero, this is incorrect
-			let Top2 = shapeTop;
+			let Top1 = edArea.top + window.screenY;
+			let Top2 = shapeY;
 			let Height1 = $(editingArea).height();
 			let Height2 = $(dragElement).height();
+
 
 			if (((Left1 + Width1) >= Left2)
 				&& (Left1 <= (Left2 + Width2))
 				&& ((Top1 + Height1) >= Top2)
 				&& (Top1 <= (Top2 + Height2))) {
+				*/
+			if ((shapeX + $(dragElement).width()) <= document.querySelector('.drop-landing').offsetWidth &&
+			((shapeY + $(dragElement).height()) <= document.querySelector('.drop-landing').offsetHeight)){
 				if ($(dragElement).attr("id") == "generatedText") {
 					text = true;
 				}
