@@ -317,8 +317,20 @@ function drag() {
 			console.log("x: " + shapeX);
 			console.log("y: " + shapeY);
 
-			if ((shapeX + $(dragElement).width()) <= document.querySelector('.drop-landing').offsetWidth &&
-			((shapeY + $(dragElement).height()) <= document.querySelector('.drop-landing').offsetHeight)){
+			let Left1 = edArea.left + window.screenX;
+			let Left2 = shapeX;
+			let Width1 = $(editingArea).width();
+			let Width2 = $(dragElement).width();
+			let Top1 = edArea.top + window.screenY;
+			let Top2 = shapeY;
+			let Height1 = $(editingArea).height();
+			let Height2 = $(dragElement).height();
+
+
+			if (((Left1 + Width1) >= Left2)
+				&& (Left1 <= (Left2 + Width2))
+				&& ((Top1 + Height1) >= Top2)
+				&& (Top1 <= (Top2 + Height2))) {
 				if ($(dragElement).attr("id") == "generatedText") {
 					text = true;
 				}
