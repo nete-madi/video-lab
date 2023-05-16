@@ -1,5 +1,4 @@
 // video.js: Handles all of the JavaScript and initializes the Vue application
-// TODO: Add a button to reset all shapes back to their original positions
 
 // This is for the dragging to work
 let isDragging = false;
@@ -14,6 +13,7 @@ var scale;
 var duration;
 var start_pos;
 var text;
+var title;
 
 // Activate Bootstrap tooltips on the page.
 $(document).ready(function () {
@@ -196,7 +196,7 @@ var app = new Vue({
 					duration: duration,
 					x_pos: shapeX,
 					y_pos: shapeY,
-					title: $('.textpopover').find('#textToGenerate').val(),
+					title: title,
 					text: text
 				}
 			}
@@ -317,23 +317,6 @@ function drag() {
 			console.log("x: " + shapeX);
 			console.log("y: " + shapeY);
 
-			/*
-
-			let Left1 = edArea.left + window.screenX;
-			let Left2 = shapeX;
-			let Width1 = $(editingArea).width();
-			let Width2 = $(dragElement).width();
-			let Top1 = edArea.top + window.screenY;
-			let Top2 = shapeY;
-			let Height1 = $(editingArea).height();
-			let Height2 = $(dragElement).height();
-
-
-			if (((Left1 + Width1) >= Left2)
-				&& (Left1 <= (Left2 + Width2))
-				&& ((Top1 + Height1) >= Top2)
-				&& (Top1 <= (Top2 + Height2))) {
-				*/
 			if ((shapeX + $(dragElement).width()) <= document.querySelector('.drop-landing').offsetWidth &&
 			((shapeY + $(dragElement).height()) <= document.querySelector('.drop-landing').offsetHeight)){
 				if ($(dragElement).attr("id") == "generatedText") {
@@ -391,6 +374,7 @@ $(document).on("click", "#generate", function (event) {
     }
     else {
         $('.textpopover').find('#generatedText').html(msg);
+        title = msg;
     }
 });
 
