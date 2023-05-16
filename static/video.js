@@ -35,11 +35,11 @@ $(document).ready(function () {
 			return $('#textpop').html();
 		}
 	});
-	$('#textbtn').on('shown.bs.popover', function() {
-    $('#red input').on('click', function() {
+	$('#textbtn').on('shown.bs.popover', function () {
+		$('#red input').on('click', function () {
 
-    });
-  });
+		});
+	});
 	$("#trimbtn").popover({
 		html: true,
 		placement: 'top',
@@ -149,8 +149,8 @@ var app = new Vue({
 			let editor_payload = {};
 
 			if (actiontype == "trim") {
-			    let start = $('.trimpopover').find('#start_trim').val();
-			    let end = $('.trimpopover').find('#end_trim').val();
+				let start = $('.trimpopover').find('#start_trim').val();
+				let end = $('.trimpopover').find('#end_trim').val();
 				editor_payload = {
 					trim_start: start,
 					trim_end: end
@@ -267,7 +267,7 @@ var app = new Vue({
 function drag() {
 	document.addEventListener('mousedown', function (event) {
 
-        $("#shapebtn").popover('hide');
+		$("#shapebtn").popover('hide');
 		$("#textbtn").popover('hide');
 		$("#trimbtn").popover('hide');
 
@@ -375,19 +375,19 @@ $(document).on("click", "#trimclip", function (event) {
 });
 
 $(document).on("click", "#generate", function (event) {
-    let color = $('input[name=color]:checked').val();
-    let size =  $('input[name=size]:checked').val();
-    $(".textpopover").find('#generatedText').css( "font", size );
-    $(".textpopover").find('#generatedText').css( "color", color );
+	let color = $('input[name=color]:checked').val();
+	let size = $('input[name=size]:checked').val();
+	$(".textpopover").find('#generatedText').css("font", size);
+	$(".textpopover").find('#generatedText').css("color", color);
 
-    var msg = $('.textpopover').find('#textToGenerate').val();
-    if(msg == "") {
-        alert("Text box is empty!");
-    }
-    else {
-        $('.textpopover').find('#generatedText').html(msg);
-        title = msg;
-    }
+	var msg = $('.textpopover').find('#textToGenerate').val();
+	if (msg == "") {
+		alert("Text box is empty!");
+	}
+	else {
+		$('.textpopover').find('#generatedText').html(msg);
+		title = msg;
+	}
 });
 
 document.getElementById("1").onclick = function () {
@@ -397,7 +397,7 @@ document.getElementById("1").onclick = function () {
 	console.log("duration is: " + duration);
 	console.log("start position is: " + start_pos);
 	// call setstartandduration
-	app.setStartAndDuration(0,1);
+	app.setStartAndDuration(0, 1);
 }
 
 document.getElementById("5").onclick = function () {
@@ -407,7 +407,7 @@ document.getElementById("5").onclick = function () {
 	console.log("duration is: " + duration);
 	console.log("start position is: " + start_pos);
 	// call setstartandduration
-	app.setStartAndDuration(0,5);
+	app.setStartAndDuration(0, 5);
 }
 
 document.getElementById("10").onclick = function () {
@@ -417,7 +417,7 @@ document.getElementById("10").onclick = function () {
 	console.log("duration is: " + duration);
 	console.log("start position is: " + start_pos);
 	// call setstartandduration
-	app.setStartAndDuration(0,10);
+	app.setStartAndDuration(0, 10);
 }
 
 document.getElementById("all").onclick = function () {
@@ -427,7 +427,7 @@ document.getElementById("all").onclick = function () {
 	console.log("duration is: " + duration);
 	console.log("start position is: " + start_pos);
 	// call setstartandduration
-	app.setStartAndDuration(0,18);
+	app.setStartAndDuration(0, 18);
 }
 
 // StackOverflow references:
