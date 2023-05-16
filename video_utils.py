@@ -28,11 +28,11 @@ def img_overlay(videofile: str, img: str, start_time: int, duration: int, x_pos:
     return VIDEO_SAVE_DIR + file_name
 
 
-def text_overlay(videofile: str, text: str, start_time: int, duration: int, x_pos: int, y_pos: int):
+def text_overlay(videofile: str, text: str, start_time: int, duration: int, x_pos: int, y_pos: int, fontsize: int, color: str):
     clip = VideoFileClip(videofile)
     videofile = videofile.replace(video_save_path, "")
     # see if you can configure these dynamically
-    text = TextClip(text, font="Arial", fontsize=30, color='black').set_start(start_time).set_duration(
+    text = TextClip(text, font="Arial", fontsize=fontsize, color=color).set_start(start_time).set_duration(
         duration).set_pos((x_pos, y_pos)).resize(3)
     edited_path = video_save_path + "edited_" + str(int(time.time())) + videofile
     file_name = "edited_" + str(int(time.time())) + videofile

@@ -14,6 +14,8 @@ var duration;
 var start_pos;
 var text;
 var title;
+var fontsize;
+var color
 
 // Activate Bootstrap tooltips on the page.
 $(document).ready(function () {
@@ -194,7 +196,9 @@ var app = new Vue({
 					x_pos: shapeX,
 					y_pos: shapeY,
 					title: title,
-					text: text
+					text: text,
+					fontsize: fontsize,
+					color: color
 				}
 			}
 
@@ -382,9 +386,9 @@ $(document).on("click", "#trimclip", function (event) {
 });
 
 $(document).on("click", "#generate", function (event) {
-	let color = $('input[name=color]:checked').val();
-	let size = $('input[name=size]:checked').val();
-	$(".textpopover").find('#generatedText').css("font", size);
+	color = $('input[name=color]:checked').val();
+	fontsize = $('input[name=size]:checked').val();
+	$(".textpopover").find('#generatedText').css("font-size", String(fontsize + "px"));
 	$(".textpopover").find('#generatedText').css("color", color);
 
 	var msg = $('.textpopover').find('#textToGenerate').val();

@@ -90,7 +90,7 @@ def editor(actiontype):
         try:
             video_file = request.form['videofile']
             path = ROOT_DIR + video_file
-            edited_video_path = text_overlay(path, str(request.form['title']),int(request.form['start_time']),int(request.form['duration']), int(float(request.form['x_pos'])), int(float(request.form['y_pos'])))
+            edited_video_path = text_overlay(path, str(request.form['title']),int(request.form['start_time']),int(request.form['duration']), int(float(request.form['x_pos'])), int(float(request.form['y_pos'])), int(request.form['fontsize']), str(request.form['color']))
             return {
                 "status": "success",
                 "message": "video edit success",
