@@ -188,8 +188,6 @@ var app = new Vue({
 			else if (actiontype == "text") {
 				shapeX = shapeX * 3;
 				shapeY = shapeY * 3.1;
-				console.log("x_new: " + shapeX);
-				console.log("y_new: " + shapeY);
 				editor_payload = {
 					start_time: 0,
 					duration: duration,
@@ -346,8 +344,8 @@ function drag() {
 					shapeType = $(dragElement).attr("id");
 					console.log(shapeType);
 				}
-				shapeX = Left2  - edArea.left;
-				shapeY = Top2  - edArea.top;
+				shapeX = Left2 - edArea.left;
+				shapeY = Top2 - edArea.top;
 				console.log("Shape coordinates: (" + shapeX + ", " + shapeY + ")");
 				// Show duration modal and hide all open popovers on shape drop
 				$("#durationModal").modal("show");
