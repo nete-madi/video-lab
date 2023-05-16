@@ -173,8 +173,7 @@ var app = new Vue({
 					scale = 3.2;
 				}
 
-				console.log("x_new: " + shapeX);
-				console.log("y_new: " + shapeY);
+				console.log("Transformed shape coordinates: (" + shapeX + ", " + shapeY + ")");
 				editor_payload = {
 					start_time: start_pos,
 					duration: duration,
@@ -311,20 +310,26 @@ function drag() {
 			const edArea = editingArea.getBoundingClientRect();
 
 			// Calculate the top and left positions
-			shapeX = shapeArea.top - edArea.top;
-			shapeY = shapeArea.left - edArea.left;
 
-			console.log("x: " + shapeX);
-			console.log("y: " + shapeY);
-
-			let Left1 = edArea.left + window.screenX;
-			let Left2 = shapeX;
+			let Left1 = edArea.left;
+			let Left2 = shapeArea.left;
 			let Width1 = $(editingArea).width();
 			let Width2 = $(dragElement).width();
-			let Top1 = edArea.top + window.screenY;
-			let Top2 = shapeY;
+			let Top1 = edArea.top;
+			let Top2 = shapeArea.top;
 			let Height1 = $(editingArea).height();
 			let Height2 = $(dragElement).height();
+
+
+			console.log("left1 is " + Left1);
+			console.log("left2 is " + Left2);
+			console.log("width1 is " + Width1);
+			console.log("width2 is " + Width2);
+			console.log("top1 is " + Top1);
+			console.log("top2 is " + Top2);
+			console.log("height1 is " + Height1);
+			console.log("height2 is " + Height2);
+
 
 
 			if (((Left1 + Width1) >= Left2)
@@ -333,6 +338,7 @@ function drag() {
 				&& (Top1 <= (Top2 + Height2))) {
 				if ($(dragElement).attr("id") == "generatedText") {
 					text = true;
+
 				}
 				else {
 					text = false;
@@ -340,6 +346,9 @@ function drag() {
 					shapeType = $(dragElement).attr("id");
 					console.log(shapeType);
 				}
+				shapeX = Left2  - edArea.left;
+				shapeY = Top2  - edArea.top;
+				console.log("Shape coordinates: (" + shapeX + ", " + shapeY + ")");
 				// Show duration modal and hide all open popovers on shape drop
 				$("#durationModal").modal("show");
 				$("#shapebtn").popover('hide');
