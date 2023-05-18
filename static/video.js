@@ -191,7 +191,7 @@ var app = new Vue({
 				shapeX = shapeX * 3;
 				shapeY = shapeY * 3.1;
 				editor_payload = {
-					start_time: 0,
+					start_time: start_pos,
 					duration: duration,
 					x_pos: shapeX,
 					y_pos: shapeY,
